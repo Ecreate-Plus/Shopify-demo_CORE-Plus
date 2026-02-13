@@ -20,10 +20,20 @@
         "id": "logo_width",
         "min": 50,
         "max": 300,
-        "step": 10,
+        "step": 5,
+        "default": 150,
+        "unit": "px",
+        "label": "ロゴの幅(PC)"
+      },
+      {
+        "type": "range",
+        "id": "logo_width_sp",
+        "min": 30,
+        "max": 200,
+        "step": 2,
         "default": 100,
         "unit": "px",
-        "label": "t:settings_schema.logo.settings.logo_width.label"
+        "label": "ロゴの幅(SP)"
       },
       {
         "type": "image_picker",

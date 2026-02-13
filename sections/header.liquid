@@ -98,6 +98,11 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
+    @media screen and (max-width: 750px) {
+  .header__heading-logo-wrapper {
+    max-width: {{ settings.logo_width_sp }}px;
+    }
+  }
 {%- endstyle -%}
 
 <script src="{{ 'cart-notification.js' | asset_url }}" defer="defer"></script>
@@ -117,6 +122,8 @@
     assign header_tag = 'sticky-header'
   endif
 %}
+
+{{ 'c_header.css' | asset_url | stylesheet_tag }}
 
 <{{ header_tag }}
   {% if header_tag == 'sticky-header' %}
