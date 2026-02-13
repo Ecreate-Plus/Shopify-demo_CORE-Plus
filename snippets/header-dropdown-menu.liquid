@@ -6,8 +6,11 @@
 {% endcomment %}
 
 <nav class="header__inline-menu">
+  {% comment %} 階層なしメニュー {% endcomment %}
   <ul class="list-menu list-menu--inline" role="list">
     {%- for link in section.settings.menu.links -%}
+      {% comment %} 変数の定義 {% endcomment %}
+      {% assign link_titles = link.title | split: ',' %}
       <li>
         {%- if link.links != blank -%}
           <header-menu>
@@ -22,9 +25,13 @@
                   {% endif %}
                 >
                   {{- link.title | escape -}}
+                  階層なし
                 </span>
                 {{- 'icon-caret.svg' | inline_asset_content -}}
               </summary>
+
+              {% comment %} 階層ありメニュー {% endcomment %}
+
               <ul
                 id="HeaderMenu-MenuList-{{ forloop.index }}"
                 class="header__submenu list-menu list-menu--disclosure color-{{ section.settings.menu_color_scheme }} gradient caption-large motion-reduce global-settings-popup"
@@ -89,11 +96,14 @@
             {% endif %}
           >
             <span
-              {%- if link.current %}
-                class="header__active-menu-item"
-              {% endif %}
+              class="
+                c_header-menu-title--wrapper
+                {% if link.current %}header__active-menu-item{% endif %}
+              "
             >
-              {{- link.title | escape -}}
+              <span class="c_header-menu-title--img">{{ link_titles[0] | inline_asset_content }}</span>
+              <span class="c_header-menu-title--ja">{{ link_titles[1] | escape }}</span>
+              <span class="c_header-menu-title--en">{{ link_titles[2] | escape }}</span>
             </span>
           </a>
         {%- endif -%}

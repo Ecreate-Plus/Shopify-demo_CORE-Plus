@@ -1,0 +1,6 @@
+.c_header-menu-title--wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}

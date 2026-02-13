@@ -11,23 +11,40 @@
   "name": "t:sections.header.name",
   "type": "header",
   "sections": {
-    "announcement-bar": {
-      "type": "announcement-bar",
+    "c_announcement_bar_PWmgAX": {
+      "type": "c_announcement-bar",
       "blocks": {
-        "announcement-bar-0": {
+        "announcement_aTaTzr": {
           "type": "announcement",
           "settings": {
-            "text": "Welcome to our store",
-            "link": ""
+            "text": "税込 10,000円以上で送料無料!!",
+            "link": "shopify://pages/contact"
+          }
+        },
+        "announcement_gFWWJj": {
+          "type": "announcement",
+          "settings": {
+            "text": "累計販売数 ◯億食突破！",
+            "link": "shopify://pages/contact"
+          }
+        },
+        "announcement_rFPqpU": {
+          "type": "announcement",
+          "settings": {
+            "text": "お友達紹介キャンペーン実施中!!",
+            "link": "shopify://pages/contact"
           }
         }
       },
       "block_order": [
-        "announcement-bar-0"
+        "announcement_aTaTzr",
+        "announcement_gFWWJj",
+        "announcement_rFPqpU"
       ],
+      "name": "カスタム：告知バー",
       "settings": {
-        "auto_rotate": false,
-        "change_slides_speed": 5,
+        "auto_rotate": true,
+        "change_slides_speed": 8,
         "color_scheme": "scheme-1",
         "show_line_separator": true,
         "show_social": false,
@@ -44,7 +61,7 @@
         "menu_type_desktop": "dropdown",
         "sticky_header_type": "on-scroll-up",
         "show_line_separator": true,
-        "color_scheme": "scheme-1",
+        "color_scheme": "scheme-2",
         "menu_color_scheme": "scheme-1",
         "enable_country_selector": true,
         "enable_language_selector": true,
@@ -56,7 +73,7 @@
     }
   },
   "order": [
-    "announcement-bar",
+    "c_announcement_bar_PWmgAX",
     "header"
   ]
 }
