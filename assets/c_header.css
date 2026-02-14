@@ -3,4 +3,43 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    /* width: 150px; */
+}
+
+.c_header-menu-title--wrapper-level1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.c_menu-drawer__navigation .menu-drawer__menu {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    place-content: center;
+}
+
+
+.c_menu-drawer__navigation .menu-drawer__menu .menu-drawer__menu-item {
+    display: flex;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+.c_header__inline-menu .list-menu--inline {
+    margin-left: 50px;
+}
+
+.c_header__inline-menu .list-menu--inline li {
+    margin-right: 5px;
+}
+
+.c_svg-wrapper>svg {
+    width: 25px;
+    height: 25px;
+}
+
+.c_header__icon .cart-count-bubble {
+    top: 0.3rem;
+    right: 0.3rem;
 }
