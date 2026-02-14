@@ -5,8 +5,8 @@
   {% render 'header-dropdown-menu' %}
 {% endcomment %}
 
-<nav class="header__inline-menu">
-  {% comment %} 階層なしメニュー {% endcomment %}
+<nav class="header__inline-menu c_header__inline-menu">
+  {% comment %} 階層ありメニュー {% endcomment %}
   <ul class="list-menu list-menu--inline" role="list">
     {%- for link in section.settings.menu.links -%}
       {% comment %} 変数の定義 {% endcomment %}
@@ -21,13 +21,13 @@
               >
                 <span
                   {%- if link.child_active %}
-                    class="header__active-menu-item"
+                    class="header__active-menu-item c_header-menu-title--wrapper c_header-menu-title--wrapper-level1"
                   {% endif %}
                 >
-                  {{- link.title | escape -}}
-                  階層なし
+                  <span class="c_header-menu-title--img">{{ link_titles[0] | inline_asset_content }}</span>
+                  <span class="c_header-menu-title--ja">{{ link_titles[1] | escape }}</span>
+                  <span class="c_header-menu-title--en">{{ link_titles[2] | escape }}</span>
                 </span>
-                {{- 'icon-caret.svg' | inline_asset_content -}}
               </summary>
 
               {% comment %} 階層ありメニュー {% endcomment %}
