@@ -1,0 +1,101 @@
+{{ 'c_hero.css' | asset_url | stylesheet_tag }}
+
+<div class="c-hero-section">
+  <section class="splide c-splide c-hero__wrapper splide--{{ section.id }}">
+    <div class="splide__track">
+      <ul class="splide__list">
+        {% for block in section.blocks %}
+          {% assign pc_image = block.settings.image_pc %}
+          {% assign sp_image = block.settings.image_sp %}
+          <li class="splide__slide">
+            {% if pc_image != blank %}
+              <picture {{ block.shopify_attributes }}>
+                {% if sp_image != blank %}
+                  <source
+                    media="(max-width: 768px)"
+                    srcset="{{ sp_image | image_url: width: 800 }}"
+                    media="(max-width: 750px)"
+                  >
+                {% endif %}
+                <img
+                  class="c-image"
+                  src="{{ pc_image | image_url: width: 1920 }}"
+                  width="1920"
+                  height="800"
+                  alt="{{ block.settings.image_pc.alt | escape }}"
+                  loading="lazy"
+                >
+              </picture>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="splide__arrows">
+      <button class="splide__arrow splide__arrow--prev">Prev</button>
+      <button class="splide__arrow splide__arrow--next">Next</button>
+    </div>
+  </section>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+
+    const splideOptions = {
+      type: 'loop',
+      rewind: true,
+      gap:40,
+      pageMove: 1,
+      focus: 'center',
+      omitEnd: false,
+      feixedWidth: '100%',
+      autoplay: false,
+      perPage: 1,
+      autoplay: false,
+      pagination: true,
+    };
+
+
+
+    {% comment %} セクションごとに固有のスライダーを読み込む。 {% endcomment %}
+    var splide = new Splide('.splide--{{ section.id }}', splideOptions);
+    splide.mount();
+  });
+</script>
+
+{% schema %}
+{
+  "name": "カスタム：ヒーローセクション",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "画像",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "画像テキスト",
+          "default": "画像に重ねるテキストを入力してください"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_pc",
+          "label": "PC画像"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_sp",
+          "label": "SP画像"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    {
+      "name": "カスタム：ヒーローセクション"
+    }
+  ]
+}
+{% endschema %}
