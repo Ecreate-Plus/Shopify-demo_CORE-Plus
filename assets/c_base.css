@@ -3,3 +3,10 @@
     --font-Montserrat: 'Montserrat', sans-serif;
     --font-DmSans: 'DM Sans', sans-serif;
 }
+
+/* 画像の共通のサイズ調整 */
+.c-image {
+    width: 100vw;
+    height: auto;
+    object-fit: cover;
+}

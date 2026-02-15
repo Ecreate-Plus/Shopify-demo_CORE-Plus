@@ -9,6 +9,53 @@
  */
 {
   "sections": {
+    "c_hero_fkKwdV": {
+      "type": "c_hero",
+      "blocks": {
+        "image_mf8bFw": {
+          "type": "image",
+          "settings": {
+            "text": "画像に重ねるテキストを入力してください",
+            "image_pc": "shopify://shop_images/fv-1_pc.png",
+            "image_sp": "shopify://shop_images/fv-1_sp.png"
+          }
+        },
+        "image_ayBcFL": {
+          "type": "image",
+          "settings": {
+            "text": "画像に重ねるテキストを入力してください",
+            "image_pc": "shopify://shop_images/Rectangle_91.png",
+            "image_sp": "shopify://shop_images/fv-2_sp.png"
+          }
+        },
+        "image_khE9wf": {
+          "type": "image",
+          "settings": {
+            "text": "画像に重ねるテキストを入力してください",
+            "image_pc": "shopify://shop_images/fv-3_pc.png",
+            "image_sp": "shopify://shop_images/fv-3_sp.png"
+          }
+        },
+        "image_tcJatA": {
+          "type": "image",
+          "settings": {
+            "text": "画像に重ねるテキストを入力してください",
+            "image_pc": "shopify://shop_images/fv-4_pc.png",
+            "image_sp": "shopify://shop_images/fv-4_sp.png"
+          }
+        }
+      },
+      "block_order": [
+        "image_mf8bFw",
+        "image_ayBcFL",
+        "image_khE9wf",
+        "image_tcJatA"
+      ],
+      "name": "カスタム：ヒーローセクション",
+      "settings": {
+        "color_scheme": "scheme-2"
+      }
+    },
     "image_banner": {
       "type": "image-banner",
       "blocks": {
@@ -31,7 +78,10 @@
           }
         }
       },
-      "block_order": ["heading", "button"],
+      "block_order": [
+        "heading",
+        "button"
+      ],
       "settings": {
         "image_overlay_opacity": 40,
         "image_height": "large",
@@ -74,5 +124,9 @@
       }
     }
   },
-  "order": ["image_banner", "featured_collection"]
+  "order": [
+    "c_hero_fkKwdV",
+    "image_banner",
+    "featured_collection"
+  ]
 }
