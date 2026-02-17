@@ -2,38 +2,73 @@
 
 <div class="c-hero-section">
   <section class="splide c-splide c-hero__wrapper splide--{{ section.id }}">
-    <div class="splide__track">
+    <div class="splide__track c-splide__track">
       <ul class="splide__list">
         {% for block in section.blocks %}
           {% assign pc_image = block.settings.image_pc %}
           {% assign sp_image = block.settings.image_sp %}
-          <li class="splide__slide">
+
+          {% comment %}
+            クラスの中にif文を入れるとごちゃごちゃするので、先に変数を定義。
+            背景が表示されていれば、変数の中身にis-bg-onを入れて、背景をCSSで制御する。
+          {% endcomment %}
+          {% assign bg_class = '' %}
+          {% if block.settings.show_text_bg %}
+            {% assign bg_class = 'is-bg-on' %}
+          {% endif %}
+
+          <li class="splide__slide c-splide__slide hero-block-{{ block.id }}" {{ block.shopify_attributes }}>
             {% if pc_image != blank %}
-              <picture {{ block.shopify_attributes }}>
+              <picture>
                 {% if sp_image != blank %}
                   <source
                     media="(max-width: 768px)"
                     srcset="{{ sp_image | image_url: width: 800 }}"
-                    media="(max-width: 750px)"
                   >
+                  {% if block.settings.text_sp != blank %}
+                    <span
+                      class="c-hero__text_sp c-text-pos--{{ block.settings.text_position_sp }} {{ bg_class }}"
+                      style="font-size: {{ block.settings.font_size_sp }}px;"
+                    >
+                      {{ block.settings.text_sp | newline_to_br }}
+                    </span>
+                  {% endif %}
                 {% endif %}
                 <img
                   class="c-image"
                   src="{{ pc_image | image_url: width: 1920 }}"
+                  style="
+                    --x-pc: {{ block.settings.image-x_pc }}%;
+                    --y-pc: {{ block.settings.image-y_pc }}%;
+                    --x-sp: {{ block.settings.image-x_sp }}%;
+                    --y-sp: {{ block.settings.image-y_sp }}%;
+                  "
                   width="1920"
                   height="800"
                   alt="{{ block.settings.image_pc.alt | escape }}"
                   loading="lazy"
                 >
               </picture>
+              {% if block.settings.text_pc != blank %}
+                <span
+                  class="c-hero__text_pc c-text-pos--{{ block.settings.text_position_pc }} {{ bg_class }}"
+                  style="font-size: {{ block.settings.font_size_pc }}px;"
+                >
+                  {{ block.settings.text_pc | newline_to_br }}
+                </span>
+              {% endif %}
             {% endif %}
           </li>
         {% endfor %}
       </ul>
     </div>
     <div class="splide__arrows">
-      <button class="splide__arrow splide__arrow--prev">Prev</button>
-      <button class="splide__arrow splide__arrow--next">Next</button>
+      <button class="splide__arrow splide__arrow--prev c_splide__arrow" type="button">
+        {{ 'c_splide-arrow.svg' | inline_asset_content }}
+      </button>
+      <button class="splide__arrow splide__arrow--next c_splide__arrow" type="button">
+        {{ 'c_splide-arrow.svg' | inline_asset_content }}
+      </button>
     </div>
   </section>
 </div>
@@ -48,7 +83,7 @@
       pageMove: 1,
       focus: 'center',
       omitEnd: false,
-      feixedWidth: '100%',
+      fixedWidth: '100%',
       autoplay: false,
       perPage: 1,
       autoplay: false,
@@ -73,12 +108,6 @@
       "name": "画像",
       "settings": [
         {
-          "type": "text",
-          "id": "text",
-          "label": "画像テキスト",
-          "default": "画像に重ねるテキストを入力してください"
-        },
-        {
           "type": "image_picker",
           "id": "image_pc",
           "label": "PC画像"
@@ -87,6 +116,128 @@
           "type": "image_picker",
           "id": "image_sp",
           "label": "SP画像"
+        },
+        {
+          "type": "header",
+          "content": "テキストの設定"
+        },
+        {
+          "type": "textarea",
+          "id": "text_pc",
+          "label": "画像テキスト（PC）"
+        },
+        {
+          "type": "textarea",
+          "id": "text_sp",
+          "label": "画像テキスト（SP）"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_text_bg",
+          "label": "テキストの背景を表示",
+          "default": true
+        },
+        {
+          "type": "range",
+          "id": "font_size_pc",
+          "min": 10,
+          "max": 100,
+          "step": 1,
+          "unit": "px",
+          "label": "フォントサイズ（PC）",
+          "default": 32
+        },
+        {
+          "type": "range",
+          "id": "font_size_sp",
+          "min": 10,
+          "max": 60,
+          "step": 1,
+          "unit": "px",
+          "label": "フォントサイズ（SP）",
+          "default": 16
+        },
+        {
+          "type": "select",
+          "id": "text_position_pc",
+          "label": "テキスト位置（PC）",
+          "options": [
+            { "value": "top_left", "label": "左上" },
+            { "value": "top_center", "label": "中央上" },
+            { "value": "top_right", "label": "右上" },
+            { "value": "middle_left", "label": "左中央" },
+            { "value": "middle_center", "label": "中央" },
+            { "value": "middle_right", "label": "右中央" },
+            { "value": "bottom_left", "label": "左下" },
+            { "value": "bottom_center", "label": "中央下" },
+            { "value": "bottom_right", "label": "右下" }
+          ],
+          "default": "middle_center"
+        },
+        {
+          "type": "select",
+          "id": "text_position_sp",
+          "label": "テキスト位置（SP）",
+          "options": [
+            { "value": "top_left", "label": "左上" },
+            { "value": "top_center", "label": "中央上" },
+            { "value": "top_right", "label": "右上" },
+            { "value": "middle_left", "label": "左中央" },
+            { "value": "middle_center", "label": "中央" },
+            { "value": "middle_right", "label": "右中央" },
+            { "value": "bottom_left", "label": "左下" },
+            { "value": "bottom_center", "label": "中央下" },
+            { "value": "bottom_right", "label": "右下" }
+          ],
+          "default": "middle_center"
+        },
+        {
+          "type": "header",
+          "content": "画像の位置の設定"
+        },
+        {
+          "type": "range",
+          "id": "image-y_pc",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "画像の垂直位置（PC_縦）",
+          "default": 50,
+          "info": "0% → 上端, 50% → 中央, 100% → 下端（画像が切れている場合のみ。）"
+        },
+        {
+          "type": "range",
+          "id": "image-x_pc",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "画像の水平位置（PC_横）",
+          "default": 50,
+          "info": "0% → 左端,   50% → 中央, 右端 → 100%（画像が切れている場合のみ。）"
+        },
+        {
+          "type": "range",
+          "id": "image-y_sp",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "画像の垂直位置（SP_縦）",
+          "default": 50,
+          "info": "0% → 上端, 50% → 中央, 100% → 下端（画像が切れている場合のみ。）"
+        },
+        {
+          "type": "range",
+          "id": "image-x_sp",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "画像の水平位置（SP_横）",
+          "default": 50,
+          "info": "0% → 左端, 50% → 中央, 100% → 右端（画像が切れている場合のみ。）"
         }
       ]
     }

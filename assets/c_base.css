@@ -6,7 +6,7 @@
 
 /* 画像の共通のサイズ調整 */
 .c-image {
-    width: 100vw;
-    height: auto;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
 }
