@@ -15,33 +15,73 @@
         "image_mf8bFw": {
           "type": "image",
           "settings": {
-            "text": "画像に重ねるテキストを入力してください",
             "image_pc": "shopify://shop_images/fv-1_pc.png",
-            "image_sp": "shopify://shop_images/fv-1_sp.png"
+            "image_sp": "shopify://shop_images/fv-1_pc.png",
+            "text_pc": "1日に必要な栄養素を凝縮",
+            "text_sp": "画像に重ねるテキストを入力してください",
+            "show_text_bg": false,
+            "font_size_pc": 36,
+            "font_size_sp": 16,
+            "text_position_pc": "top_center",
+            "text_position_sp": "middle_center",
+            "image-y_pc": 20,
+            "image-x_pc": 50,
+            "image-y_sp": 50,
+            "image-x_sp": 50
           }
         },
         "image_ayBcFL": {
           "type": "image",
           "settings": {
-            "text": "画像に重ねるテキストを入力してください",
             "image_pc": "shopify://shop_images/Rectangle_91.png",
-            "image_sp": "shopify://shop_images/fv-2_sp.png"
+            "image_sp": "shopify://shop_images/fv-2_sp.png",
+            "text_pc": "",
+            "text_sp": "",
+            "show_text_bg": true,
+            "font_size_pc": 32,
+            "font_size_sp": 16,
+            "text_position_pc": "middle_center",
+            "text_position_sp": "middle_center",
+            "image-y_pc": 0,
+            "image-x_pc": 100,
+            "image-y_sp": 0,
+            "image-x_sp": 50
           }
         },
         "image_khE9wf": {
           "type": "image",
           "settings": {
-            "text": "画像に重ねるテキストを入力してください",
             "image_pc": "shopify://shop_images/fv-3_pc.png",
-            "image_sp": "shopify://shop_images/fv-3_sp.png"
+            "image_sp": "shopify://shop_images/fv-3_sp.png",
+            "text_pc": "",
+            "text_sp": "",
+            "show_text_bg": true,
+            "font_size_pc": 32,
+            "font_size_sp": 16,
+            "text_position_pc": "middle_center",
+            "text_position_sp": "middle_center",
+            "image-y_pc": 0,
+            "image-x_pc": 50,
+            "image-y_sp": 0,
+            "image-x_sp": 50
           }
         },
         "image_tcJatA": {
           "type": "image",
           "settings": {
-            "text": "画像に重ねるテキストを入力してください",
             "image_pc": "shopify://shop_images/fv-4_pc.png",
-            "image_sp": "shopify://shop_images/fv-4_sp.png"
+            "image_sp": "shopify://shop_images/fv-4_sp.png",
+            "text_pc": "プラスで補いたい方へ\nサプリメントの販売も開始しました",
+            "text_sp": "プラスで補いたい方へ\nサプリメントの販売も開始しました",
+            "show_text_bg": true,
+            "font_size_pc": 32,
+            "font_size_sp": 16,
+            "text_position_pc": "top_center",
+            "text_position_sp": "middle_center",
+            "image-y_pc": 50,
+            "image-x_pc": 50,
+            "image-y_sp": 50,
+            "image-x_sp": 50
           }
         }
       },
@@ -52,9 +92,7 @@
         "image_tcJatA"
       ],
       "name": "カスタム：ヒーローセクション",
-      "settings": {
-        "color_scheme": "scheme-2"
-      }
+      "settings": {}
     },
     "image_banner": {
       "type": "image-banner",
