@@ -1,5 +1,20 @@
 {{ 'c_hero.css' | asset_url | stylesheet_tag }}
 
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top_sp }}px;
+    padding-bottom: {{ section.settings.padding_bottom_sp }}px ;
+  }
+
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top_pc }}px;
+      padding-bottom: {{ section.settings.padding_bottom_pc }}px;
+    }
+  }
+{%- endstyle -%}
+
 <div class="c-hero-section">
   <section class="splide c-splide c-hero__wrapper splide--{{ section.id }}">
     <div class="splide__track c-splide__track">
@@ -62,11 +77,11 @@
         {% endfor %}
       </ul>
     </div>
-    <div class="splide__arrows">
-      <button class="splide__arrow splide__arrow--prev c_splide__arrow" type="button">
+    <div class="splide__arrows c-splide__arrows">
+      <button class="splide__arrow splide__arrow--prev c_splide__arrow--prev" type="button">
         {{ 'c_splide-arrow.svg' | inline_asset_content }}
       </button>
-      <button class="splide__arrow splide__arrow--next c_splide__arrow" type="button">
+      <button class="splide__arrow splide__arrow--next c_splide__arrow--next" type="button">
         {{ 'c_splide-arrow.svg' | inline_asset_content }}
       </button>
     </div>

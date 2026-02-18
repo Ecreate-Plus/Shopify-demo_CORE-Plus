@@ -18,7 +18,7 @@
             "image_pc": "shopify://shop_images/fv-1_pc.png",
             "image_sp": "shopify://shop_images/fv-1_pc.png",
             "text_pc": "1日に必要な栄養素を凝縮",
-            "text_sp": "画像に重ねるテキストを入力してください",
+            "text_sp": "1日に必要な栄養素を凝縮",
             "show_text_bg": false,
             "font_size_pc": 36,
             "font_size_sp": 16,
@@ -94,77 +94,50 @@
       "name": "カスタム：ヒーローセクション",
       "settings": {}
     },
-    "image_banner": {
-      "type": "image-banner",
+    "c_collection_list_BcThpm": {
+      "type": "c_collection-list",
       "blocks": {
-        "heading": {
-          "type": "heading",
+        "featured_collection_C3V8z7": {
+          "type": "featured_collection",
           "settings": {
-            "heading": "Browse our latest products",
-            "heading_size": "h0"
+            "collection": "新商品"
           }
         },
-        "button": {
-          "type": "buttons",
+        "featured_collection_wKkkwH": {
+          "type": "featured_collection",
           "settings": {
-            "button_label_1": "Shop all",
-            "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": true,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "collection": "完全栄養食"
+          }
+        },
+        "featured_collection_P3mVkR": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "サプリメント"
           }
         }
       },
       "block_order": [
-        "heading",
-        "button"
+        "featured_collection_C3V8z7",
+        "featured_collection_wKkkwH",
+        "featured_collection_P3mVkR"
       ],
+      "name": "カスタム:コレクションリスト",
       "settings": {
-        "image_overlay_opacity": 40,
-        "image_height": "large",
-        "image_behavior": "none",
-        "desktop_content_position": "bottom-center",
-        "desktop_content_alignment": "center",
-        "show_text_box": false,
-        "color_scheme": "scheme-3",
-        "stack_images_on_mobile": false,
-        "mobile_content_alignment": "center",
-        "show_text_below": false
-      }
-    },
-    "featured_collection": {
-      "type": "featured-collection",
-      "settings": {
-        "collection": "all",
-        "products_to_show": 8,
-        "title": "Featured products",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "columns_desktop": 4,
-        "enable_desktop_slider": false,
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "color_scheme": "scheme-1",
-        "image_ratio": "adapt",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "none",
-        "columns_mobile": "2",
+        "title": "コレクション",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 3,
+        "color_scheme": "scheme-2",
+        "show_view_all": false,
+        "columns_mobile": "1",
         "swipe_on_mobile": false,
-        "padding_top": 44,
+        "padding_top": 36,
         "padding_bottom": 36
       }
     }
   },
   "order": [
     "c_hero_fkKwdV",
-    "image_banner",
-    "featured_collection"
+    "c_collection_list_BcThpm"
   ]
 }

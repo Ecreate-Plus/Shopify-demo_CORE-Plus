@@ -28,7 +28,7 @@
 /* テキスト共通設定 */
 .c-hero__text_pc,
 .c-hero__text_sp {
-    min-width: 600px;
+    min-width: 320px;
     max-width: 900px;
     position: absolute;
     z-index: 2;
@@ -136,6 +136,10 @@
     .c-hero__text_sp {
         display: block;
     }
+
+    .is-bg-on {
+        max-width: 95vw;
+    }
 }
 
 
@@ -163,13 +167,21 @@
     矢印の調整
 ------------------------------------------ */
 
-.c_splide__arrow {
+.c_splide__arrow--next,
+.c_splide__arrow--prev {
     background: none;
     border: none;
     opacity: 1;
 }
 
-.c_splide__arrow svg {
+.c_splide__arrow--next svg,
+.c_splide__arrow--prev svg {
     width: 30px;
     height: 30px;
+}
+
+@media screen and (max-width: 768px) {
+    .c-splide__arrows {
+        display: none;
+    }
 }
