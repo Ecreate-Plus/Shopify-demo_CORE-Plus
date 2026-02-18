@@ -123,21 +123,70 @@
       ],
       "name": "カスタム:コレクションリスト",
       "settings": {
-        "title": "コレクション",
-        "heading_size": "h1",
         "image_ratio": "square",
         "columns_desktop": 3,
         "color_scheme": "scheme-2",
         "show_view_all": false,
         "columns_mobile": "1",
         "swipe_on_mobile": false,
-        "padding_top": 36,
-        "padding_bottom": 36
+        "padding_top_pc": 96,
+        "padding_bottom_pc": 96,
+        "padding_top_sp": 64,
+        "padding_bottom_sp": 64
+      }
+    },
+    "c_featured_collection_list_q7gnrt": {
+      "type": "c_featured-collection-list",
+      "blocks": {
+        "featured_collection_kbA8iX": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "セール商品",
+            "custom_title": "",
+            "custom_url": ""
+          }
+        },
+        "featured_collection_CN6y3c": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "セット割引",
+            "custom_title": "",
+            "custom_url": ""
+          }
+        },
+        "featured_collection_Ctm6LP": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "",
+            "custom_image": "shopify://shop_images/2261859d1ae37495c2b4128901d287be.png",
+            "custom_title": "",
+            "custom_url": "shopify://blogs/news/リファラル"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_kbA8iX",
+        "featured_collection_CN6y3c",
+        "featured_collection_Ctm6LP"
+      ],
+      "name": "カスタム:特集コレクションリスト",
+      "settings": {
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "color_scheme": "scheme-2",
+        "show_view_all": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top_pc": 96,
+        "padding_bottom_pc": 96,
+        "padding_top_sp": 64,
+        "padding_bottom_sp": 64
       }
     }
   },
   "order": [
     "c_hero_fkKwdV",
-    "c_collection_list_BcThpm"
+    "c_collection_list_BcThpm",
+    "c_featured_collection_list_q7gnrt"
   ]
 }

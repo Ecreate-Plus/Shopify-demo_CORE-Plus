@@ -1,7 +1,7 @@
 {{ 'section-collection-list.css' | asset_url | stylesheet_tag }}
 {{ 'component-card.css' | asset_url | stylesheet_tag }}
 {{ 'component-slider.css' | asset_url | stylesheet_tag }}
-{{ 'c_collection-list.css' | asset_url | stylesheet_tag }}
+{{ 'c_featured-collection-list.css' | asset_url | stylesheet_tag }}
 
 {%- style -%}
   .section-{{ section.id }}-padding {
@@ -40,6 +40,28 @@
           endif
         -%}
         {%- for block in section.blocks -%}
+          {%- liquid
+            # 優先順位を決めるロジック（カスタム > コレクション）
+
+            # 1.画像
+            assign final_image = block.settings.custom_image
+            if final_image == blank
+              assign final_image = block.settings.collection.featured_image
+            endif
+
+            # 2.タイトル
+            assign final_title = block.settings.custom_title
+            if final_title == blank
+              assign final_title = block.settings.collection.title
+            endif
+
+            # 3.リンクURL
+            assign final_url = block.settings.custom_url
+            if final_url == blank
+              assign final_url = block.settings.collection.url
+            endif
+          -%}
+
           <li
             id="Slide-{{ section.id }}-{{ forloop.index }}"
             class="collection-list__item  c-collection-list__item grid__item{% if show_mobile_slider %} slider__slide{% endif %}{% if block.settings.collection.featured_image == nil %} collection-list__item--no-media{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
@@ -51,8 +73,11 @@
           >
             {%- assign placeholder_image_index = forloop.index0 | modulo: 4 | plus: 1 -%}
             {%- assign placeholder_image = 'collection-apparel-' | append: placeholder_image_index -%}
-            {% render 'c_card-collection',
+            {% render 'c_card-featured-collection',
               card_collection: block.settings.collection,
+              image: final_image,
+              title: final_title,
+              url: final_url,
               media_aspect_ratio: section.settings.image_ratio,
               columns: columns,
               placeholder_image: placeholder_image
@@ -124,9 +149,9 @@
 
 {% schema %}
 {
-  "name": "カスタム:コレクションリスト",
+  "name": "カスタム:特集コレクションリスト",
   "tag": "section",
-  "class": "section section-collection-list",
+  "class": "section section-featured-collection-list",
   "max_blocks": 5,
   "disabled_on": {
     "groups": ["header", "footer"]
@@ -263,13 +288,28 @@
           "type": "collection",
           "id": "collection",
           "label": "t:sections.collection-list.blocks.featured_collection.settings.collection.label"
+        },
+        {
+          "type": "image_picker",
+          "id": "custom_image",
+          "label": "カスタム画像（コレクション画像の代わりに表示）"
+        },
+        {
+          "type": "text",
+          "id": "custom_title",
+          "label": "カスタムタイトル（コレクション名の代わりに表示）"
+        },
+        {
+          "type": "url",
+          "id": "custom_url",
+          "label": "カスタムリンク（コレクションの代わりにここに飛ぶ）"
         }
       ]
     }
   ],
   "presets": [
     {
-      "name": "カスタム:コレクションリスト",
+      "name": "カスタム:特集コレクションリスト",
       "blocks": [
         {
           "type": "featured_collection"
