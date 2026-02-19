@@ -1,7 +1,7 @@
 {{ 'section-collection-list.css' | asset_url | stylesheet_tag }}
 {{ 'component-card.css' | asset_url | stylesheet_tag }}
 {{ 'component-slider.css' | asset_url | stylesheet_tag }}
-{{ 'c_featured-collection-list.css' | asset_url | stylesheet_tag }}
+{{ 'c-featured-collection-list.css' | asset_url | stylesheet_tag }}
 
 {%- style -%}
   .section-{{ section.id }}-padding {
@@ -41,30 +41,26 @@
         -%}
         {%- for block in section.blocks -%}
           {%- liquid
-            # 優先順位を決めるロジック（カスタム > コレクション）
-
-            # 1.画像
-            assign final_image = block.settings.custom_image
-            if final_image == blank
+            if block.settings.card_type == 'collection' and block.settings.collection != blank
               assign final_image = block.settings.collection.featured_image
-            endif
-
-            # 2.タイトル
-            assign final_title = block.settings.custom_title
-            if final_title == blank
               assign final_title = block.settings.collection.title
-            endif
-
-            # 3.リンクURL
-            assign final_url = block.settings.custom_url
-            if final_url == blank
               assign final_url = block.settings.collection.url
+            elsif block.settings.card_type == 'custom'
+              assign final_image = block.settings.custom_image
+              assign final_title = block.settings.custom_title
+              assign final_url = block.settings.custom_link
             endif
           -%}
 
           <li
             id="Slide-{{ section.id }}-{{ forloop.index }}"
-            class="collection-list__item  c-collection-list__item grid__item{% if show_mobile_slider %} slider__slide{% endif %}{% if block.settings.collection.featured_image == nil %} collection-list__item--no-media{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+            class="
+              collection-list__item
+              c-collection-list__item grid__item
+              {% if show_mobile_slider %} slider__slide{% endif %}
+               {% if final_image == blank %} collection-list__item--no-media{% endif %}
+                {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}
+            "
             {{ block.shopify_attributes }}
             {% if settings.animations_reveal_on_scroll %}
               data-cascade
@@ -85,16 +81,6 @@
           </li>
         {%- endfor -%}
       </ul>
-      {% comment %} ボタン {% endcomment %}
-
-      <div class="c-all-collection-button__wrapper">
-        <div class="c-all-collection-button__text-inner">
-          <span class="c-all-collection-button__text">全ての商品を見る</span>
-        </div>
-        <button class="c-all-collection-button__button">
-          <a class="c-all-collection-button__link" href="">今すぐ購入</a>
-        </button>
-      </div>
       {%- if show_mobile_slider -%}
         <div class="slider-buttons">
           <button
@@ -281,28 +267,38 @@
   ],
   "blocks": [
     {
-      "type": "featured_collection",
-      "name": "t:sections.collection-list.blocks.featured_collection.name",
+      "type": "featured_card",
+      "name": "カード",
       "settings": [
+        {
+          "type": "select",
+          "id": "card_type",
+          "label": "カードタイプ",
+          "options": [
+            { "value": "collection", "label": "コレクション" },
+            { "value": "custom", "label": "カスタムページ" }
+          ],
+          "default": "collection"
+        },
         {
           "type": "collection",
           "id": "collection",
-          "label": "t:sections.collection-list.blocks.featured_collection.settings.collection.label"
+          "label": "コレクション"
+        },
+        {
+          "type": "url",
+          "id": "custom_link",
+          "label": "リンク先"
         },
         {
           "type": "image_picker",
           "id": "custom_image",
-          "label": "カスタム画像（コレクション画像の代わりに表示）"
+          "label": "カスタム画像"
         },
         {
           "type": "text",
           "id": "custom_title",
-          "label": "カスタムタイトル（コレクション名の代わりに表示）"
-        },
-        {
-          "type": "url",
-          "id": "custom_url",
-          "label": "カスタムリンク（コレクションの代わりにここに飛ぶ）"
+          "label": "タイトル"
         }
       ]
     }
@@ -312,13 +308,13 @@
       "name": "カスタム:特集コレクションリスト",
       "blocks": [
         {
-          "type": "featured_collection"
+          "type": "featured_card"
         },
         {
-          "type": "featured_collection"
+          "type": "featured_card"
         },
         {
-          "type": "featured_collection"
+          "type": "featured_card"
         }
       ]
     }

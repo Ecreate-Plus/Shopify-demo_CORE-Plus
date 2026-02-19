@@ -138,36 +138,40 @@
     "c_featured_collection_list_q7gnrt": {
       "type": "c_featured-collection-list",
       "blocks": {
-        "featured_collection_kbA8iX": {
-          "type": "featured_collection",
+        "featured_card_PD6C83": {
+          "type": "featured_card",
           "settings": {
+            "card_type": "collection",
             "collection": "セール商品",
-            "custom_title": "",
-            "custom_url": ""
-          }
-        },
-        "featured_collection_CN6y3c": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "セット割引",
-            "custom_title": "",
-            "custom_url": ""
-          }
-        },
-        "featured_collection_Ctm6LP": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "",
+            "custom_link": "shopify://collections/セール商品",
             "custom_image": "shopify://shop_images/2261859d1ae37495c2b4128901d287be.png",
-            "custom_title": "",
-            "custom_url": "shopify://blogs/news/リファラル"
+            "custom_title": "aaaaa"
+          }
+        },
+        "featured_card_xz6N8C": {
+          "type": "featured_card",
+          "settings": {
+            "card_type": "collection",
+            "collection": "セット割引",
+            "custom_link": "shopify://collections/セット割引",
+            "custom_title": ""
+          }
+        },
+        "featured_card_64LGmj": {
+          "type": "featured_card",
+          "settings": {
+            "card_type": "custom",
+            "collection": "",
+            "custom_link": "shopify://pages/リファラル",
+            "custom_image": "shopify://shop_images/2261859d1ae37495c2b4128901d287be.png",
+            "custom_title": "紹介割引キャンペーン"
           }
         }
       },
       "block_order": [
-        "featured_collection_kbA8iX",
-        "featured_collection_CN6y3c",
-        "featured_collection_Ctm6LP"
+        "featured_card_PD6C83",
+        "featured_card_xz6N8C",
+        "featured_card_64LGmj"
       ],
       "name": "カスタム:特集コレクションリスト",
       "settings": {
@@ -182,11 +186,101 @@
         "padding_top_sp": 64,
         "padding_bottom_sp": 64
       }
+    },
+    "c_concept_HFNHGm": {
+      "type": "c_concept",
+      "name": "カスタム:コンセプト",
+      "settings": {
+        "title": "重要な基本の5大栄養素をより良質に",
+        "textarea": "健康でいることは、簡単なように見えて、忙しい方にとって得に難しい。だからこそ、より簡単に良質な5大栄養素を、最も自然な形で生活に取り入れてほしい。そんな想いから私たちは、不要な添加物を排除し、身体が本当に求めている栄養素だけを厳選しました。\nインテリアに溶け込むようなボトルやパッケージのデザイン、厳選した成分のこだわり。\nあなたの日常に受け入れてもらえるよう心を込めて作りました。",
+        "color_scheme": "scheme-2",
+        "padding_top_pc": 96,
+        "padding_bottom_pc": 36,
+        "padding_top_sp": 64,
+        "padding_bottom_sp": 0
+      }
+    },
+    "c_collapsible_content_EAhMnN": {
+      "type": "c_collapsible-content",
+      "blocks": {
+        "collapsible_row_nAN9RF": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "タンパク質",
+            "icon": "chat_bubble",
+            "content_title": "<p>タンパク質：「身体の基盤を、妥協のない純度で」</p>",
+            "row_content": "<p>私たち人間の身体の約20%を構成するタンパク質は、日々のコンディションを支える最重要といっても過言ではない栄養素です。<br/>当社の製品は、アミノ酸スコア100を達成。さらに吸収効率に優れたホエイと、ゆっくりと身体に馴染む植物性プロテインを独自の比率でブレンドしました。<br/>時間がない中で、理想の身体づくりをされている方にもぴったりの商品です。</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_GWH8qj": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "炭水化物",
+            "icon": "check_mark",
+            "content_title": "<p>炭水化物：「持続的なパフォーマンスのための、持続するエネルギー」</p>",
+            "row_content": "<p>私たちは、効率的な活動には、エネルギー源の「質」が直結すると考えています。<br/>急激な変動を抑えるため、低GI素材であるオーツ麦やパラチノースを採用。<br/>朝からフル稼働するビジネスパーソンやアスリートのライフサイクル を考慮し、<br/>帰宅するまでエネルギー不足を感じさせない、安定したエネルギーの供給を実現します。</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_deqdhx": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "脂質",
+            "icon": "check_mark",
+            "content_title": "<p>脂質：「システムを円滑に動かす、良質な潤滑油」</p>",
+            "row_content": "<p>脂質は単なるカロリー源ではなく、身体の各機能を円滑に保つための重要な栄養素です。<br/>私たちは、エネルギー変換がスムーズな限定的なオイルに含まれている中鎖脂肪酸や、現代人に不足しがちなオメガ3脂肪酸などを配合。<br/>日々の思考をクリアに保ち、自分らしいライフスタイルを追求するための、クリーンなエネルギー源として設計されています。</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_gR3FBV": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "ビタミン",
+            "icon": "check_mark",
+            "content_title": "<p>ビタミン：「26種類の微量栄養素が、バランスを最適化する」</p>",
+            "row_content": "<p>主要な栄養素を活かすためには、精緻なバランスのビタミン群が不可欠です。<br/>厚生労働省の基準に基づき、26種類のビタミンを最適に配合しました。<br/>不規則になりがちな食生活や、ハードな業務や運動で消費されやすい微量栄養素を確実に補完。<br/>身体の機能を整え、常にベストな状態で明日を迎えるための「守り」を固めます。</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_NjAAWQ": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "ミネラル",
+            "icon": "check_mark",
+            "content_title": "<p>ミネラル：「身体のスイッチを整える、司令塔としてのミネラル」</p>",
+            "row_content": "<p>私たち人間の体内のわずか約4%しか存在しないと言われているミネラルですが、その役割は多岐にわたります。<br/>そのための当社のし製品は、マグネシウムや亜鉛、カルシウムなど、身体の調整機能を司る必須ミネラルを網羅。<br/>日常の活動で失われる繊細なバランスを素早く補い、あなたの活動的な毎日を、数値に基づいた正確なバランスで支えます。</p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_row_nAN9RF",
+        "collapsible_row_GWH8qj",
+        "collapsible_row_deqdhx",
+        "collapsible_row_gR3FBV",
+        "collapsible_row_NjAAWQ"
+      ],
+      "name": "カスタム：タブアコーディオン",
+      "settings": {
+        "heading": "",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "layout": "none",
+        "color_scheme": "scheme-2",
+        "open_first_collapsible_row": false,
+        "padding_top_pc": 36,
+        "padding_bottom_pc": 36,
+        "padding_top_sp": 24,
+        "padding_bottom_sp": 24
+      }
     }
   },
   "order": [
     "c_hero_fkKwdV",
     "c_collection_list_BcThpm",
-    "c_featured_collection_list_q7gnrt"
+    "c_featured_collection_list_q7gnrt",
+    "c_concept_HFNHGm",
+    "c_collapsible_content_EAhMnN"
   ]
 }

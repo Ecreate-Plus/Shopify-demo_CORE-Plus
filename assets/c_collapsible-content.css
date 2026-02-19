@@ -1,0 +1,24 @@
+/* ---------------------------------------
+    全体のレイアウトとデザイン調整
+------------------------------------------ */
+/* 全体的な大枠のレイアウト */
+
+.c_accordion summary {
+    align-items: center;
+}
+
+.accordion__title {
+    margin-right: auto;
+}
+
+/* デザイン調整 */
+
+.accordion__content-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.c_accordion__content {
+    font-size: 1.25rem;
+}
