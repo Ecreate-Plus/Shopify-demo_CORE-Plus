@@ -163,7 +163,6 @@
             "card_type": "custom",
             "collection": "",
             "custom_link": "shopify://pages/リファラル",
-            "custom_image": "shopify://shop_images/2261859d1ae37495c2b4128901d287be.png",
             "custom_title": "紹介割引キャンペーン"
           }
         }
@@ -186,11 +185,25 @@
         "padding_top_sp": 64,
         "padding_bottom_sp": 64
       }
+    },
+    "c_concept_HFNHGm": {
+      "type": "c_concept",
+      "name": "カスタム:コンセプト",
+      "settings": {
+        "title": "重要な基本の5大栄養素をより良質に",
+        "textarea": "健康でいることは、簡単なように見えて、忙しい方にとって得に難しい。だからこそ、より簡単に良質な5大栄養素を、最も自然な形で生活に取り入れてほしい。そんな想いから私たちは、不要な添加物を排除し、身体が本当に求めている栄養素だけを厳選しました。\nインテリアに溶け込むようなボトルやパッケージのデザイン、厳選した成分のこだわり。\nあなたの日常に受け入れてもらえるよう心を込めて作りました。",
+        "color_scheme": "scheme-2",
+        "padding_top_pc": 96,
+        "padding_bottom_pc": 96,
+        "padding_top_sp": 64,
+        "padding_bottom_sp": 64
+      }
     }
   },
   "order": [
     "c_hero_fkKwdV",
     "c_collection_list_BcThpm",
-    "c_featured_collection_list_q7gnrt"
+    "c_featured_collection_list_q7gnrt",
+    "c_concept_HFNHGm"
   ]
 }

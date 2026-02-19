@@ -1,0 +1,112 @@
+{{ 'c_concept.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top_pc }}px;
+    padding-bottom: {{ section.settings.padding_bottom_pc }}px;
+  }
+
+  @media screen and (max-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top_sp }}px;
+      padding-bottom: {{ section.settings.padding_bottom_sp }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="section-{{ section.id }}-padding page-width color-{{ section.settings.color_scheme }} gradient">
+  <div>
+    <h2>{{ section.settings.title }}</h2>
+  </div>
+  <div class="c_concept__content">
+    {% if section.settings.textarea != blank %}
+      <p class="c_concept__content-textarea">
+        {{ section.settings.textarea | newline_to_br }}
+      </p>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "カスタム:コンセプト",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "タイトル",
+      "default": "重要な基本の5大栄養素をより良質に"
+    },
+    {
+      "type": "textarea",
+      "id": "textarea",
+      "label": "テキスト",
+      "default": "テキスト"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "info": "t:sections.all.colors.has_cards_info",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.collection-list.settings.header_mobile.content"
+    },
+    {
+      "type": "header",
+      "content": "デスクトップ"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_pc",
+      "label": "上部の余白(PC)",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "default": 96
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_pc",
+      "label": "下部の余白(PC)",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "default": 96
+    },
+    {
+      "type": "header",
+      "content": "モバイル"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_sp",
+      "label": "上部の余白(SP)",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_sp",
+      "label": "下部の余白(SP )",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 64
+    }
+  ],
+  "presets": [
+    {
+      "name": "カスタム:コンセプト"
+    }
+  ]
+}
+{% endschema %}
