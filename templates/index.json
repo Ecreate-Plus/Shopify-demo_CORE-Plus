@@ -138,36 +138,40 @@
     "c_featured_collection_list_q7gnrt": {
       "type": "c_featured-collection-list",
       "blocks": {
-        "featured_collection_kbA8iX": {
-          "type": "featured_collection",
+        "featured_card_PD6C83": {
+          "type": "featured_card",
           "settings": {
+            "card_type": "collection",
             "collection": "セール商品",
-            "custom_title": "",
-            "custom_url": ""
-          }
-        },
-        "featured_collection_CN6y3c": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "セット割引",
-            "custom_title": "",
-            "custom_url": ""
-          }
-        },
-        "featured_collection_Ctm6LP": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "",
+            "custom_link": "shopify://collections/セール商品",
             "custom_image": "shopify://shop_images/2261859d1ae37495c2b4128901d287be.png",
-            "custom_title": "",
-            "custom_url": "shopify://blogs/news/リファラル"
+            "custom_title": "aaaaa"
+          }
+        },
+        "featured_card_xz6N8C": {
+          "type": "featured_card",
+          "settings": {
+            "card_type": "collection",
+            "collection": "セット割引",
+            "custom_link": "shopify://collections/セット割引",
+            "custom_title": ""
+          }
+        },
+        "featured_card_64LGmj": {
+          "type": "featured_card",
+          "settings": {
+            "card_type": "custom",
+            "collection": "",
+            "custom_link": "shopify://pages/リファラル",
+            "custom_image": "shopify://shop_images/2261859d1ae37495c2b4128901d287be.png",
+            "custom_title": "紹介割引キャンペーン"
           }
         }
       },
       "block_order": [
-        "featured_collection_kbA8iX",
-        "featured_collection_CN6y3c",
-        "featured_collection_Ctm6LP"
+        "featured_card_PD6C83",
+        "featured_card_xz6N8C",
+        "featured_card_64LGmj"
       ],
       "name": "カスタム:特集コレクションリスト",
       "settings": {
