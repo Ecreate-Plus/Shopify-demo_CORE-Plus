@@ -55,16 +55,18 @@
     right: 0;
 }
 
-.c-card__information {
-    padding-right: 20px !important;
-    padding-left: 20px !important;
-}
-
-.c-card__heading {
+.c-featured-collection-list .c-card__information {
     display: flex;
+    align-items: center;
 }
 
-.c-card__heading .c-icon-wrap {
+.c-featured-collection-list .c-card__heading {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.c-featured-collection-list .c-card__heading .c-icon-wrap {
     margin-left: auto;
     margin-right: 5px;
 }

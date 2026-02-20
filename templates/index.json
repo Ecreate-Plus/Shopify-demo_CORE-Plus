@@ -143,6 +143,7 @@
           "settings": {
             "card_type": "collection",
             "collection": "セール商品",
+            "page": "",
             "custom_link": "shopify://collections/セール商品",
             "custom_image": "shopify://shop_images/2261859d1ae37495c2b4128901d287be.png",
             "custom_title": "aaaaa"
@@ -153,6 +154,7 @@
           "settings": {
             "card_type": "collection",
             "collection": "セット割引",
+            "page": "",
             "custom_link": "shopify://collections/セット割引",
             "custom_title": ""
           }
@@ -162,8 +164,9 @@
           "settings": {
             "card_type": "custom",
             "collection": "",
+            "page": "リファラル",
             "custom_link": "shopify://pages/リファラル",
-            "custom_image": "shopify://shop_images/2261859d1ae37495c2b4128901d287be.png",
+            "custom_image": "{{ block.settings.page.metafields.custom.card_image.value }}",
             "custom_title": "紹介割引キャンペーン"
           }
         }
@@ -274,6 +277,72 @@
         "padding_top_sp": 24,
         "padding_bottom_sp": 24
       }
+    },
+    "c_testimonials_F4RyjV": {
+      "type": "c_testimonials",
+      "blocks": {
+        "image_DQCWxL": {
+          "type": "image",
+          "settings": {
+            "image_pc": "shopify://shop_images/nutritional-food.png",
+            "image_sp": "shopify://shop_images/nutritional-food.png",
+            "url": ""
+          }
+        },
+        "image_HNdcFx": {
+          "type": "image",
+          "settings": {
+            "image_pc": "shopify://shop_images/new-arrival.png",
+            "image_sp": "shopify://shop_images/new-arrival.png",
+            "url": ""
+          }
+        },
+        "image_GRGzia": {
+          "type": "image",
+          "settings": {
+            "image_pc": "shopify://shop_images/sale.png",
+            "image_sp": "shopify://shop_images/sale.png",
+            "url": ""
+          }
+        },
+        "image_hpKmeU": {
+          "type": "image",
+          "settings": {
+            "image_pc": "shopify://shop_images/2261859d1ae37495c2b4128901d287be.png",
+            "image_sp": "shopify://shop_images/2261859d1ae37495c2b4128901d287be.png",
+            "url": ""
+          }
+        },
+        "image_nRLQ9z": {
+          "type": "image",
+          "settings": {
+            "image_pc": "shopify://shop_images/set-discount.png",
+            "image_sp": "shopify://shop_images/set-discount.png",
+            "url": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_DQCWxL",
+        "image_HNdcFx",
+        "image_GRGzia",
+        "image_hpKmeU",
+        "image_nRLQ9z"
+      ],
+      "name": "カスタム：お客さまの声",
+      "settings": {
+        "title": "特集コレクション",
+        "heading_size": "h1",
+        "gap_pc": 24,
+        "gap_sp": 4,
+        "button_text": "全て見る",
+        "url": "",
+        "padding-top_pc": 46,
+        "padding-bottom_pc": 0,
+        "padding-top_sp": 0,
+        "padding-bottom_sp": 0,
+        "color_scheme": "scheme-2"
+      }
     }
   },
   "order": [
@@ -281,6 +350,7 @@
     "c_collection_list_BcThpm",
     "c_featured_collection_list_q7gnrt",
     "c_concept_HFNHGm",
-    "c_collapsible_content_EAhMnN"
+    "c_collapsible_content_EAhMnN",
+    "c_testimonials_F4RyjV"
   ]
 }

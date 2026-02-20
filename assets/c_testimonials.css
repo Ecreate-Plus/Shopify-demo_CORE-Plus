@@ -1,0 +1,141 @@
+/* -------------------------------
+   全体のレイアウトとスタイルの調整
+--------------------------------- */
+/* レイアウト */
+
+.c-testimonials__content {
+    position: relative;
+    margin-right: calc(50% - 50vw);
+    padding-right: 0;
+}
+
+@media screen and (max-width: 1200px) {
+    .c-testimonials__content {
+        position: static;
+        top: initial;
+        left: initial;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.c-testimonials .splide__track {
+    position: relative;
+    z-index: 1;
+}
+
+@media screen and (max-width: 1200px) {
+    .c-testimonials .splide__track {
+        margin-top: 30px;
+    }
+}
+
+/* デザインの調整 */
+
+.c-testimonials .splide__slide {
+    width: 400px;
+    height: 560px;
+}
+
+.c-testimonials__image {
+    width: 400px;
+    height: 560px;
+    border-radius: 6px;
+    object-fit: cover;
+}
+
+/* 矢印 */
+
+.c-testimonials .c-splide__buttons--url {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 100px;
+}
+
+.c-testimonials .c-testimonials__wrapper .c-splide__buttons--blank {
+    margin-left: auto;
+    margin-right: 50px;
+}
+
+.c-testimonials .c-splide__arrows {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.c-testimonials .c-splide__arrow {
+    /* width: 40px;
+    height: 40px; */
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    appearance: none;
+}
+
+.c-testimonials .c-splide__arrow--prev {
+    transform: rotate(180deg);
+}
+
+.c-testimonials .c-splide__all-view-button {
+    width: 190px;
+    height: 54px;
+    padding: 20px 74px;
+    display: grid;
+    place-content: center;
+    text-decoration: none;
+    border-radius: 40px;
+    border: none;
+    background: #FF8A00;
+    color: #FFF;
+    transition: background 0.3s ease;
+    white-space: nowrap;
+}
+
+.c-testimonials .c-splide__all-view-button:hover {
+    background: #4D8412;
+    border: 3px solid #FF8A00;
+    opacity: 0.9;
+}
+
+/* ページネーション */
+
+.c-testimonials .splide__pagination {
+    position: static;
+    margin-top: 24px;
+}
+
+.c-testimonials .splide__pagination__page {
+    width: 10px;
+    height: 10px;
+    opacity: 1;
+    background: #F5EDE7;
+    margin: 8px;
+}
+
+@media screen and (max-width: 750px) {
+    .c-testimonials .splide__pagination__page {
+        width: 8px;
+        height: 8px;
+        margin: 6px;
+    }
+}
+
+.c-testimonials .splide__pagination__page.is-active {
+    background: #434343;
+    transform: scale(1);
+    z-index: 1;
+}
+
+@media screen and (min-width: 1201px) {
+    body img.c_splide__click-prompt {
+        display: none !important;
+    }
+}
+
+@media screen and (max-width: 460px) {
+    body .c-testimonials .splide__arrows>img.c_splide__click-prompt {
+        display: none !important;
+    }
+}

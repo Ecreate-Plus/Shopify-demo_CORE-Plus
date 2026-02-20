@@ -11,6 +11,7 @@
     margin-right: auto;
 }
 
+
 /* デザイン調整 */
 
 .accordion__content-title {
@@ -21,4 +22,22 @@
 
 .c_accordion__content {
     font-size: 1.25rem;
+}
+
+/* アコーディオン開閉時のアイコンの挙動 */
+
+.c_accordion__plus {
+    display: block;
+}
+
+.c_accordion details[open]>summary .c_accordion__plus {
+    display: none;
+}
+
+.c_accordion__minus {
+    display: none;
+}
+
+.c_accordion details[open]>summary .c_accordion__minus {
+    display: block;
 }
