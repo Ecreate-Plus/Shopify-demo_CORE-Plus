@@ -88,17 +88,17 @@
 
 /* デザイン調整 */
 
-.c-card__media .media {
+.c-featured-collection-list .c-card__media .media {
     border-radius: 10px;
     overflow: hidden;
 }
 
-.c-card__media .media img {
+.c-featured-collection-list .c-card__media .media img {
     border-radius: inherit;
     overflow: hidden;
 }
 
-.c-card__heading a {
+.c-featured-collection-list .c-card__heading a {
     color: #FFF;
     font-weight: bold;
     text-shadow: 0 4px 4px rgba(0, 0, 0, 1);
@@ -110,7 +110,7 @@
     }
 }
 
-.c-card__heading a .c-icon-wrap {
+.c-featured-collection-list .c-card__heading a .c-icon-wrap {
     width: 30px;
     height: 30px;
     display: grid;
@@ -120,21 +120,21 @@
 }
 
 @media screen and (max-width: 490px) {
-    .c-card__heading a .c-icon-wrap {
+    .c-featured-collection-list .c-card__heading a .c-icon-wrap {
         width: 20px;
         height: 20px;
     }
 }
 
 @media screen and (max-width: 490px) {
-    .c-card__heading a .c-icon-wrap svg {
+    .c-featured-collection-list .c-card__heading a .c-icon-wrap svg {
         width: 1rem;
         height: 1rem;
     }
 }
 
 .c-all-collection-button__text {
-    font-size: 1rempx;
+    font-size: 1rem;
     font-weight: 500;
     color: #1A2421;
 }

@@ -25,7 +25,7 @@
   endif
 -%}
 
-<div class="color-{{ section.settings.color_scheme }} gradient">
+<div class="c-featured-collection-list color-{{ section.settings.color_scheme }} gradient">
   <div class="collection-list-wrapper page-width isolate{% if show_mobile_slider %} page-width-desktop{% endif %}{% if section.settings.title == blank %} no-heading{% endif %}{% if section.settings.show_view_all == false or section.blocks.size > collections.size %} no-mobile-link{% endif %} section-{{ section.id }}-padding">
     <slider-component class="slider-mobile-gutter{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
       <ul
@@ -41,10 +41,26 @@
         -%}
         {%- for block in section.blocks -%}
           {%- liquid
+            assign final_image = blank
+            assign final_title = blank
+            assign final_url = blank
+
             if block.settings.card_type == 'collection' and block.settings.collection != blank
               assign final_image = block.settings.collection.featured_image
               assign final_title = block.settings.collection.title
               assign final_url = block.settings.collection.url
+
+            elsif block.settings.card_type == 'page' and block.settings.page != blank
+              assign final_image = block.settings.page.metafields.custom.hero_image
+
+              ## 念のため、変数(final_image)が空の場合は、カスタム画像を使用するようにしておく。
+              if final_image == blank
+                assign final_image = block.settings.custom_image
+              endif
+
+              assign final_title = block.settings.page.title
+              assign final_url = block.settings.page.url
+
             elsif block.settings.card_type == 'custom'
               assign final_image = block.settings.custom_image
               assign final_title = block.settings.custom_title
@@ -276,7 +292,8 @@
           "label": "カードタイプ",
           "options": [
             { "value": "collection", "label": "コレクション" },
-            { "value": "custom", "label": "カスタムページ" }
+            { "value": "page", "label": "固定ページ" },
+            { "value": "custom", "label": "カスタムリンク" }
           ],
           "default": "collection"
         },
@@ -284,6 +301,11 @@
           "type": "collection",
           "id": "collection",
           "label": "コレクション"
+        },
+        {
+          "type": "page",
+          "id": "page",
+          "label": "ページ"
         },
         {
           "type": "url",

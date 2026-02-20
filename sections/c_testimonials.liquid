@@ -1,0 +1,491 @@
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+{{ 'c_testimonials.css' | asset_url | stylesheet_tag }}
+{{ 'template-collection.css' | asset_url | stylesheet_tag }}
+
+{% if section.settings.image_shape == 'blob' %}
+  {{ 'mask-blobs.css' | asset_url | stylesheet_tag }}
+{%- endif -%}
+
+{%- unless section.settings.quick_add == 'none' -%}
+  {{ 'quick-add.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+{%- endunless -%}
+
+{%- if section.settings.quick_add == 'standard' -%}
+  <script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+
+{%- if section.settings.quick_add == 'bulk' -%}
+  <script src="{{ 'quick-add-bulk.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'quantity-popover.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'price-per-item.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'quick-order-list.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: calc({{ section.settings.padding-top_sp }}px);
+    padding-bottom: calc({{ section.settings.padding-bottom_sp }}px);
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding-top_pc }}px;
+      padding-bottom: {{ section.settings.padding-bottom_pc }}px;
+    }
+  }
+{%- endstyle -%}
+
+{%- liquid
+  assign products_to_display = section.settings.collection.all_products_count
+
+  if section.settings.collection.all_products_count > section.settings.products_to_show
+    assign products_to_display = section.settings.products_to_show
+    assign more_in_collection = true
+  endif
+
+  assign columns_mobile_int = section.settings.columns_mobile | plus: 0
+  assign columns_desktop_int = section.settings.columns_desktop | plus: 0
+  assign show_mobile_slider = false
+  if section.settings.swipe_on_mobile and products_to_display > columns_mobile_int
+    assign show_mobile_slider = true
+  endif
+
+  assign max_columns_to_show = columns_mobile_int
+  if columns_desktop_int > columns_mobile_int
+    assign max_columns_to_show = columns_desktop_int
+  endif
+
+  assign show_desktop_slider = false
+  if section.settings.enable_desktop_slider and products_to_display > section.settings.columns_desktop
+    assign show_desktop_slider = true
+  endif
+-%}
+
+<div
+  class="c-testimonials color-{{ section.settings.color_scheme }} isolate gradient"
+>
+  <div
+    class="collection c-testimonials__wrapper{% if section.settings.quick_add == 'bulk' %} collection-quick-add-bulk{% endif %} section-{{ section.id }}-padding{% if section.settings.full_width %} collection--full-width{% endif %}"
+    id="collection-{{ section.id }}"
+    data-tab="{{ block.id }}"
+    {% comment %} gapの変更をブラウザをリロードしなくても管理画面に反映させるためのdata属性。 {% endcomment %}
+    data-gap-pc="{{ section.settings.gap_pc }}"
+    data-gap-sp="{{ section.settings.gap_sp }}"
+  >
+    <div class="collection__title title-wrapper title-wrapper--no-top-margin page-with {% if show_mobile_slider %} title-wrapper--self-padded-tablet-down{% endif %}{% if show_desktop_slider %} collection__title--desktop-slider{% endif %} c_section-head">
+      <h2>{{ section.settings.title }}</h2>
+    </div>
+
+    <div class="c-testimonials__inner">
+      <div class="splide c_splide c-testimonials__content splide-{{ section.id }}">
+        <div class="splide__track">
+          <ul class="splide__list">
+            {% for block in section.blocks %}
+              <li class="splide__slide c_splide__slide">
+                {% if section.settings.url != blank %}
+                  <a href="{{ block.settings.url }}">
+                {% endif %}
+                <picture>
+                  {%- if block.settings.image_sp != blank %}
+                    <source srcset="{{ block.settings.image_sp | image_url: width: 800}}" media="(max-width: 750px)">
+                  {% endif -%}
+                  <img
+                    class="c-image c-testimonials__image"
+                    src="{{ block.settings.image_pc | image_url: width: 1200 }}"
+                    width="389"
+                    height="499"
+                    alt="block.settings.image_pc.alt"
+                  >
+                </picture>
+                <div>お客様の声：テキスト</div>
+                {%- if section.settings.url != blank %}
+                  </a>
+                {% endif %}
+              </li>
+            {% endfor -%}
+          </ul>
+        </div>
+
+        <div class="c-splide__buttons--url {% if section.settings.url == blank %} c-splide__buttons--blank {% endif %}">
+          {% if section.settings.url != blank %}
+            <a class="c-splide__all-view-button" href="{{ section.settings.url }}">
+              {{- section.settings.button_text -}}
+            </a>
+          {% endif %}
+          <div class=" c-splide__arrows">
+            <button class="c-splide__arrow  c-splide__arrow--prev">
+              <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50" fill="none">
+                <circle cx="25" cy="25" r="25" transform="rotate(-180 25 25)" fill="#FF8A00"/>
+                <path d="M36.9984 24.365C36.9724 23.8705 36.8046 23.4041 36.5256 23.0388L23.2127 5.77678C22.8936 5.32163 22.4326 5.0435 21.9362 5.00416C21.4398 4.96764 20.9529 5.17274 20.5865 5.57169C20.2201 5.97346 20.0097 6.53535 20.0026 7.12542C19.9932 7.71543 20.1893 8.28579 20.5463 8.69878L32.7222 24.5L20.5439 40.3012C20.1893 40.7142 19.9931 41.2846 20.0002 41.8746C20.0096 42.4646 20.22 43.0265 20.5864 43.4283C20.9504 43.8273 21.4398 44.0324 21.9362 43.9958C22.4302 43.9565 22.8935 43.6784 23.2103 43.2232L36.5232 25.9612C36.8565 25.5285 37.0291 24.9526 36.996 24.3653L36.9984 24.365Z" fill="white"/>
+              </svg>
+            </button>
+            <button class="c-splide__arrow c-splide__arrow--next">
+              <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50" fill="none">
+                <circle cx="25" cy="25" r="25" transform="rotate(-180 25 25)" fill="#FF8A00"/>
+                <path d="M36.9984 24.365C36.9724 23.8705 36.8046 23.4041 36.5256 23.0388L23.2127 5.77678C22.8936 5.32163 22.4326 5.0435 21.9362 5.00416C21.4398 4.96764 20.9529 5.17274 20.5865 5.57169C20.2201 5.97346 20.0097 6.53535 20.0026 7.12542C19.9932 7.71543 20.1893 8.28579 20.5463 8.69878L32.7222 24.5L20.5439 40.3012C20.1893 40.7142 19.9931 41.2846 20.0002 41.8746C20.0096 42.4646 20.22 43.0265 20.5864 43.4283C20.9504 43.8273 21.4398 44.0324 21.9362 43.9958C22.4302 43.9565 22.8935 43.6784 23.2103 43.2232L36.5232 25.9612C36.8565 25.5285 37.0291 24.9526 36.996 24.3653L36.9984 24.365Z" fill="white"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% comment %}
+  <script>
+    document.addEventListener( 'DOMContentLoaded', function() {
+
+      const splideElement = document.querySelector('.splide-{{ section.id }}');
+      const gapPc = splideElement.dataset.gapPc;
+      const gapSp = splideElement.dataset.gapSp;
+
+      const splideOptions = {
+        type: 'loop',
+        rewind: true,
+        gap: gapPc,
+        perMove: 1,
+        focus: 0,
+        omitEnd: true,
+        fixedWidth: 389,
+        padding:
+        {
+          right: 100
+        },
+        fixedHeight: 499,
+        autoplay: false,
+        breakpoints: {
+          750: {
+            fixedWidth: 250,
+            gap: gapSp,
+            padding: {
+              right: 40
+            },
+          }
+        }
+      };
+
+      var splide = new Splide( '.splide-{{section.id}}', splideOptions );
+
+      const customPrev = document.querySelector('.section-{{ section.id }}-padding .splide__arrow--prev');
+      const customNext = document.querySelector('.section-{{ section.id }}-padding .splide__arrow--next');
+
+      if (customPrev && customNext) {
+        customPrev.addEventListener('click', () => splide.go('-1'));
+        customNext.addEventListener('click', () => splide.go('+1'));
+      }
+
+      splide.on('overflow', function(isOverflow) {
+        splide.go(0);
+        splide.options = {
+          type: isOverflow ? 'loop' : 'slide',
+          focus: isOverflow ? 'center' : undefined,
+          drag: isOverflow,
+          clones: isOverflow ? undefined : 0,
+        };
+      });
+
+      splide.mount();
+
+      {% if request.design_mode %}
+        document.addEventListener('shopify:section:load', function(e) {
+          if (e.detail.sectionId === '{{ section.id }}') {
+            if (splide) {
+              splide.destroy();
+            }
+            splide = new Splide('.splide-{{ section.id }}', splideOptions);
+
+            splide.on('overflow', function(isOverflow) {
+              splide.go(0);
+              splide.options = {
+                type: isOverflow ? 'loop' : 'slide',
+                focus: isOverflow ? 'center' : undefined,
+                drag: isOverflow,
+                clones: isOverflow ? undefined : 0,
+                arrows: false
+              };
+            });
+
+            splide.mount();
+          }
+        });
+        document.addEventListener('shopify:block:select', function(e) {
+          if (e.detail.sectionId === '{{ section.id }}') {
+            const blockId = e.detail.blockId;
+
+            const slides = Array.from(document.querySelectorAll('.splide-{{ section.id }} .splide__slide:not(.splide__slide--clone)'));
+
+            const targetSlide = slides.find(slide => slide.dataset.blockId === blockId);
+
+            if (targetSlide && splide) {
+              const blockIndex = parseInt(targetSlide.dataset.blockIndex);
+              splide.go(blockIndex);
+            }
+          }
+        });
+      {% endif %}
+    } );
+  </script>
+{% endcomment %}
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    initCustomSplide_{{ section.id | replace: '-', '_' }}();
+  });
+
+  // セクションごとに固有の関数名を作成（同じセクションを複数配置した時のバグ防止）
+  function initCustomSplide_{{ section.id | replace: '-', '_' }}() {
+    const sectionId = '{{ section.id }}';
+    const splideElement = document.querySelector(`.splide-${sectionId}`);
+    
+    // スライダーの要素がない場合は処理を止める
+    if (!splideElement) return;
+
+    // 既にSplideが起動している場合（エディタで設定を変えた時など）は一度破壊して初期化する
+    if (splideElement.splideInstance) {
+      splideElement.splideInstance.destroy();
+    }
+
+    const splideOptions = {
+      type: 'loop',
+      rewind: true,
+      perMove: 1,
+      focus: 0,
+      omitEnd: true,
+      fixedWidth: 389,
+      gap: {{ section.settings.gap_pc | default: 16 }},
+      padding: { right: 100 },
+      fixedHeight: 499,
+      arrows: false,   // Splide標準の矢印はオフ（自作の矢印を使うため）
+      pagination: true,
+      autoplay: false,
+      breakpoints: {
+        750: {
+          fixedWidth: 250,
+          gap: {{ section.settings.gap_sp | default: 25 }},
+          padding: { right: 40 },
+        }
+      }
+    };
+
+    const splide = new Splide(splideElement, splideOptions);
+
+    // ★自作の矢印ボタンの制御
+    // このセクション内の矢印だけを正確に取得する
+    const customPrev = document.querySelector(`#collection-${sectionId} .c-splide__arrow--prev`);
+    const customNext = document.querySelector(`#collection-${sectionId} .c-splide__arrow--next`);
+
+    if (customPrev && customNext) {
+      // 古いイベントが残らないように onclick で上書き
+      customPrev.onclick = function() { splide.go('-1'); };
+      customNext.onclick = function() { splide.go('+1'); };
+    }
+
+    // ★スライドの数が少ない場合（ループできない時）の安全処理
+    splide.on('overflow', function(isOverflow) {
+      splide.options = {
+        type: isOverflow ? 'loop' : 'slide',
+        focus: isOverflow ? 'center' : undefined,
+        drag: isOverflow,
+        clones: isOverflow ? undefined : 0,
+      };
+      // スライドが少なくてスワイプ不要な時は、矢印ボタン自体を隠す
+      if (customPrev && customNext) {
+        customPrev.style.display = isOverflow ? 'flex' : 'none';
+        customNext.style.display = isOverflow ? 'flex' : 'none';
+      }
+    });
+
+    splide.mount();
+
+    // 後で破壊できるように、DOM要素にSplideのデータを記憶させておく
+    splideElement.splideInstance = splide;
+  }
+
+  // ★テーマエディタ特有の動きに対する処理
+  {% if request.design_mode %}
+    // 1. エディタで余白などの設定を変更した時（HTMLが再描画された時）に再起動
+    document.addEventListener('shopify:section:load', function(e) {
+      if (e.detail.sectionId === '{{ section.id }}') {
+        initCustomSplide_{{ section.id | replace: '-', '_' }}();
+      }
+    });
+
+    // 2. エディタで特定の画像（ブロック）をクリックした時、そのスライドまで移動させる
+    document.addEventListener('shopify:block:select', function(e) {
+      if (e.detail.sectionId === '{{ section.id }}') {
+        const splideElement = document.querySelector(`.splide-{{ section.id }}`);
+        if (splideElement && splideElement.splideInstance) {
+          const slides = splideElement.querySelectorAll('.splide__slide:not(.splide__slide--clone)');
+          const targetSlide = Array.from(slides).find(slide => slide.dataset.blockId === e.detail.blockId);
+          
+          if (targetSlide) {
+            const index = Array.from(slides).indexOf(targetSlide);
+            splideElement.splideInstance.go(index);
+          }
+        }
+      }
+    });
+  {% endif %}
+</script>
+
+{% schema %}
+{
+  "name": "カスタム：お客さまの声",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.featured-collection.settings.header_text.content"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "default": "t:sections.featured-collection.settings.title.default",
+      "label": "t:sections.featured-collection.settings.title.label"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        {
+          "value": "h2",
+          "label": "t:sections.all.heading_size.options__1.label"
+        },
+        {
+          "value": "h1",
+          "label": "t:sections.all.heading_size.options__2.label"
+        },
+        {
+          "value": "h0",
+          "label": "t:sections.all.heading_size.options__3.label"
+        },
+        {
+          "value": "hxl",
+          "label": "t:sections.all.heading_size.options__4.label"
+        },
+        {
+          "value": "hxxl",
+          "label": "t:sections.all.heading_size.options__5.label"
+        }
+      ],
+      "default": "h1",
+      "label": "t:sections.all.heading_size.label"
+    },
+    {
+      "type": "range",
+      "id": "gap_pc",
+      "label": "スライド間の余白（PC）",
+      "min": 0,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "gap_sp",
+      "label": "スライド間の余白（SP）",
+      "min": 0,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "ボタンのテキスト",
+      "default": "全て見る"
+    },
+    {
+      "type": "url",
+      "id": "url",
+      "label": "ボタンのリンク先"
+    },
+    {
+      "type": "header",
+      "content": "デスクトップ"
+    },
+    {
+      "type": "range",
+      "id": "padding-top_pc",
+      "label": "セクションの上部の余白",
+      "unit": "px",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-bottom_pc",
+      "label": "セクションの下部の余白",
+      "unit": "px",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "モバイル"
+    },
+    {
+      "type": "range",
+      "id": "padding-top_sp",
+      "label": "セクションの上部の余白",
+      "unit": "px",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-bottom_sp",
+      "label": "セクションの下部の余白",
+      "unit": "px",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 0
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "画像",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image_pc",
+          "label": "画像(PC)"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_sp",
+          "label": "画像(SP)"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "リンク"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "カスタム：お客さまの声"
+    }
+  ]
+}
+{% endschema %}
