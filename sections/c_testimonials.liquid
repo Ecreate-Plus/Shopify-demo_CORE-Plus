@@ -74,7 +74,16 @@
     data-gap-pc="{{ section.settings.gap_pc }}"
     data-gap-sp="{{ section.settings.gap_sp }}"
   >
-    <div class="collection__title title-wrapper title-wrapper--no-top-margin page-with {% if show_mobile_slider %} title-wrapper--self-padded-tablet-down{% endif %}{% if show_desktop_slider %} collection__title--desktop-slider{% endif %} c_section-head">
+    <div
+      class="
+        page-width
+        title-wrapper
+        c-testimonials__title-wrapper
+        title-wrapper--no-top-margin
+        {% if show_mobile_slider %} title-wrapper--self-padded-tablet-down{% endif %}
+         {% if show_desktop_slider %} collection__title--desktop-slider{% endif %}
+      "
+    >
       <h2>{{ section.settings.title }}</h2>
     </div>
 
@@ -84,9 +93,6 @@
           <ul class="splide__list">
             {% for block in section.blocks %}
               <li class="splide__slide c_splide__slide">
-                {% if section.settings.url != blank %}
-                  <a href="{{ block.settings.url }}">
-                {% endif %}
                 <picture>
                   {%- if block.settings.image_sp != blank %}
                     <source srcset="{{ block.settings.image_sp | image_url: width: 800}}" media="(max-width: 750px)">
@@ -94,35 +100,34 @@
                   <img
                     class="c-image c-testimonials__image"
                     src="{{ block.settings.image_pc | image_url: width: 1200 }}"
-                    width="389"
-                    height="499"
+                    width="400"
+                    height="560"
                     alt="block.settings.image_pc.alt"
                   >
                 </picture>
-                <div>お客様の声：テキスト</div>
-                {%- if section.settings.url != blank %}
-                  </a>
-                {% endif %}
+                <div class="c-testimonials__textarea">
+                  <p>{{ block.settings.textarea | newline_to_br }}</p>
+                </div>
               </li>
             {% endfor -%}
           </ul>
         </div>
 
-        <div class="c-splide__buttons--url {% if section.settings.url == blank %} c-splide__buttons--blank {% endif %}">
-          {% if section.settings.url != blank %}
-            <a class="c-splide__all-view-button" href="{{ section.settings.url }}">
+        <div class="c-splide__buttons--url {% if section.settings.button_url == blank %} c-splide__buttons--blank {% endif %}">
+          {% if section.settings.button_url != blank %}
+            <a class="c-splide__all-view-button" href="{{ section.settings.button_url }}">
               {{- section.settings.button_text -}}
             </a>
           {% endif %}
           <div class=" c-splide__arrows">
             <button class="c-splide__arrow  c-splide__arrow--prev">
-              <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50" fill="none">
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 50 50" fill="none">
                 <circle cx="25" cy="25" r="25" transform="rotate(-180 25 25)" fill="#FF8A00"/>
                 <path d="M36.9984 24.365C36.9724 23.8705 36.8046 23.4041 36.5256 23.0388L23.2127 5.77678C22.8936 5.32163 22.4326 5.0435 21.9362 5.00416C21.4398 4.96764 20.9529 5.17274 20.5865 5.57169C20.2201 5.97346 20.0097 6.53535 20.0026 7.12542C19.9932 7.71543 20.1893 8.28579 20.5463 8.69878L32.7222 24.5L20.5439 40.3012C20.1893 40.7142 19.9931 41.2846 20.0002 41.8746C20.0096 42.4646 20.22 43.0265 20.5864 43.4283C20.9504 43.8273 21.4398 44.0324 21.9362 43.9958C22.4302 43.9565 22.8935 43.6784 23.2103 43.2232L36.5232 25.9612C36.8565 25.5285 37.0291 24.9526 36.996 24.3653L36.9984 24.365Z" fill="white"/>
               </svg>
             </button>
             <button class="c-splide__arrow c-splide__arrow--next">
-              <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50" fill="none">
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 50 50" fill="none">
                 <circle cx="25" cy="25" r="25" transform="rotate(-180 25 25)" fill="#FF8A00"/>
                 <path d="M36.9984 24.365C36.9724 23.8705 36.8046 23.4041 36.5256 23.0388L23.2127 5.77678C22.8936 5.32163 22.4326 5.0435 21.9362 5.00416C21.4398 4.96764 20.9529 5.17274 20.5865 5.57169C20.2201 5.97346 20.0097 6.53535 20.0026 7.12542C19.9932 7.71543 20.1893 8.28579 20.5463 8.69878L32.7222 24.5L20.5439 40.3012C20.1893 40.7142 19.9931 41.2846 20.0002 41.8746C20.0096 42.4646 20.22 43.0265 20.5864 43.4283C20.9504 43.8273 21.4398 44.0324 21.9362 43.9958C22.4302 43.9565 22.8935 43.6784 23.2103 43.2232L36.5232 25.9612C36.8565 25.5285 37.0291 24.9526 36.996 24.3653L36.9984 24.365Z" fill="white"/>
               </svg>
@@ -134,201 +139,111 @@
   </div>
 </div>
 
-{% comment %}
-  <script>
-    document.addEventListener( 'DOMContentLoaded', function() {
-
-      const splideElement = document.querySelector('.splide-{{ section.id }}');
-      const gapPc = splideElement.dataset.gapPc;
-      const gapSp = splideElement.dataset.gapSp;
-
-      const splideOptions = {
-        type: 'loop',
-        rewind: true,
-        gap: gapPc,
-        perMove: 1,
-        focus: 0,
-        omitEnd: true,
-        fixedWidth: 389,
-        padding:
-        {
-          right: 100
-        },
-        fixedHeight: 499,
-        autoplay: false,
-        breakpoints: {
-          750: {
-            fixedWidth: 250,
-            gap: gapSp,
-            padding: {
-              right: 40
-            },
-          }
-        }
-      };
-
-      var splide = new Splide( '.splide-{{section.id}}', splideOptions );
-
-      const customPrev = document.querySelector('.section-{{ section.id }}-padding .splide__arrow--prev');
-      const customNext = document.querySelector('.section-{{ section.id }}-padding .splide__arrow--next');
-
-      if (customPrev && customNext) {
-        customPrev.addEventListener('click', () => splide.go('-1'));
-        customNext.addEventListener('click', () => splide.go('+1'));
-      }
-
-      splide.on('overflow', function(isOverflow) {
-        splide.go(0);
-        splide.options = {
-          type: isOverflow ? 'loop' : 'slide',
-          focus: isOverflow ? 'center' : undefined,
-          drag: isOverflow,
-          clones: isOverflow ? undefined : 0,
-        };
-      });
-
-      splide.mount();
-
-      {% if request.design_mode %}
-        document.addEventListener('shopify:section:load', function(e) {
-          if (e.detail.sectionId === '{{ section.id }}') {
-            if (splide) {
-              splide.destroy();
-            }
-            splide = new Splide('.splide-{{ section.id }}', splideOptions);
-
-            splide.on('overflow', function(isOverflow) {
-              splide.go(0);
-              splide.options = {
-                type: isOverflow ? 'loop' : 'slide',
-                focus: isOverflow ? 'center' : undefined,
-                drag: isOverflow,
-                clones: isOverflow ? undefined : 0,
-                arrows: false
-              };
-            });
-
-            splide.mount();
-          }
-        });
-        document.addEventListener('shopify:block:select', function(e) {
-          if (e.detail.sectionId === '{{ section.id }}') {
-            const blockId = e.detail.blockId;
-
-            const slides = Array.from(document.querySelectorAll('.splide-{{ section.id }} .splide__slide:not(.splide__slide--clone)'));
-
-            const targetSlide = slides.find(slide => slide.dataset.blockId === blockId);
-
-            if (targetSlide && splide) {
-              const blockIndex = parseInt(targetSlide.dataset.blockIndex);
-              splide.go(blockIndex);
-            }
-          }
-        });
-      {% endif %}
-    } );
-  </script>
-{% endcomment %}
-
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    initCustomSplide_{{ section.id | replace: '-', '_' }}();
-  });
+        document.addEventListener('DOMContentLoaded', function() {
+          initCustomSplide_{{ section.id | replace: '-', '_' }}();
+        });
 
-  // セクションごとに固有の関数名を作成（同じセクションを複数配置した時のバグ防止）
-  function initCustomSplide_{{ section.id | replace: '-', '_' }}() {
-    const sectionId = '{{ section.id }}';
-    const splideElement = document.querySelector(`.splide-${sectionId}`);
-    
-    // スライダーの要素がない場合は処理を止める
-    if (!splideElement) return;
+        // セクションごとに固有の関数名を作成（同じセクションを複数配置した時のバグ防止）
+        function initCustomSplide_{{ section.id | replace: '-', '_' }}() {
+          const sectionId = '{{ section.id }}';
+          const splideElement = document.querySelector(`.splide-${sectionId}`);
 
-    // 既にSplideが起動している場合（エディタで設定を変えた時など）は一度破壊して初期化する
-    if (splideElement.splideInstance) {
-      splideElement.splideInstance.destroy();
-    }
+          if (!splideElement) return;
 
-    const splideOptions = {
-      type: 'loop',
-      rewind: true,
-      perMove: 1,
-      focus: 0,
-      omitEnd: true,
-      fixedWidth: 389,
-      gap: {{ section.settings.gap_pc | default: 16 }},
-      padding: { right: 100 },
-      fixedHeight: 499,
-      arrows: false,   // Splide標準の矢印はオフ（自作の矢印を使うため）
-      pagination: true,
-      autoplay: false,
-      breakpoints: {
-        750: {
-          fixedWidth: 250,
-          gap: {{ section.settings.gap_sp | default: 25 }},
-          padding: { right: 40 },
-        }
-      }
-    };
-
-    const splide = new Splide(splideElement, splideOptions);
-
-    // ★自作の矢印ボタンの制御
-    // このセクション内の矢印だけを正確に取得する
-    const customPrev = document.querySelector(`#collection-${sectionId} .c-splide__arrow--prev`);
-    const customNext = document.querySelector(`#collection-${sectionId} .c-splide__arrow--next`);
-
-    if (customPrev && customNext) {
-      // 古いイベントが残らないように onclick で上書き
-      customPrev.onclick = function() { splide.go('-1'); };
-      customNext.onclick = function() { splide.go('+1'); };
-    }
-
-    // ★スライドの数が少ない場合（ループできない時）の安全処理
-    splide.on('overflow', function(isOverflow) {
-      splide.options = {
-        type: isOverflow ? 'loop' : 'slide',
-        focus: isOverflow ? 'center' : undefined,
-        drag: isOverflow,
-        clones: isOverflow ? undefined : 0,
-      };
-      // スライドが少なくてスワイプ不要な時は、矢印ボタン自体を隠す
-      if (customPrev && customNext) {
-        customPrev.style.display = isOverflow ? 'flex' : 'none';
-        customNext.style.display = isOverflow ? 'flex' : 'none';
-      }
-    });
-
-    splide.mount();
-
-    // 後で破壊できるように、DOM要素にSplideのデータを記憶させておく
-    splideElement.splideInstance = splide;
-  }
-
-  // ★テーマエディタ特有の動きに対する処理
-  {% if request.design_mode %}
-    // 1. エディタで余白などの設定を変更した時（HTMLが再描画された時）に再起動
-    document.addEventListener('shopify:section:load', function(e) {
-      if (e.detail.sectionId === '{{ section.id }}') {
-        initCustomSplide_{{ section.id | replace: '-', '_' }}();
-      }
-    });
-
-    // 2. エディタで特定の画像（ブロック）をクリックした時、そのスライドまで移動させる
-    document.addEventListener('shopify:block:select', function(e) {
-      if (e.detail.sectionId === '{{ section.id }}') {
-        const splideElement = document.querySelector(`.splide-{{ section.id }}`);
-        if (splideElement && splideElement.splideInstance) {
-          const slides = splideElement.querySelectorAll('.splide__slide:not(.splide__slide--clone)');
-          const targetSlide = Array.from(slides).find(slide => slide.dataset.blockId === e.detail.blockId);
-          
-          if (targetSlide) {
-            const index = Array.from(slides).indexOf(targetSlide);
-            splideElement.splideInstance.go(index);
+          if (splideElement.splideInstance) {
+            splideElement.splideInstance.destroy();
           }
+
+          const splideOptions = {
+            type: 'loop',
+            drag: 'free',
+            snap: true,
+            rewind: true,
+            perMove: 1,
+             fixedWidth: 400,
+             fixedHight: 560,
+            gap: {{ section.settings.gap_pc | default: 16 }},
+            arrows: false,
+            pagination: true,
+            autoplay: false,
+            breakpoints: {
+              750: {
+                fixedWidth: 250,
+                gap: {{ section.settings.gap_sp | default: 25 }},
+                padding: { right: 40 },
+              }
+            }
+          };
+
+          const splide = new Splide(splideElement, splideOptions);
+
+          const customPrev = document.querySelector(`#collection-${sectionId} .c-splide__arrow--prev`);
+          const customNext = document.querySelector(`#collection-${sectionId} .c-splide__arrow--next`);
+
+          if (customPrev && customNext) {
+            customPrev.onclick = function() { splide.go('-1'); };
+            customNext.onclick = function() { splide.go('+1'); };
+          }
+
+          splide.mount();
+
+          {% comment %}  {% endcomment %}
+
+          const track = splideElement.querySelector('.splide__track');
+          let isScrolling = false;
+
+          track.addEventListener('wheel', function(e) {
+            // 横方向（X軸）のスクロール量が、縦方向（Y軸）より大きい場合のみ発動
+            // （普通にページを下にスクロールしたい時の邪魔をしないための安全装置です）
+            if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
+              e.preventDefault(); // Mac標準の「前のページに戻る」スワイプ誤作動をキャンセル
+
+              // トラックパッドは1ミリなぞるだけで何十回も命令を送ってくるので、間引き処理をします
+              if (!isScrolling) {
+                isScrolling = true;
+
+                // なぞった方向（プラスかマイナスか）で進む方向を決める
+                if (e.deltaX > 0) {
+                  splide.go('+1'); // 右スワイプで次へ
+                } else {
+                  splide.go('-1'); // 左スワイプで前へ
+                }
+
+                // 一度スライドしたら、0.4秒間は次のスワイプを受け付けないようにする（連続で飛びすぎるのを防ぐ）
+                setTimeout(function() {
+                  isScrolling = false;
+                }, 400);
+              }
+            }
+          }, { passive: false });
+
+          splideElement.splideInstance = splide;
         }
-      }
-    });
-  {% endif %}
+
+        // テーマエディタ特有の動きに対する処理
+        {% if request.design_mode %}
+          document.addEventListener('shopify:section:load', function(e) {
+            if (e.detail.sectionId === '{{ section.id }}') {
+              initCustomSplide_{{ section.id | replace: '-', '_' }}();
+            }
+          });
+
+          document.addEventListener('shopify:block:select', function(e) {
+            if (e.detail.sectionId === '{{ section.id }}') {
+              const splideElement = document.querySelector(`.splide-{{ section.id }}`);
+              if (splideElement && splideElement.splideInstance) {
+                const slides = splideElement.querySelectorAll('.splide__slide:not(.splide__slide--clone)');
+                const targetSlide = Array.from(slides).find(slide => slide.dataset.blockId === e.detail.blockId);
+
+                if (targetSlide) {
+                  const index = Array.from(slides).indexOf(targetSlide);
+                  splideElement.splideInstance.go(index);
+                }
+              }
+            }
+          });
+        {% endif %}
 </script>
 
 {% schema %}
@@ -342,7 +257,7 @@
     {
       "type": "inline_richtext",
       "id": "title",
-      "default": "t:sections.featured-collection.settings.title.default",
+      "default": "世界のビジネスオーナー、アスリート、健康専門家に信頼されています",
       "label": "t:sections.featured-collection.settings.title.label"
     },
     {
@@ -401,7 +316,7 @@
     },
     {
       "type": "url",
-      "id": "url",
+      "id": "button_url",
       "label": "ボタンのリンク先"
     },
     {
@@ -475,9 +390,9 @@
           "label": "画像(SP)"
         },
         {
-          "type": "url",
-          "id": "url",
-          "label": "リンク"
+          "type": "textarea",
+          "id": "textarea",
+          "label": "レビューやお客さまの声を入力"
         }
       ]
     }
