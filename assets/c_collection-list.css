@@ -133,8 +133,8 @@
     }
 }
 
-.c-all-collection-button__text {
-    font-size: 1rem;
+.c-all-collection-button__wrapper .c-all-collection-button__text {
+    font-size: 0.85em;
     font-weight: 500;
     color: #1A2421;
 }

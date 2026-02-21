@@ -5,7 +5,7 @@
 
 .c-testimonials__content {
     position: relative;
-    margin-right: calc(50% - 50vw);
+    /* margin-right: calc(50% - 50vw); */
     padding-right: 0;
 }
 
@@ -32,16 +32,43 @@
 
 /* デザインの調整 */
 
-.c-testimonials .splide__slide {
+.c-testimonials .c-testimonials__title-wrapper {
+    text-align: center;
+}
+
+.c-testimonials .c-splide__slide {
     width: 400px;
     height: 560px;
 }
 
+.c-testimonials .c-splide__slide {
+    position: relative;
+}
+
+.c-testimonials .c-testimonials__textarea {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    bottom: 0;
+    z-index: 5;
+    background: rgba(255, 255, 255, .15);
+    backdrop-filter: blur(20px);
+    border-radius: 0px 0px 6px 6px;
+    overflow: hidden;
+}
+
+.c-testimonials .c-testimonials__textarea p {
+    line-height: 1.5;
+    color: #FFF;
+    padding: 5px;
+}
+
 .c-testimonials__image {
-    width: 400px;
-    height: 560px;
+    width: 100%;
+    height: 100%;
     border-radius: 6px;
     object-fit: cover;
+    pointer-events: none;
 }
 
 /* 矢印 */
@@ -50,7 +77,8 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
-    height: 100px;
+    margin-top: 10px;
+    /* height: 50px; */
 }
 
 .c-testimonials .c-testimonials__wrapper .c-splide__buttons--blank {
@@ -65,13 +93,17 @@
 }
 
 .c-testimonials .c-splide__arrow {
-    /* width: 40px;
-    height: 40px; */
     background: transparent;
     border: none;
     padding: 0;
     cursor: pointer;
     appearance: none;
+}
+
+
+.c-testimonials .c-splide__arrow svg {
+    width: 30px;
+    height: 30px;
 }
 
 .c-testimonials .c-splide__arrow--prev {
