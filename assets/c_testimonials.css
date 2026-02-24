@@ -60,7 +60,9 @@
 .c-testimonials .c-testimonials__textarea p {
     line-height: 1.5;
     color: #FFF;
-    padding: 5px;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 10px 20px;
 }
 
 .c-testimonials__image {
@@ -90,6 +92,7 @@
     display: flex;
     align-items: center;
     gap: 20px;
+    line-height: 0;
 }
 
 .c-testimonials .c-splide__arrow {
@@ -107,7 +110,7 @@
 }
 
 .c-testimonials .c-splide__arrow--prev {
-    transform: rotate(180deg);
+    transform: scaleX(-1);
 }
 
 .c-testimonials .c-splide__all-view-button {
