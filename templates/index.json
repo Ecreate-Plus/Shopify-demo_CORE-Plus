@@ -431,8 +431,21 @@
         "padding-top_pc": 96,
         "padding-bottom_pc": 96,
         "padding-top_sp": 64,
-        "padding-bottom_sp": 0,
+        "padding-bottom_sp": 64,
         "color_scheme": "scheme-2"
+      }
+    },
+    "c_contact_Bp8wCq": {
+      "type": "c_contact",
+      "name": "カスタム：フォーム",
+      "settings": {
+        "heading": "お問い合わせフォーム",
+        "heading_size": "h1",
+        "padding-top_pc": 96,
+        "padding-bottom_pc": 96,
+        "padding-top_sp": 64,
+        "padding-bottom_sp": 64,
+        "color_scheme": "scheme-4"
       }
     }
   },
@@ -443,6 +456,7 @@
     "c_concept_HFNHGm",
     "c_collapsible_content_EAhMnN",
     "c_testimonials_F4RyjV",
-    "c_video_text_Nf8UVF"
+    "c_video_text_Nf8UVF",
+    "c_contact_Bp8wCq"
   ]
 }
