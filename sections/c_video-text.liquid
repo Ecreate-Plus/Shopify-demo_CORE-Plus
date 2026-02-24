@@ -1,0 +1,445 @@
+{{ 'video-section.css' | asset_url | stylesheet_tag }}
+{{ 'component-deferred-media.css' | asset_url | stylesheet_tag }}
+{{ 'c_video-text.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+    .section-{{ section.id }}-padding {
+      padding-top: calc({{ section.settings.padding-top_sp }}px);
+      padding-bottom: calc({{ section.settings.padding-bottom_sp }}px);
+    }
+
+    @media screen and (min-width: 750px) {
+      .section-{{ section.id }}-padding {
+        padding-top: {{ section.settings.padding-top_pc }}px;
+        padding-bottom: {{ section.settings.padding-bottom_pc }}px;
+      }
+    }
+
+      /* 動画サイズ */
+    .section-{{ section.id }}-padding .deferred-media {
+      max-width: 350px !important;
+      height: auto !important;
+      padding-bottom: 0 !important;
+      aspect-ratio: 9 / 16 !important;
+      overflow: hidden;
+    }
+
+    /* 動画の制御 */
+
+    .section-{{ section.id }}-padding .deferred-media img,
+    .section-{{ section.id }}-padding .deferred-media iframe,
+    .section-{{ section.id }}-padding .deferred-media video,
+    .section-{{ section.id }}-padding .deferred-media__poster {
+      border-radius: 16px !important;
+      object-fit: cover !important;
+    }
+
+
+  @media screen and (max-width: 1100px) {
+        .c-video-section .c-video-section__media {
+          margin: 0 auto;
+          width: 100%;
+      }
+  }
+{%- endstyle -%}
+
+{%- liquid
+  assign video_id = section.settings.video.id | default: section.settings.video_url.id
+  assign video_alt = section.settings.video.alt | default: section.settings.description
+  assign alt = 'sections.video.load_video' | t: description: video_alt | escape
+  assign poster = section.settings.video.preview_image | default: section.settings.cover_image
+
+  if section.settings.video != null
+    assign ratio_diff = section.settings.video.aspect_ratio | minus: poster.aspect_ratio | abs
+    if ratio_diff < 0.01 and ratio_diff > 0
+      assign fix_ratio = true
+    endif
+  endif
+-%}
+
+{%- capture sizes -%}
+  {% if section.settings.full_width -%}
+    100vw
+  {%- else -%}
+    (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 }}px, (min-width: 750px)
+    calc(100vw - 10rem), 100vw
+  {%- endif %}
+{%- endcapture -%}
+
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="video-section c-video-section isolate{% unless section.settings.full_width %} page-width{% endunless %} section-{{ section.id }}-padding">
+    {% comment %} タイトル {% endcomment %}
+    <div
+      {% if section.settings.full_width %}
+        class="page-width"
+      {% endif %}
+    >
+      {%- unless section.settings.heading == blank -%}
+        <div class="title-wrapper c-title-wrapper title-wrapper--no-top-margin{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+          <h2 class="title inline-richtext {{ section.settings.heading_size }}">{{ section.settings.heading }}</h2>
+        </div>
+      {%- endunless -%}
+    </div>
+
+    {% comment %} コンテンツ {% endcomment %}
+    <div class="c-video-section__content-wrapper">
+      {% comment %} サブタイトル {% endcomment %}
+      <div class="c-video-section__catch-wrapper">
+        <div class="c-video-section__svg-wrapper">
+          <div class="c-video-section__icon-wrapper">
+            <div>{{ 'c_star.svg' | inline_asset_content }}</div>
+            <div>{{ 'c_star.svg' | inline_asset_content }}</div>
+            <div>{{ 'c_star.svg' | inline_asset_content }}</div>
+            <div>{{ 'c_star.svg' | inline_asset_content }}</div>
+            <div>{{ 'c_star.svg' | inline_asset_content }}</div>
+          </div>
+          <span>◯◯件以上の方にご満足いただいています。</span>
+        </div>
+        <h3 class="title inline-richtext {{ section.settings.catch_size }}">{{ section.settings.catch }}</h3>
+
+        <div class="c-video-section__cards-list">
+          {%- for block in section.blocks -%}
+            <div class="c-video-section__card-wrapper">
+              <div class="c-video-section__card-inner">
+                <p class="c-video-section__comment-heading">{{ block.settings.comment_head }}</p>
+                <blockquote class="c-video-section__comment">
+                  {{ block.settings.comment | newline_to_br }}
+                </blockquote>
+
+                <div class="c-video-section__under-wrapper">
+                  <div class="c-video-section__under-inner">
+                    <p class="c-video-section__name">{{ block.settings.name | append: '様' }}</p>
+
+                    <div class="c-video-section____verified-container">
+                      <div class="c-video-section____icon-wrapper">
+                        <span class="c-video-section____icon" style="width:12px;height:12px">
+                          <svg
+                            aria-hidden="false"
+                            focusable="true"
+                            width="18"
+                            height="18"
+                            viewBox="0 0 18 18"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path d="M6.99652 0.723083C7.78316 -0.241028 9.25631 -0.241028 10.043 0.723083V0.723083C10.5305 1.3206 11.3223 1.57789 12.068 1.38105V1.38105C13.2711 1.06345 14.4629 1.92934 14.5326 3.1717V3.1717C14.5758 3.94166 15.0652 4.61525 15.7841 4.89428V4.89428C16.9441 5.3445 17.3994 6.74555 16.7255 7.79162V7.79162C16.3079 8.43992 16.3079 9.27253 16.7255 9.92084V9.92084C17.3994 10.9669 16.9441 12.368 15.7841 12.8182V12.8182C15.0652 13.0972 14.5758 13.7708 14.5326 14.5408V14.5408C14.4629 15.7831 13.2711 16.649 12.068 16.3314V16.3314C11.3223 16.1346 10.5305 16.3919 10.043 16.9894V16.9894C9.25631 17.9535 7.78316 17.9535 6.99652 16.9894V16.9894C6.50899 16.3919 5.71714 16.1346 4.97151 16.3314V16.3314C3.76841 16.649 2.5766 15.7831 2.50689 14.5408V14.5408C2.46368 13.7708 1.97428 13.0972 1.25536 12.8182V12.8182C0.0953505 12.368 -0.359878 10.9669 0.313959 9.92084V9.92084C0.731574 9.27253 0.731574 8.43992 0.313959 7.79162V7.79162C-0.359878 6.74555 0.0953505 5.3445 1.25536 4.89428V4.89428C1.97428 4.61525 2.46368 3.94166 2.50689 3.1717V3.1717C2.5766 1.92934 3.76841 1.06344 4.97151 1.38105V1.38105C5.71714 1.57789 6.50899 1.3206 6.99652 0.723083V0.723083Z" fill="#00C8FD"></path><path style="fill:white" fill-rule="evenodd" clip-rule="evenodd" d="M12.8792 6.67802C13.1618 6.98084 13.1454 7.45543 12.8426 7.73805L8.37833 11.9047C8.08287 12.1805 7.62204 12.1725 7.33626 11.8868L4.65769 9.20819C4.3648 8.91529 4.3648 8.44042 4.65769 8.14753C4.95058 7.85463 5.42546 7.85463 5.71835 8.14753L7.88456 10.3137L11.8191 6.64147C12.122 6.35884 12.5965 6.37521 12.8792 6.67802Z"></path>
+                          </svg>
+                        </span>
+                      </div>
+                      <p class="c-video-section__verified">確認済み</p>
+                    </div>
+                  </div>
+                  <p class="c-video-section__date">{{ block.settings.date }}</p>
+                </div>
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
+      </div>
+
+      {% comment %} 動画 {% endcomment %}
+      <deferred-media
+        class="video-section__media c-video-section__media deferred-media gradient global-media-settings{% if section.settings.full_width %} global-media-settings--full-width{% endif %}{% if fix_ratio %} media-fit-cover{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+        data-media-id="{{ video_id }}"
+        {% if poster != null %}
+          style="--ratio-percent: {{ 1 | divided_by: poster.aspect_ratio | times: 100 }}%;"
+        {% endif %}
+      >
+        <button
+          id="Deferred-Poster-Modal-{{ video_id }}"
+          class="video-section__poster media deferred-media__poster media--landscape"
+          type="button"
+          aria-label="{{ alt }}"
+        >
+          {%- if poster != null -%}
+            {{
+              poster
+              | image_url: width: 3840
+              | image_tag: sizes: sizes, widths: '375, 750, 1100, 1500, 1780, 2000, 3000, 3840', alt: alt
+            }}
+          {%- else -%}
+            {{ 'hero-apparel-3' | placeholder_svg_tag: 'placeholder-svg placeholder' }}
+          {%- endif -%}
+          <span class="deferred-media__poster-button motion-reduce">
+            <span class="svg-wrapper">
+              {{- 'icon-play.svg' | inline_asset_content -}}
+            </span>
+          </span>
+        </button>
+
+        <template>
+          {%- if section.settings.video == null and section.settings.video_url != null -%}
+            {%- liquid
+              assign loop = ''
+              if section.settings.enable_video_looping
+                assign loop = '&loop=1&playlist=' | append: video_id
+              endif
+            -%}
+            {%- if section.settings.video_url.type == 'youtube' -%}
+              <iframe
+                src="https://www.youtube.com/embed/{{ video_id }}?enablejsapi=1&autoplay=1{{ loop }}"
+                class="js-youtube"
+                allow="autoplay; encrypted-media"
+                allowfullscreen
+                title="{{ section.settings.description | escape }}"
+              ></iframe>
+            {%- else -%}
+              <iframe
+                src="https://player.vimeo.com/video/{{ video_id }}?autoplay=1{{ loop }}"
+                class="js-vimeo"
+                allow="autoplay; encrypted-media"
+                allowfullscreen
+                title="{{ section.settings.description | escape }}"
+              ></iframe>
+            {%- endif -%}
+          {%- else -%}
+            {{
+              section.settings.video
+              | video_tag:
+                image_size: '1100x',
+                autoplay: true,
+                loop: section.settings.enable_video_looping,
+                controls: true,
+                muted: false
+            }}
+          {%- endif -%}
+        </template>
+      </deferred-media>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "カスタム：ビデオテキスト",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 4,
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "タイトル"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "default": "日々、ご使用いただいている方からも嬉しいお声をいただいております。",
+      "label": "タイトル"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        {
+          "value": "h2",
+          "label": "t:sections.all.heading_size.options__1.label"
+        },
+        {
+          "value": "h1",
+          "label": "t:sections.all.heading_size.options__2.label"
+        },
+        {
+          "value": "h0",
+          "label": "t:sections.all.heading_size.options__3.label"
+        },
+        {
+          "value": "hxl",
+          "label": "t:sections.all.heading_size.options__4.label"
+        },
+        {
+          "value": "hxxl",
+          "label": "t:sections.all.heading_size.options__5.label"
+        }
+      ],
+      "default": "h1",
+      "label": "t:sections.all.heading_size.label"
+    },
+    {
+      "type": "header",
+      "content": "キャッチコピー"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "catch",
+      "default": "累計販売数◯◯食突破!!",
+      "label": "キャッチコピー"
+    },
+    {
+      "type": "select",
+      "id": "catch_size",
+      "options": [
+        {
+          "value": "h2",
+          "label": "t:sections.all.heading_size.options__1.label"
+        },
+        {
+          "value": "h1",
+          "label": "t:sections.all.heading_size.options__2.label"
+        },
+        {
+          "value": "h0",
+          "label": "t:sections.all.heading_size.options__3.label"
+        },
+        {
+          "value": "hxl",
+          "label": "t:sections.all.heading_size.options__4.label"
+        },
+        {
+          "value": "hxxl",
+          "label": "t:sections.all.heading_size.options__5.label"
+        }
+      ],
+      "default": "h1",
+      "label": "t:sections.all.heading_size.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_video_looping",
+      "label": "t:sections.video.settings.enable_video_looping.label",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "t:sections.video.settings.header__1.content"
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "t:sections.video.settings.video.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.video.settings.header__2.content"
+    },
+    {
+      "type": "paragraph",
+      "content": "t:sections.video.settings.paragraph.content"
+    },
+    {
+      "type": "video_url",
+      "id": "video_url",
+      "accept": ["youtube", "vimeo"],
+      "default": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+      "label": "t:sections.video.settings.video_url.label",
+      "info": "t:sections.video.settings.video_url.info"
+    },
+    {
+      "type": "image_picker",
+      "id": "cover_image",
+      "label": "t:sections.video.settings.cover_image.label"
+    },
+    {
+      "type": "text",
+      "id": "description",
+      "label": "t:sections.video.settings.description.label",
+      "info": "t:sections.video.settings.description.info"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.video.settings.header__3.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "t:sections.video.settings.full_width.label",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "デスクトップ"
+    },
+    {
+      "type": "range",
+      "id": "padding-top_pc",
+      "label": "セクションの上部の余白",
+      "unit": "px",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-bottom_pc",
+      "label": "セクションの下部の余白",
+      "unit": "px",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "モバイル"
+    },
+    {
+      "type": "range",
+      "id": "padding-top_sp",
+      "label": "セクションの上部の余白",
+      "unit": "px",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-bottom_sp",
+      "label": "セクションの下部の余白",
+      "unit": "px",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 0
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "comment_card",
+      "name": "コメントカード",
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "comment_head",
+          "default": "朝起きるのが楽になりました。",
+          "label": "コメントのタイトル"
+        },
+        {
+          "type": "textarea",
+          "id": "comment",
+          "default": "飲み始めてから、3ヶ月、本当に朝起きるのが楽になりました。",
+          "label": "コメントの本文"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "default": "清水",
+          "label": "お客さまのお名前"
+        },
+        {
+          "type": "text",
+          "id": "date",
+          "label": "日付",
+          "default": "2023年1月14日",
+          "info": "例: 2023年1月14日"
+        }
+      ]
+    }
+  ],
+
+  "presets": [
+    {
+      "name": "カスタム：ビデオテキスト"
+    }
+  ]
+}
+{% endschema %}

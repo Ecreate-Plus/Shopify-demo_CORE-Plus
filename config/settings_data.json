@@ -180,9 +180,9 @@
       },
       "scheme-4": {
         "settings": {
-          "background": "#121212",
+          "background": "#ffefdc",
           "background_gradient": "",
-          "text": "#ffffff",
+          "text": "#484e4d",
           "button": "#ffffff",
           "button_label": "#121212",
           "secondary_button_label": "#ffffff",
