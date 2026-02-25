@@ -436,11 +436,13 @@
       }
     },
     "c_contact_Bp8wCq": {
-      "type": "c_contact",
+      "type": "c_news-letter",
       "name": "カスタム：フォーム",
       "settings": {
-        "heading": "お問い合わせフォーム",
-        "heading_size": "h1",
+        "heading": "さらにお得な情報をメルマガで",
+        "heading_size": "h2",
+        "catch": "割引情報や限定商品のお知らせをお届けいたします。",
+        "policy": "新商品や割引情報など役立つコンテンツが盛りだくさんのCORE Plusのメルマガ配信を是非ご利用ください。\n※登録が完了した時点で、プライバシーポリシーに同意したものとみなします。",
         "padding-top_pc": 96,
         "padding-bottom_pc": 96,
         "padding-top_sp": 64,

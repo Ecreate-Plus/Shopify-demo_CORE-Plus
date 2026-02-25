@@ -1,0 +1,214 @@
+{{ 'section-contact-form.css' | asset_url | stylesheet_tag }}
+{{ 'c_news-letter.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: calc({{ section.settings.padding-top_sp }}px);
+    padding-bottom: calc({{ section.settings.padding-bottom_sp }}px);
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding-top_pc }}px;
+      padding-bottom: {{ section.settings.padding-bottom_pc }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="c-news-letter color-{{ section.settings.color_scheme }} gradient">
+  <div class="contact page-width page-width--narrow section-{{ section.id }}-padding">
+    {%- if section.settings.heading != blank -%}
+      <h2 class="title c-news-letter__heading title-wrapper--no-top-margin inline-richtext {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+        {{ section.settings.heading }}
+      </h2>
+    {%- else -%}
+      <h2 class="visually-hidden c-visually-hidden">{{ 'sections.custom_newsletter.title' | t }}</h2>
+    {%- endif -%}
+
+    {%- liquid
+      assign contact_form_class = 'isolate'
+      if settings.animations_reveal_on_scroll
+        assign contact_form_class = 'isolate scroll-trigger animate--slide-in'
+      endif
+      assign nl_id = 'ContactForm-' | append: section.id
+    -%}
+
+    {%- form 'customer', id: nl_id, class: contact_form_class, data-newsletter-form: 'true' -%}
+      {% comment %} 成功・エラーメッセージを表示するための「空の箱」 {% endcomment %}
+      <div class="c-form__message-container" style="display:none;"></div>
+      <input type="hidden" name="contact[tags]" value="newsletter">
+
+      {%- if form.posted_successfully? -%}
+        <h2 class="form-status form-status-list form__message" tabindex="-1" autofocus>
+          {{- 'icon-success.svg' | inline_asset_content -}}
+          {{ 'sections.custom_newsletter.success_message' | t }}
+        </h2>
+      {%- elsif form.errors -%}
+        <div class="form__message c-form__message">
+          <h2 class="form-status caption-large text-body" role="alert" tabindex="-1">
+            {{- 'icon-error.svg' | inline_asset_content -}}
+            {{ 'sections.custom_newsletter.error_heading' | t }}
+          </h2>
+        </div>
+      {%- endif -%}
+
+      <div class="c-news-letter__fields-wrapper">
+        <h3 class="c-news-letter__fields-catch">{{ section.settings.catch }}</h3>
+        <div class="c-news-letter__fields-inner">
+          <div class="contact__fields c-news-letter__fields">
+            <div class="field c-field field--with-error">
+              <input
+                id="ContactForm-email-{{ section.id }}"
+                class="field__input c-field__input"
+                autocomplete="email"
+                type="email"
+                name="contact[email]"
+                spellcheck="false"
+                autocapitalize="off"
+                value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+                aria-required="true"
+                {% if form.errors contains 'email' %}
+                  aria-invalid="true"
+                  aria-describedby="ContactForm-email-error"
+                {% endif %}
+                placeholder="{{ 'sections.custom_newsletter.email_placeholder' | t}}"
+              >
+              <label class="field__label" for="ContactForm-email-{{ section.id }}">
+                {{ 'sections.custom_newsletter.email_placeholder' | t }}
+                <span aria-hidden="true">*</span></label
+              >
+            </div>
+          </div>
+          <div class="contact__button c-news-letter__button">
+            <button type="submit" class="button c-button">{{ 'sections.custom_newsletter.submit_button' | t }}</button>
+          </div>
+        </div>
+      </div>
+    {%- endform -%}
+    <div class="c-news-letter__policy">
+      <div class="c-news-letter__policy-inner">
+        <p class="c-news-letter__policy-text">
+          {{ section.settings.policy | newline_to_br }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "カスタム：メルマガ",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "default": "t:sections.contact-form.settings.title.default",
+      "label": "t:sections.contact-form.settings.title.label"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        {
+          "value": "h2",
+          "label": "t:sections.all.heading_size.options__1.label"
+        },
+        {
+          "value": "h1",
+          "label": "t:sections.all.heading_size.options__2.label"
+        },
+        {
+          "value": "h0",
+          "label": "t:sections.all.heading_size.options__3.label"
+        },
+        {
+          "value": "hxl",
+          "label": "t:sections.all.heading_size.options__4.label"
+        },
+        {
+          "value": "hxxl",
+          "label": "t:sections.all.heading_size.options__5.label"
+        }
+      ],
+      "default": "h1",
+      "label": "t:sections.all.heading_size.label"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "catch",
+      "default": "割引情報や限定商品のお知らせをお届けいたします。",
+      "label": "キャッチコピー"
+    },
+    {
+      "type": "textarea",
+      "id": "policy",
+      "default": "新商品や割引情報など役立つコンテンツが盛りだくさんのCORE Plusのメルマガ配信を是非ご利用ください。※登録が完了した時点で、プライバシーポリシーに同意したものとみなします。",
+      "label": "追記や補足説明など"
+    },
+    {
+      "type": "header",
+      "content": "デスクトップ"
+    },
+    {
+      "type": "range",
+      "id": "padding-top_pc",
+      "label": "セクションの上部の余白",
+      "unit": "px",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-bottom_pc",
+      "label": "セクションの下部の余白",
+      "unit": "px",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "モバイル"
+    },
+    {
+      "type": "range",
+      "id": "padding-top_sp",
+      "label": "セクションの上部の余白",
+      "unit": "px",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-bottom_sp",
+      "label": "セクションの下部の余白",
+      "unit": "px",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 0
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    }
+  ],
+  "presets": [
+    {
+      "name": "カスタム：メルマガ"
+    }
+  ]
+}
+{% endschema %}
