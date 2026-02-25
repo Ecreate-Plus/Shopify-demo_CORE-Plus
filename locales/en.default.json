@@ -383,6 +383,14 @@
       "min_error": "This item has a minimum of {{ min }}",
       "max_error": "This item has a maximum of {{ max }}",
       "step_error": "You can only add this item in increments of {{ step }}"
+    },
+    "custom_newsletter": {
+      "title": "Newsletter",
+      "success_message": "Thank you for subscribing! We sent you a welcome email with a coupon.",
+      "error_heading": "An error occurred. Please check your input.",
+      "error_message": "Please enter a valid email address.",
+      "email_placeholder": "Email address",
+      "submit_button": "Subscribe"
     }
   },
   "localization": {
