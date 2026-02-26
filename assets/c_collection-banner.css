@@ -1,0 +1,55 @@
+/* ---------------------------------------
+    全体のレイアウトとデザイン調整
+------------------------------------------ */
+
+#c-collection-banner {
+    padding: 0;
+}
+
+.c-collection-banner .c-collection-banner__inner {
+    padding: 0;
+    max-height: 450px;
+    height: 400px;
+    display: block;
+    position: relative;
+}
+
+.c-collection-banner .c-collection-banner__img-wrapper,
+.c-collection-banner .c-collection-banner__img-wrapper picture img {
+    height: 100%;
+    width: 100%;
+    margin-left: 0;
+    object-fit: cover;
+}
+
+
+
+.c-collection-banner .c-collection-banner__text-wrapper {
+    padding: 0;
+    position: absolute;
+    bottom: 20px;
+    left: 1em;
+    z-index: 1;
+    object-fit: cover;
+}
+
+
+.c-collection-banner .c-collection-banner__title {
+    font-weight: bold;
+    color: #FFF;
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 1);
+}
+
+.c-collection-banner .c-collection-banner__description {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: #FFF;
+    text-shadow: 4px 4px 10px rgba(0, 0, 0, 1);
+}
+
+@media screen and (max-width: 900px) {
+    .c-collection-banner .c-collection-banner__description {
+        font-size: 1rem;
+    }
+
+}
