@@ -148,7 +148,7 @@
               id="product-grid"
               data-id="{{ section.id }}"
               class="
-                grid product-grid grid--{{ section.settings.columns_mobile }}-col-tablet-down
+                grid c-main-collection-product-grid__list grid--{{ section.settings.columns_mobile }}-col-tablet-down
                 grid--{{ section.settings.columns_desktop }}-col-desktop
                 {% if section.settings.quick_add == 'bulk' %} collection-quick-add-bulk{% endif %}
               "
@@ -160,7 +160,7 @@
                   {%- assign lazy_load = true -%}
                 {%- endif -%}
                 <li
-                  class="grid__item{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+                  class="grid__item {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
                   {% if settings.animations_reveal_on_scroll %}
                     data-cascade
                     style="--animation-order: {{ forloop.index }};"
@@ -176,7 +176,8 @@
                     lazy_load: lazy_load,
                     skip_styles: skip_card_product_styles,
                     quick_add: section.settings.quick_add,
-                    section_id: section.id
+                    section_id: section.id,
+                    badge_position: section.settings.badge_position
                   %}
                 </li>
                 {%- assign skip_card_product_styles = true -%}
@@ -298,6 +299,30 @@
       ],
       "default": "default",
       "label": "t:sections.all.image_shape.label"
+    },
+    {
+      "type": "select",
+      "id": "badge_position",
+      "label": "バッジの表示位置",
+      "default": "bottom-left",
+      "options": [
+        {
+          "value": "top-right",
+          "label": "右上"
+        },
+        {
+          "value": "bottom-right",
+          "label": "右下"
+        },
+        {
+          "value": "top-left",
+          "label": "左上"
+        },
+        {
+          "value": "bottom-left",
+          "label": "左下"
+        }
+      ]
     },
     {
       "type": "checkbox",

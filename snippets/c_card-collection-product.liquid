@@ -55,7 +55,7 @@
       style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;"
     >
       <div
-        class="card__inner {% if settings.card_style == 'standard' %}color-{{ settings.card_color_scheme }} gradient{% endif %}{% if card_product.featured_media or settings.card_style == 'standard' %} ratio{% endif %}"
+        class="card__inner c-card__inner {% if settings.card_style == 'standard' %}color-{{ settings.card_color_scheme }} gradient{% endif %}{% if card_product.featured_media or settings.card_style == 'standard' %} ratio{% endif %}"
         style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;"
       >
         {%- if card_product.featured_media -%}
@@ -107,33 +107,39 @@
             </div>
           </div>
         {%- endif -%}
-        {% comment %}
-          【場所A】画像がない商品、または「Card」スタイルの場合
-          (枠線の中に情報を表示します)
-        {% endcomment %}
         {%- if card_product.featured_media == null or settings.card_style == 'card' -%}
           <div class="card__content">
-            <div class="card__information">
-              {% render 'c_collection-card-info', card_product: card_product, section_id: section_id %}
-            </div>
-          </div>
-        {%- endif -%}
-      </div>
-      {% comment %} ← ここで card__inner (画像の枠) が閉じます {% endcomment %}
-
-      {% comment %}
-        【場所B】画像がある「Standard」スタイルの場合 (これがメイン！)
-        (画像の下に「情報」と「ボタン」を1つのセットにして表示します)
-      {% endcomment %}
-      {%- if card_product.featured_media and settings.card_style == 'standard' -%}
-        <div class="card__content">
-          <div class="card__information">
             {% render 'c_collection-card-info', card_product: card_product, section_id: section_id %}
           </div>
+        {%- endif -%}
 
-          {% comment %} ボタン（クイックアド）をこの「箱」の中に配置します {% endcomment %}
+        {% comment %} バッジ {% endcomment %}
+        <div class="card__badge c-card__badge c-card__badge--{{ badge_position }}">
+          {%- if card_product.available == false -%}
+            <span
+              id="Badge-{{ section_id }}-{{ card_product.id }}"
+              class="badge badge--bottom-left color-{{ settings.sold_out_badge_color_scheme }}"
+            >
+              {{- 'products.product.sold_out' | t -}}
+            </span>
+          {%- elsif card_product.compare_at_price > card_product.price and card_product.available -%}
+            <span
+              id="Badge-{{ section_id }}-{{ card_product.id }}"
+              class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}"
+            >
+              {{- 'products.product.on_sale' | t -}}
+            </span>
+          {%- endif -%}
+        </div>
+      </div>
+      {%- if card_product.featured_media and settings.card_style == 'standard' -%}
+        <div class="card__content">
+          {% comment %} 商品情報：rennderで読み込み。 {% endcomment %}
+          {% render 'c_collection-card-info', card_product: card_product, section_id: section_id %}
+
+          {% comment %} クイックアド {% endcomment %}
           {%- if quick_add == 'standard' or quick_add == 'bulk' -%}
-            <div class="quick-add no-js-hidden">
+            <div class="quick-add c-quick-add no-js-hidden">
               {%- liquid
                 assign product_form_id = 'quick-add-' | append: section_id | append: card_product.id
                 assign qty_rules = false
@@ -223,24 +229,6 @@
           {%- endif -%}
         </div>
       {%- endif -%}
-
-      <div class="card__badge {{ settings.badge_position }}">
-        {%- if card_product.available == false -%}
-          <span
-            id="Badge-{{ section_id }}-{{ card_product.id }}"
-            class="badge badge--bottom-left color-{{ settings.sold_out_badge_color_scheme }}"
-          >
-            {{- 'products.product.sold_out' | t -}}
-          </span>
-        {%- elsif card_product.compare_at_price > card_product.price and card_product.available -%}
-          <span
-            id="Badge-{{ section_id }}-{{ card_product.id }}"
-            class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}"
-          >
-            {{- 'products.product.on_sale' | t -}}
-          </span>
-        {%- endif -%}
-      </div>
     </div>
   </div>
 {%- else -%}
@@ -262,10 +250,10 @@
       style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;"
     >
       <div
-        class="card__inner{% if settings.card_style == 'standard' %} color-{{ settings.card_color_scheme }} gradient{% endif %} ratio"
+        class="card__inner c-card__inner{% if settings.card_style == 'standard' %} color-{{ settings.card_color_scheme }} gradient{% endif %} ratio"
       >
         <div
-          class="card__media {% if image_shape and image_shape != 'default' %} shape--{{ image_shape }} color-{{ settings.card_color_scheme }} gradient{% endif %}"
+          class="card__media c-card__media {% if image_shape and image_shape != 'default' %} shape--{{ image_shape }} color-{{ settings.card_color_scheme }} gradient{% endif %}"
         >
           <div
             class="media media--transparent"
