@@ -1,0 +1,62 @@
+/* ---------------------------------------
+    全体のレイアウト
+------------------------------------------ */
+
+/*---- レビューテキストのスタイル ----*/
+.c-main-product .c-dummy-review {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.c-main-product .c-dummy-review__inner {
+    display: flex;
+    gap: 2px;
+}
+
+.c-main-product .c-dummy-review__text {
+    font-size: 14px;
+    color: #333;
+    letter-spacing: 0.05em;
+}
+
+/*---- 商品タイトルのスタイル ----*/
+
+.c-main-product .c-product__title {
+    margin: 0;
+    padding: 0;
+}
+
+.c-main-product .c-product__title-heading {
+    font-size: var(--title-font-size);
+    font-weight: var(--title-font-weight);
+    margin: 0;
+    line-height: 1.2;
+}
+
+.c-main-product .c-product__title-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.c-main-product .c-product__text {
+    margin-top: 0;
+}
+
+/* ---------------------------------------
+    画像に重ねるテキストの位置の指定
+------------------------------------------ */
+
+
+
+
+
+/* ---------------------------------------
+    画像位置の調整
+------------------------------------------ */
+
+
+/* ---------------------------------------
+    矢印の調整
+------------------------------------------ */

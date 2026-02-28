@@ -26,7 +26,7 @@
       "type": "c_main-collection-product-grid",
       "name": "カスタム：商品グリッド",
       "settings": {
-        "products_per_page": 8,
+        "products_per_page": 6,
         "columns_desktop": 3,
         "columns_mobile": "2",
         "image_ratio": "square",
