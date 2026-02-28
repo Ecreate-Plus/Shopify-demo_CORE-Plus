@@ -9,6 +9,179 @@
  */
 {
   "sections": {
+    "c_main_product_wBhzBR": {
+      "type": "c_main-product",
+      "blocks": {
+        "dummy_review_fWB7Tf": {
+          "type": "dummy_review",
+          "settings": {
+            "review_text": "◯件以上の満足の声",
+            "star_color": "#e8913e"
+          }
+        },
+        "title_kRzkey": {
+          "type": "title",
+          "settings": {
+            "font_size": 18,
+            "font_bold": false
+          }
+        },
+        "text_tTkdiw": {
+          "type": "text",
+          "settings": {
+            "text": "プレーンバナナ味",
+            "text_style": "body"
+          }
+        },
+        "product_tags_RwdHCP": {
+          "type": "product_tags",
+          "settings": {
+            "product_tag-1": "{{ product.metafields.custom.tag_1.value }}",
+            "product_tag-2": "{{ product.metafields.custom.tag_2.value }}",
+            "product_tag-3": "{{ product.metafields.custom.tag_3.value }}",
+            "product_tag-4": "{{ product.metafields.custom.tag_4.value }}",
+            "product_tag-5": "{{ product.metafields.custom.tag_5.value }}"
+          }
+        },
+        "complementary_gR4hqJ": {
+          "type": "complementary",
+          "settings": {
+            "block_heading": "相性が良い",
+            "make_collapsible_row": false,
+            "icon": "price_tag",
+            "product_list_limit": 10,
+            "products_per_page": 3,
+            "pagination_style": "counter",
+            "image_ratio": "square",
+            "enable_quick_add": false
+          }
+        },
+        "collapsible_tab_axqFit": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "折りたたみ可能な行",
+            "icon": "check_mark",
+            "content": "",
+            "page": ""
+          }
+        },
+        "text_HRzrzJ": {
+          "type": "text",
+          "settings": {
+            "text": "テキストブロック",
+            "text_style": "body"
+          }
+        },
+        "share_FPKBKE": {
+          "type": "share",
+          "settings": {
+            "share_label": "共有"
+          }
+        },
+        "text_8KhLpz": {
+          "type": "text",
+          "settings": {
+            "text": "テキストブロック",
+            "text_style": "body"
+          }
+        },
+        "popup_e6zVnY": {
+          "type": "popup",
+          "settings": {
+            "text": "ポップアップリンクのテキスト",
+            "page": ""
+          }
+        },
+        "quantity_selector_DmjGGw": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "description_FFd9eM": {
+          "type": "description",
+          "settings": {}
+        },
+        "variant_picker_yR89Gh": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "inventory_k3pAdN": {
+          "type": "inventory",
+          "settings": {
+            "text_style": "body",
+            "inventory_threshold": 10,
+            "show_inventory_quantity": true
+          }
+        },
+        "price_nejiqh": {
+          "type": "price",
+          "settings": {}
+        },
+        "sku_fjQkpU": {
+          "type": "sku",
+          "settings": {
+            "text_style": "body"
+          }
+        },
+        "buy_buttons_rYKMDi": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
+        },
+        "icon_with_text_ERGzkJ": {
+          "type": "icon-with-text",
+          "settings": {
+            "layout": "horizontal",
+            "icon_1": "heart",
+            "heading_1": "見出し",
+            "icon_2": "return",
+            "heading_2": "見出し",
+            "icon_3": "truck",
+            "heading_3": "見出し"
+          }
+        }
+      },
+      "block_order": [
+        "dummy_review_fWB7Tf",
+        "title_kRzkey",
+        "text_tTkdiw",
+        "product_tags_RwdHCP",
+        "complementary_gR4hqJ",
+        "collapsible_tab_axqFit",
+        "text_HRzrzJ",
+        "share_FPKBKE",
+        "text_8KhLpz",
+        "popup_e6zVnY",
+        "quantity_selector_DmjGGw",
+        "description_FFd9eM",
+        "variant_picker_yR89Gh",
+        "inventory_k3pAdN",
+        "price_nejiqh",
+        "sku_fjQkpU",
+        "buy_buttons_rYKMDi",
+        "icon_with_text_ERGzkJ"
+      ],
+      "name": "カスタム：商品ページ",
+      "settings": {
+        "enable_sticky_info": true,
+        "color_scheme": "scheme-2",
+        "media_size": "large",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "gallery_layout": "stacked",
+        "mobile_thumbnails": "hide",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "hide_variants": false,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "main": {
       "type": "main-product",
       "blocks": {
@@ -66,10 +239,11 @@
         "description",
         "share"
       ],
+      "disabled": true,
       "settings": {
         "enable_sticky_info": true,
-        "color_scheme": "scheme-1",
-        "media_size": "large",
+        "color_scheme": "scheme-2",
+        "media_size": "small",
         "constrain_to_viewport": true,
         "media_fit": "contain",
         "gallery_layout": "stacked",
@@ -102,6 +276,7 @@
     }
   },
   "order": [
+    "c_main_product_wBhzBR",
     "main",
     "related-products"
   ]
