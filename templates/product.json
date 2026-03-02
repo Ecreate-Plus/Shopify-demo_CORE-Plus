@@ -43,105 +43,36 @@
             "product_tag-5": "{{ product.metafields.custom.tag_5.value }}"
           }
         },
-        "complementary_gR4hqJ": {
-          "type": "complementary",
+        "c_image_popup_FB8tbn": {
+          "type": "c-image_popup",
           "settings": {
-            "block_heading": "相性が良い",
-            "make_collapsible_row": false,
-            "icon": "price_tag",
-            "product_list_limit": 10,
-            "products_per_page": 3,
-            "pagination_style": "counter",
-            "image_ratio": "square",
-            "enable_quick_add": false
+            "link_label": "栄養成分を確認する",
+            "image": "{{ product.metafields.custom.nutrition.value }}"
           }
-        },
-        "collapsible_tab_axqFit": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "折りたたみ可能な行",
-            "icon": "check_mark",
-            "content": "",
-            "page": ""
-          }
-        },
-        "text_HRzrzJ": {
-          "type": "text",
-          "settings": {
-            "text": "テキストブロック",
-            "text_style": "body"
-          }
-        },
-        "share_FPKBKE": {
-          "type": "share",
-          "settings": {
-            "share_label": "共有"
-          }
-        },
-        "text_8KhLpz": {
-          "type": "text",
-          "settings": {
-            "text": "テキストブロック",
-            "text_style": "body"
-          }
-        },
-        "popup_e6zVnY": {
-          "type": "popup",
-          "settings": {
-            "text": "ポップアップリンクのテキスト",
-            "page": ""
-          }
-        },
-        "quantity_selector_DmjGGw": {
-          "type": "quantity_selector",
-          "settings": {}
         },
         "description_FFd9eM": {
           "type": "description",
           "settings": {}
         },
-        "variant_picker_yR89Gh": {
-          "type": "variant_picker",
+        "spacer_gzx7Wi": {
+          "type": "spacer",
           "settings": {
-            "picker_type": "button",
-            "swatch_shape": "circle"
-          }
-        },
-        "inventory_k3pAdN": {
-          "type": "inventory",
-          "settings": {
-            "text_style": "body",
-            "inventory_threshold": 10,
-            "show_inventory_quantity": true
-          }
-        },
-        "price_nejiqh": {
-          "type": "price",
-          "settings": {}
-        },
-        "sku_fjQkpU": {
-          "type": "sku",
-          "settings": {
-            "text_style": "body"
+            "height": 200
           }
         },
         "buy_buttons_rYKMDi": {
           "type": "buy_buttons",
           "settings": {
-            "show_dynamic_checkout": true,
-            "show_gift_card_recipient": true
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": false
           }
         },
-        "icon_with_text_ERGzkJ": {
-          "type": "icon-with-text",
+        "shipping_bar_NQwQaa": {
+          "type": "shipping_bar",
           "settings": {
-            "layout": "horizontal",
-            "icon_1": "heart",
-            "heading_1": "見出し",
-            "icon_2": "return",
-            "heading_2": "見出し",
-            "icon_3": "truck",
-            "heading_3": "見出し"
+            "threshold": 10000,
+            "text_before": "あと",
+            "text_after": "のお買い上げで、送料無料になります。"
           }
         }
       },
@@ -150,20 +81,11 @@
         "title_kRzkey",
         "text_tTkdiw",
         "product_tags_RwdHCP",
-        "complementary_gR4hqJ",
-        "collapsible_tab_axqFit",
-        "text_HRzrzJ",
-        "share_FPKBKE",
-        "text_8KhLpz",
-        "popup_e6zVnY",
-        "quantity_selector_DmjGGw",
+        "c_image_popup_FB8tbn",
         "description_FFd9eM",
-        "variant_picker_yR89Gh",
-        "inventory_k3pAdN",
-        "price_nejiqh",
-        "sku_fjQkpU",
+        "spacer_gzx7Wi",
         "buy_buttons_rYKMDi",
-        "icon_with_text_ERGzkJ"
+        "shipping_bar_NQwQaa"
       ],
       "name": "カスタム：商品ページ",
       "settings": {

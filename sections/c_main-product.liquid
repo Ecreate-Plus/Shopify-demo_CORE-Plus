@@ -186,6 +186,24 @@
                   {%- endfor -%}
                 </div>
                 {% comment %} ---------------------------------------------- {% endcomment %}
+                {% comment %}---------------- 栄養成分画像のポップアップ -----------------------{% endcomment %}
+              {%- when 'c-image_popup' -%}
+                {% # --- Shopify特有のHTML(modal-opener)でbuttonのクリックを監視 --- %}
+                <modal-opener
+                  class="product-popup-modal__opener c-product-popup-modal__opener quick-add-hidden"
+                  data-modal="#PopupModal-{{ block.id }}"
+                  {{ block.shopify_attributes }}
+                >
+                  <button
+                    id="ProductPopup-{{ block.id }}"
+                    class="product-popup-modal__button c-product-popup-modal__button link"
+                    type="button"
+                    aria-haspopup="dialog"
+                  >
+                    {{ block.settings.link_label }}
+                  </button>
+                </modal-opener>
+                {% comment %} ---------------------------------------------- {% endcomment %}
               {%- when 'price' -%}
                 <div id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
                   {%- render 'price',
@@ -559,13 +577,45 @@
               {%- when 'variant_picker' -%}
                 {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
               {%- when 'buy_buttons' -%}
-                {%- render 'buy-buttons',
+                {%- render 'c_buy-buttons',
                   block: block,
                   product: product,
                   product_form_id: product_form_id,
                   section_id: section.id,
                   show_pickup_availability: true
                 -%}
+
+                {% comment %} -------------- シッピングバー --------------------{% endcomment %}
+              {%- when 'shipping_bar' -%}
+                {{ 'c-shipping-bar.js' | asset_url | script_tag }}
+                <shipping-bar
+                  id="free-shipping-bar"
+                  class="c-shipping-bar"
+                  data-threshold="{{ block.settings.threshold }}"
+                  data-text-before="{{ block.settings.text_before | escape }}"
+                  data-text-after="{{ block.settings.text_after | escape }}"
+                  {{ block.shopify_attributes }}
+                >
+                  <div class="c-shipping-bar__inner">
+                    <div class="c-shipping-bar__icon">
+                      <svg
+                        viewBox="0 0 24 24"
+                        width="24"
+                        height="24"
+                        stroke="currentColor"
+                        fill="none"
+                        stroke-width="2"
+                      >
+                        <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4H6zM3 6h18M16 10a4 4 0 01-8 0" />
+                      </svg>
+                    </div>
+                    <p class="c-shipping-bar__text">
+                      {{ block.settings.text_before }}
+                      <span id="shipping-delta">￥{{ block.settings.threshold }}</span> {{ block.settings.text_after }}
+                    </p>
+                  </div>
+                </shipping-bar>
+                {% comment %} ---------------------------------------------- {% endcomment %}
               {%- when 'rating' -%}
                 {%- if product.metafields.reviews.rating.value != blank -%}
                   <div class="rating-wrapper">
@@ -755,6 +805,13 @@
                 </product-recommendations>
               {%- when 'icon-with-text' -%}
                 {% render 'icon-with-text', block: block %}
+                {% comment %}------------------- どうしても余白が欲しい時のスペーサー -----------------{% endcomment %}
+              {%- when 'spacer' -%}
+                <div
+                  style="height: {{ block.settings.height }}px; width: 100%; display: block;"
+                  {{ block.shopify_attributes }}
+                ></div>
+                {% comment %} ------------------------------------------------------------------ {% endcomment %}
             {%- endcase -%}
           {%- endfor -%}
           <a href="{{ product.url }}" class="link product__view-details animate-arrow">
@@ -792,6 +849,46 @@
         </div>
       </modal-dialog>
     {%- endfor -%}
+
+    {% comment %}------------------------------- 画像ポップアップの表示部分 -------------------------------{% endcomment %}
+    {% assign image_popups = section.blocks | where: 'type', 'c-image_popup' %}
+    {%- for block in image_popups -%}
+      <modal-dialog
+        id="PopupModal-{{ block.id }}"
+        class="product-popup-modal c-product-image-popup-modal"
+        {{ block.shopify_attributes }}
+      >
+        <div
+          role="dialog"
+          aria-label="{{ block.settings.link_label }}"
+          aria-modal="true"
+          class="product-popup-modal__content"
+          tabindex="-1"
+        >
+          <button
+            id="ModalClose-{{ block.id }}"
+            type="button"
+            class="product-popup-modal__toggle c-product-popup-modal__toggle"
+            aria-label="{{ 'accessibility.close' | t }}"
+          >
+            {{- 'icon-close.svg' | inline_asset_content -}}
+          </button>
+          <div class="c-product-popup-modal__content-info">
+            {%- if block.settings.image != blank -%}
+              <img
+                src="{{ block.settings.image | image_url: width: 1000 }}"
+                loading="lazy"
+                width="100%"
+                height="auto"
+              >
+            {%- else -%}
+              <p>画像が設定されていません。エディタの「＋」ボタンからメタフィールドで画像を設定してください。</p>
+            {%- endif -%}
+          </div>
+        </div>
+      </modal-dialog>
+    {%- endfor -%}
+    {% comment %}--------------------------------------------------------------{% endcomment %}
 
     {%- if product.media.size > 0 -%}
       <script src="{{ 'product-modal.js' | asset_url }}" defer="defer"></script>
@@ -2188,7 +2285,7 @@
     },
     {
       "type": "dummy_review",
-      "name": "ダミーレビュー（星）",
+      "name": "カスタム：ダミーレビュー（星）",
       "limit": 1,
       "settings": [
         {
@@ -2207,7 +2304,7 @@
     },
     {
       "type": "product_tags",
-      "name": "商品タグ",
+      "name": "カスタム：商品タグ",
       "limit": 1,
       "settings": [
         {
@@ -2239,6 +2336,65 @@
           "id": "product_tag-5",
           "label": "商品タグ",
           "info": "ここにテキストで入力した場合、全商品に同じテキストが表示されます。"
+        }
+      ]
+    },
+    {
+      "type": "c-image_popup",
+      "name": "カスタム：画像ポップアップ",
+      "settings": [
+        {
+          "type": "text",
+          "id": "link_label",
+          "label": "リンクのテキスト",
+          "default": "栄養成分を確認する"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "表示する画像",
+          "info": "商品ごとに変える場合は、右上の＋ボタンからメタフィールドを選択してください"
+        }
+      ]
+    },
+    {
+      "type": "spacer",
+      "name": "カスタム：余白（スペーサー）",
+      "settings": [
+        {
+          "type": "range",
+          "id": "height",
+          "label": "余白の高さ",
+          "min": 2,
+          "max": 200,
+          "step": 2,
+          "unit": "px",
+          "default": 16
+        }
+      ]
+    },
+    {
+      "type": "shipping_bar",
+      "name": "カスタム：送料無料バー",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "number",
+          "id": "threshold",
+          "label": "送料無料になる金額（円）",
+          "default": 10000
+        },
+        {
+          "type": "text",
+          "id": "text_before",
+          "label": "金額前のテキスト",
+          "default": "あと"
+        },
+        {
+          "type": "text",
+          "id": "text_after",
+          "label": "金額後のテキスト",
+          "default": "のお買い上げで、送料無料になります。"
         }
       ]
     }
