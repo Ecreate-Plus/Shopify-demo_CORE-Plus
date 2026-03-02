@@ -2,7 +2,10 @@
     全体のレイアウト
 ------------------------------------------ */
 
-/*---- レビューテキストのスタイル ----*/
+/* ---------------------------------------
+    レビューテキストのスタイル
+------------------------------------------ */
+
 .c-main-product .c-dummy-review {
     display: flex;
     align-items: center;
@@ -21,7 +24,9 @@
     letter-spacing: 0.05em;
 }
 
-/*---- 商品タイトルのスタイル ----*/
+/* ---------------------------------------
+    商品タイトルのスタイル
+------------------------------------------ */
 
 .c-main-product .c-product__title {
     margin: 0;
@@ -45,18 +50,179 @@
 }
 
 /* ---------------------------------------
-    画像に重ねるテキストの位置の指定
+    商品タグのスタイル
 ------------------------------------------ */
+
+/* コンテナの設定（タグが複数ある場合の整列） */
+.c-main-product .c-product__tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+/* タグのシンプルな共通スタイル */
+.c-main-product .c-product__tag-item {
+    display: inline-block;
+    padding: 4px 12px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #333333;
+    background-color: #ffffff;
+    border: 2px solid #d1d1d1;
+    border-radius: 6px;
+    line-height: 1.4;
+}
+
+/* ---------------------------------------
+    画像ポップアップの表示部分のスタイル
+------------------------------------------ */
+
+
+.c-main-product .c-product-popup-modal__opener {
+    margin-top: 0;
+    margin-bottom: 16px;
+
+}
+
+.c-main-product .c-product-popup-modal__button {
+    padding-right: 0;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.c-product-image-popup-modal .c-product-popup-modal__content-info {
+    padding: 20px;
+}
+
+.c-product-image-popup-modal .c-product-popup-modal__content-info img {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    margin-top: 20px;
+    display: block;
+    border-radius: 4px;
+    object-fit: cover;
+}
+
+.c-product-image-popup-modal modal-dialog.product-popup-modal {
+    background-color: rgba(0, 0, 0, 0.7) !important;
+}
+
+.c-product-image-popup-modal .product-popup-modal__content {
+    background-color: #ffffff !important;
+    border: none !important;
+    border-radius: 12px !important;
+}
+
+.c-product-image-popup-modal .c-product-popup-modal__toggle {
+    background: #FF8A00;
+
+}
 
 
 
 
 
 /* ---------------------------------------
-    画像位置の調整
+    スペーサー
 ------------------------------------------ */
+/* liquidファイルに直接記述 */
 
 
 /* ---------------------------------------
-    矢印の調整
+    購入ボタンのスタイル
 ------------------------------------------ */
+
+.c-product-form .c-product-form__submit {
+    background-color: #111111 !important;
+    color: #ffffff !important;
+    border-radius: 50px !important;
+    transition: all 0.3s ease;
+}
+
+.c-product-form .product-form__buttons .c-product-form__submit:not([disabled]):hover {
+    background-color: #FF8A00 !important;
+    color: #FFFFFF !important;
+    border: 1px solid #ffad4e !important;
+    box-shadow: none;
+}
+
+.c-product-form .c-product-form__buttons .c-product-form__submit[disabled],
+.c-product-form .c-product-form__buttons .c-product-form__submit[aria-disabled="true"] {
+    background-color: #e9e9e9 !important;
+    color: #888888 !important;
+    border: 1px solid #e9e9e9 !important;
+    cursor: not-allowed;
+}
+
+.c-product-form .c-payment-methods-wrapper {
+    text-align: center;
+    margin-top: 12px;
+}
+
+.c-product-form .c-payment-icons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.c-product-form .c-payment-icons li {
+    display: block;
+    width: auto;
+    height: auto;
+}
+
+.c-product-form .c-loading__spinner::after {
+    border: none;
+}
+
+
+.product-form__buttons .product-form__submit,
+.product-form__buttons .product-form__submit::before,
+.product-form__buttons .product-form__submit::after {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    --border-offset: 0px !important;
+    --border-opacity: 0 !important;
+}
+
+.product-form__buttons .product-form__submit:focus,
+.product-form__buttons .product-form__submit:focus-visible {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+
+/* ---------------------------------------
+    シッピングバーのスタイル
+------------------------------------------ */
+
+.c-main-product .c-shipping-bar {
+    margin-bottom: 16px;
+}
+
+.c-main-product .c-shipping-bar__inner {
+    padding: 10px 16px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    border-radius: 10px;
+    background: #4D8412;
+
+}
+
+.c-main-product .c-shipping-bar__text {
+    margin-top: 0;
+    margin-bottom: 0;
+    color: #FFFFFF;
+}
+
+.c-main-product .c-shipping-bar__icon {
+    color: #FFFFFF;
+}
