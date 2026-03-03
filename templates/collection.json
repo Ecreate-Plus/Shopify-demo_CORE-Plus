@@ -75,12 +75,27 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "c_product_benefits_DVfgqa": {
+      "type": "c-product-benefits",
+      "name": "カスタム：商品の訴求",
+      "settings": {
+        "image_pc": "shopify://shop_images/Rectangle_111.png",
+        "image_sp": "shopify://shop_images/va_77f036d4-33ad-43b5-84e1-7da2930d3a56.png",
+        "text_sp": "",
+        "padding-top_pc": 0,
+        "padding-bottom_pc": 0,
+        "padding-top_sp": 0,
+        "padding-bottom_sp": 0,
+        "color_scheme": "scheme-2"
+      }
     }
   },
   "order": [
     "c_collection_banner_aApc3M",
     "c_main_collection_product_grid_4Amdwc",
     "banner",
-    "product-grid"
+    "product-grid",
+    "c_product_benefits_DVfgqa"
   ]
 }

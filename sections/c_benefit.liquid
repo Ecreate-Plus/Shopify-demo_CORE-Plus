@@ -1,0 +1,390 @@
+{{ 'c_benefit.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: calc({{ section.settings.padding-top_sp }}px);
+    padding-bottom: calc({{ section.settings.padding-bottom_sp }}px);
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding-top_pc }}px;
+      padding-bottom: {{ section.settings.padding-bottom_pc }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="c-benefit section-{{ section.id }}-padding">
+  {%- assign pc_image = product.metafields.custom['benefits-image_pc'] -%}
+  {%- assign sp_image = product.metafields.custom['benefits-image_sp'] -%}
+
+  <section class="c-product-benefit__section" {{ section.shopify_attributes }}>
+    <div class="c-benefit__container">
+      {% if pc_image != blank %}
+        <picture>
+          {% if sp_image != blank %}
+            <source
+              media="(max-width: 768px)"
+              srcset="{{ sp_image | image_url: width: 800 }}"
+            >
+          {% endif %}
+          <img
+            class="c-image"
+            src="{{ pc_image | image_url: width: 1920 }}"
+            width="1920"
+            height="800"
+            alt="{{ pc_image.alt | escape }}"
+            loading="lazy"
+            style="width: 100%; height: auto; display: block;"
+          >
+        </picture>
+
+        {% if sp_image != blank %}
+          {% if section.settings['text_sp-1'] != blank %}
+            <span
+              class="c-benefit__text c-benefit__text--sp c-benefit__text--sp-1"
+              style="font-size: {{ section.settings.font_size_sp-1 }}px;"
+            >
+              {{ section.settings['text_sp-1'] | newline_to_br }}
+            </span>
+          {% endif %}
+
+          {% if section.settings['text_sp-2'] != blank %}
+            <span
+              class="c-benefit__text c-benefit__text--sp c-benefit__text--sp-2"
+              style="font-size: {{ section.settings.font_size_sp-2 }}px;"
+            >
+              {{ section.settings['text_sp-2'] | newline_to_br }}
+            </span>
+          {% endif %}
+
+          {% if section.settings['text_sp-3'] != blank %}
+            <span
+              class="c-benefit__text c-benefit__text--sp c-benefit__text--sp-3"
+              style="font-size: {{ section.settings.font_size_sp-3 }}px;"
+            >
+              {{ section.settings['text_sp-3'] | newline_to_br }}
+            </span>
+          {% endif %}
+
+          {% if section.settings['text_sp-4'] != blank %}
+            <span
+              class="c-benefit__text c-benefit__text--sp c-benefit__text--sp-4"
+              style="font-size: {{ section.settings.font_size_sp-4 }}px;"
+            >
+              {{ section.settings['text_sp-4'] | newline_to_br }}
+            </span>
+          {% endif %}
+          {% if section.settings['text_sp-5'] != blank %}
+            <span
+              class="c-benefit__text c-benefit__text--sp c-benefit__text--sp-5"
+              style="font-size: {{ section.settings.font_size_sp-5 }}px;"
+            >
+              {{ section.settings['text_sp-5'] | newline_to_br }}
+            </span>
+          {% endif %}
+        {% endif %}
+
+        {% if section.settings['text_pc-1'] != blank %}
+          <span
+            class="c-benefit__text c-benefit__text--pc c-benefit__text--pc-1"
+            style="font-size: {{ section.settings.font_size_pc-1 }}px;"
+          >
+            {{ section.settings['text_pc-1'] | newline_to_br }}
+          </span>
+        {% endif %}
+        {% if section.settings['text_pc-2'] != blank %}
+          <span
+            class="c-benefit__text c-benefit__text--pc c-benefit__text--pc-2"
+            style="font-size: {{ section.settings.font_size_pc-2 }}px;"
+          >
+            {{ section.settings['text_pc-2'] | newline_to_br }}
+          </span>
+        {% endif %}
+        {% if section.settings['text_pc-3'] != blank %}
+          <span
+            class="c-benefit__text c-benefit__text--pc c-benefit__text--pc-3"
+            style="font-size: {{ section.settings.font_size_pc-3 }}px;"
+          >
+            {{ section.settings['text_pc-3'] | newline_to_br }}
+          </span>
+        {% endif %}
+        {% if section.settings['text_pc-4'] != blank %}
+          <span
+            class="c-benefit__text c-benefit__text--pc c-benefit__text--pc-4"
+            style="font-size: {{ section.settings.font_size_pc-4 }}px;"
+          >
+            {{ section.settings['text_pc-4'] | newline_to_br }}
+          </span>
+        {% endif %}
+        {% if section.settings['text_pc-5'] != blank %}
+          <span
+            class="c-benefit__text c-benefit__text--pc c-benefit__text--pc-5"
+            style="font-size: {{ section.settings.font_size_pc-5 }}px;"
+          >
+            {{ section.settings['text_pc-5'] | newline_to_br }}
+          </span>
+        {% endif %}
+      {% endif %}
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "カスタム：商品ベネフィット",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image_pc",
+      "label": "PC画像"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_sp",
+      "label": "SP画像"
+    },
+    {
+      "type": "header",
+      "content": "テキストの設定 - 1"
+    },
+    {
+      "type": "textarea",
+      "id": "text_pc-1",
+      "label": "画像テキスト（PC）",
+      "default": "コアプラスのボトルドリンクは、完全栄養食です。私たちの体の基礎となる5大栄養素が全て含まれています。"
+    },
+    {
+      "type": "textarea",
+      "id": "text_sp-1",
+      "label": "画像テキスト（SP）",
+      "default": "コアプラスのボトルドリンクは、完全栄養食です。私たちの体の基礎となる5大栄養素が全て含まれています。"
+    },
+    {
+      "type": "range",
+      "id": "font_size_pc-1",
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "フォントサイズ（PC）",
+      "default": 22
+    },
+    {
+      "type": "range",
+      "id": "font_size_sp-1",
+      "min": 10,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "フォントサイズ（SP）",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "テキストの設定 - 2"
+    },
+    {
+      "type": "text",
+      "id": "text_pc-2",
+      "label": "画像テキスト（PC）",
+      "default": "1食あたりの価格 685円"
+    },
+    {
+      "type": "text",
+      "id": "text_sp-2",
+      "label": "画像テキスト（SP）",
+      "default": "1食あたりの価格 685円"
+    },
+
+    {
+      "type": "range",
+      "id": "font_size_pc-2",
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "フォントサイズ（PC）",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "font_size_sp-2",
+      "min": 10,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "フォントサイズ（SP）",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "テキストの設定 - 3"
+    },
+    {
+      "type": "text",
+      "id": "text_pc-3",
+      "label": "画像テキスト（PC）",
+      "default": "タンパク質 約40g"
+    },
+    {
+      "type": "text",
+      "id": "text_sp-3",
+      "label": "画像テキスト（SP）",
+      "default": "タンパク質 約40g"
+    },
+    {
+      "type": "range",
+      "id": "font_size_pc-3",
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "フォントサイズ（PC）",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "font_size_sp-3",
+      "min": 10,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "フォントサイズ（SP）",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "テキストの設定 - 4"
+    },
+    {
+      "type": "text",
+      "id": "text_pc-4",
+      "label": "画像テキスト（PC）",
+      "default": "ビタミン&ミネラル 20種類以上"
+    },
+    {
+      "type": "text",
+      "id": "text_sp-4",
+      "label": "画像テキスト（SP）",
+      "default": "ビタミン&ミネラル 20種類以上"
+    },
+
+    {
+      "type": "range",
+      "id": "font_size_pc-4",
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "フォントサイズ（PC）",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "font_size_sp-4",
+      "min": 10,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "フォントサイズ（SP）",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "テキストの設定 - 5"
+    },
+    {
+      "type": "text",
+      "id": "text_pc-5",
+      "label": "画像テキスト（PC）",
+      "default": "完全オーガニック"
+    },
+    {
+      "type": "text",
+      "id": "text_sp-5",
+      "label": "画像テキスト（SP）",
+      "default": "完全オーガニック"
+    },
+    {
+      "type": "range",
+      "id": "font_size_pc-5",
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "フォントサイズ（PC）",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "font_size_sp-5",
+      "min": 10,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "フォントサイズ（SP）",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "デスクトップ"
+    },
+    {
+      "type": "range",
+      "id": "padding-top_pc",
+      "label": "セクションの上部の余白",
+      "unit": "px",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-bottom_pc",
+      "label": "セクションの下部の余白",
+      "unit": "px",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "モバイル"
+    },
+    {
+      "type": "range",
+      "id": "padding-top_sp",
+      "label": "セクションの上部の余白",
+      "unit": "px",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-bottom_sp",
+      "label": "セクションの下部の余白",
+      "unit": "px",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 0
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    }
+  ],
+  "presets": [
+    {
+      "name": "カスタム：商品ベネフィット"
+    }
+  ]
+}
+{% endschema %}

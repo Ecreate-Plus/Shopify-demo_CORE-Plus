@@ -70,7 +70,7 @@
         "shipping_bar_NQwQaa": {
           "type": "shipping_bar",
           "settings": {
-            "threshold": 10000,
+            "threshold": 15000,
             "text_before": "あと",
             "text_after": "のお買い上げで、送料無料になります。"
           }
@@ -91,7 +91,7 @@
       "settings": {
         "enable_sticky_info": true,
         "color_scheme": "scheme-2",
-        "media_size": "large",
+        "media_size": "small",
         "constrain_to_viewport": true,
         "media_fit": "contain",
         "gallery_layout": "stacked",
@@ -100,8 +100,10 @@
         "image_zoom": "lightbox",
         "hide_variants": false,
         "enable_video_looping": false,
-        "padding_top": 36,
-        "padding_bottom": 36
+        "padding_top_pc": 96,
+        "padding_bottom_pc": 96,
+        "padding_top_sp": 64,
+        "padding_bottom_sp": 64
       }
     },
     "main": {
@@ -181,12 +183,12 @@
     "related-products": {
       "type": "related-products",
       "settings": {
-        "heading": "You may also like",
+        "heading": "あなたにおすすめの商品",
         "heading_size": "h2",
         "products_to_show": 4,
         "columns_desktop": 4,
         "columns_mobile": "2",
-        "color_scheme": "scheme-1",
+        "color_scheme": "scheme-2",
         "image_ratio": "square",
         "image_shape": "default",
         "show_secondary_image": true,
@@ -195,11 +197,45 @@
         "padding_top": 36,
         "padding_bottom": 28
       }
+    },
+    "c_benefit_gzXDn3": {
+      "type": "c_benefit",
+      "name": "カスタム：商品ベネフィット",
+      "settings": {
+        "image_pc": "{{ product.metafields.custom[\"benefits-image_pc\"].value }}",
+        "image_sp": "{{ product.metafields.custom[\"benefits-image_sp\"].value }}",
+        "text_pc-1": "コアプラスのボトルドリンクは、\n完全栄養食です。\n私たちの体の基礎となる\n5大栄養素が全て含まれています。",
+        "text_sp-1": "コアプラスのボトルドリンクは、\n完全栄養食です。\n私たちの体の基礎となる\n5大栄養素が全て含まれています。",
+        "font_size_pc-1": 22,
+        "font_size_sp-1": 16,
+        "text_pc-2": "1食あたりの価格 685円",
+        "text_sp-2": "1食あたりの価格 685円",
+        "font_size_pc-2": 20,
+        "font_size_sp-2": 14,
+        "text_pc-3": "タンパク質 約40g",
+        "text_sp-3": "タンパク質 約40g",
+        "font_size_pc-3": 20,
+        "font_size_sp-3": 14,
+        "text_pc-4": "ビタミン&ミネラル 20種類以上",
+        "text_sp-4": "ビタミン&ミネラル 20種類以上",
+        "font_size_pc-4": 20,
+        "font_size_sp-4": 14,
+        "text_pc-5": "完全オーガニック",
+        "text_sp-5": "完全オーガニック",
+        "font_size_pc-5": 20,
+        "font_size_sp-5": 14,
+        "padding-top_pc": 0,
+        "padding-bottom_pc": 0,
+        "padding-top_sp": 0,
+        "padding-bottom_sp": 0,
+        "color_scheme": ""
+      }
     }
   },
   "order": [
     "c_main_product_wBhzBR",
     "main",
-    "related-products"
+    "related-products",
+    "c_benefit_gzXDn3"
   ]
 }

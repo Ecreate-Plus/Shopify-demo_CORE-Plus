@@ -2,6 +2,26 @@
     全体のレイアウト
 ------------------------------------------ */
 
+.c-main-product.page-width {
+    max-width: 95% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+@media screen and (max-width: 749px) {
+    .c-main-product.page-width {
+        max-width: 100% !important;
+        padding-left: 1.5rem !important;
+        padding-right: 1.5rem !important;
+    }
+}
+
+.c-main-product .c-product__info-container {
+    max-width: 600px;
+    width: 100%;
+
+}
+
 /* ---------------------------------------
     レビューテキストのスタイル
 ------------------------------------------ */
@@ -133,6 +153,22 @@
 /* ---------------------------------------
     購入ボタンのスタイル
 ------------------------------------------ */
+.c-main-product .c-product-form {
+    width: 100%;
+    display: inline-block;
+}
+
+.c-main-product .c-product-form__buttons {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.c-main-product .c-product-form__buttons button {
+    max-width: 100%;
+    width: 100%;
+    margin: 0 auto;
+}
+
 
 .c-product-form .c-product-form__submit {
     background-color: #111111 !important;
@@ -208,9 +244,12 @@
 }
 
 .c-main-product .c-shipping-bar__inner {
+    max-width: 600px;
+    margin: 0 auto 16px;
     padding: 10px 16px;
     display: flex;
-    align-items: flex-start;
+    justify-content: center;
+    align-items: center;
     gap: 10px;
     border-radius: 10px;
     background: #4D8412;
@@ -220,6 +259,7 @@
 .c-main-product .c-shipping-bar__text {
     margin-top: 0;
     margin-bottom: 0;
+    line-height: 1.3;
     color: #FFFFFF;
 }
 

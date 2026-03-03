@@ -1,0 +1,162 @@
+/* ---------------------------------------
+    全体のレイアウトとデザイン調整
+------------------------------------------ */
+@media screen and (max-width: 749px) {
+    .c-benefit__text--pc {
+        display: none !important;
+    }
+
+    .c-benefit__text--sp {
+        display: block !important;
+    }
+}
+
+@media screen and (min-width: 750px) {
+    .c-benefit__text--sp {
+        display: none !important;
+    }
+
+    .c-benefit__text--pc {
+        display: block !important;
+    }
+}
+
+.c-benefit .c-benefit__container {
+    position: relative;
+    display: block;
+    width: 100%;
+    line-height: 0 !important;
+    font-size: 0 !important;
+}
+
+.c-benefit .c-benefit__container picture,
+.c-benefit__container .c-image {
+    display: block !important;
+    vertical-align: bottom !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+}
+
+.c-benefit__container .c-image {
+    display: block;
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    vertical-align: bottom;
+    object-fit: cover;
+}
+
+.c-benefit .c-benefit__text {
+    position: absolute;
+    z-index: 10;
+    color: #fff;
+    line-height: 1.5 !important;
+}
+
+/* ---------------------------------------
+    各テキストの表示位置の調整
+------------------------------------------ */
+
+.c-benefit .c-benefit__text--pc-1 {
+    top: 5%;
+    left: 5%;
+    line-height: 1.3;
+    text-shadow: 0px 2px 10px rgba(0, 0, 0, 0.9);
+}
+
+
+.c-benefit .c-benefit__text--pc-2 {
+    bottom: 20%;
+    left: 15%;
+    text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.7);
+}
+
+.c-benefit .c-benefit__text--pc-3 {
+    top: 15%;
+    right: 20%;
+    text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.7);
+}
+
+
+.c-benefit .c-benefit__text--pc-4 {
+    top: 50%;
+    right: 7%;
+    text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.7);
+}
+
+
+.c-benefit .c-benefit__text--pc-5 {
+    text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.7);
+    bottom: 10%;
+    right: 15%;
+}
+
+
+@media screen and (max-width: 750px) {
+    .c-benefit .c-benefit__text--sp-1 {
+        top: 5%;
+        left: 5%;
+        line-height: 1.3;
+        text-shadow: 0px 2px 10px rgba(0, 0, 0, 0.9);
+    }
+
+    .c-benefit .c-benefit__text--sp-2 {
+        bottom: 30%;
+        left: 15%;
+        text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.7);
+    }
+
+    .c-benefit .c-benefit__text--sp-3 {
+        top: 30%;
+        right: 20%;
+        text-shadow: 0px 2px 10px rgba(0, 0, 0, 0.9);
+    }
+
+    .c-benefit .c-benefit__text--sp-4 {
+        top: 50%;
+        right: 10%;
+        text-shadow: 0px 2px 10px rgba(0, 0, 0, 0.9);
+    }
+
+    .c-benefit .c-benefit__text--sp-5 {
+        bottom: 20%;
+        right: 20%;
+        text-shadow: 0px 2px 10px rgba(0, 0, 0, 0.9);
+    }
+}
+
+
+@media screen and (max-width: 550px) {
+    .c-benefit .c-benefit__text--sp-1 {
+        top: 2%;
+        left: 2%;
+        line-height: 1.3;
+        text-shadow: 0px 2px 10px rgba(0, 0, 0, 0.9);
+    }
+
+    .c-benefit .c-benefit__text--sp-2 {
+        bottom: 10%;
+        left: 5%;
+        text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.7);
+    }
+
+    .c-benefit .c-benefit__text--sp-3 {
+        top: 40%;
+        right: 10%;
+        text-shadow: 0px 2px 10px rgba(0, 0, 0, 0.9);
+    }
+
+    .c-benefit .c-benefit__text--sp-4 {
+        top: 50%;
+        right: 5%;
+        text-shadow: 0px 2px 10px rgba(0, 0, 0, 0.9);
+    }
+
+    .c-benefit .c-benefit__text--sp-5 {
+        top: 60%;
+        right: 10%;
+        text-shadow: 0px 2px 10px rgba(0, 0, 0, 0.9);
+    }
+}

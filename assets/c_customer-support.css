@@ -1,0 +1,24 @@
+/* ---------------------------------------
+    全体のレイアウトとデザイン調整
+------------------------------------------ */
+
+.c-customer-support .c-customer-support__inner {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.c-customer-support .c-customer-support__button {
+    margin-top: 2rem;
+}
+
+.c-customer-support .c-customer-support__link {
+    margin-bottom: 10px;
+    border-radius: 30px !important;
+    overflow: hidden;
+}
+
+.c-customer-support .c-customer-support__link::before,
+.c-customer-support .c-customer-support__link::after {
+    border-radius: 30px !important;
+}
