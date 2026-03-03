@@ -1,0 +1,144 @@
+{{ 'c_customer-support.css' | asset_url | stylesheet_tag }}
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top_pc }}px;
+    padding-bottom: {{ section.settings.padding_bottom_pc }}px;
+  }
+
+  @media screen and (max-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top_sp }}px;
+      padding-bottom: {{ section.settings.padding_bottom_sp }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="c-customer-support color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width section-{{ section.id }}-padding">
+    <div class="c-customer-support__inner">
+      {%- if section.settings.heading != blank -%}
+        <h2 class="h1">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+
+      {%- if section.settings.text_1 != blank -%}
+        <div class="rte">
+          {{ section.settings.text_1 | newline_to_br }}
+        </div>
+      {%- endif -%}
+
+      {%- if section.settings.button_label != blank -%}
+        <div class="c-customer-support__button">
+          <a href="{{ section.settings.button_link }}" class="button button--primary c-customer-support__link">
+            {{ section.settings.button_label }}
+          </a>
+        </div>
+      {%- endif -%}
+      {%- if section.settings.text_2 != blank -%}
+        <div class="rte">
+          {{ section.settings.text_2 | newline_to_br }}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "カスタム：カスタマーサポート",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "見出し",
+      "default": "カスタマーサポート"
+    },
+    {
+      "type": "richtext",
+      "id": "text_1",
+      "label": "テキスト",
+      "default": "<p>お問い合わせをご希望のお客さまは、まずは「よくある質問」をご覧ください。もしお探しのトピックスが見つからない場合は、カスタマーサポートチームまでお気軽にお問い合わせください。</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "ボタンのテキスト",
+      "default": "よくある質問はこちら"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "ボタンのリンク先"
+    },
+    {
+      "type": "richtext",
+      "id": "text_2",
+      "label": "テキスト",
+      "default": "<p>カスタマーサポートチームへのお問い合わせをご希望ですか？お気軽に、◯◯◯@core-plus.comまでご連絡下さい。</p>"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "info": "t:sections.all.colors.has_cards_info",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.collection-list.settings.header_mobile.content"
+    },
+    {
+      "type": "header",
+      "content": "デスクトップ"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_pc",
+      "label": "上部の余白(PC)",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "default": 96
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_pc",
+      "label": "下部の余白(PC)",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "default": 96
+    },
+    {
+      "type": "header",
+      "content": "モバイル"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_sp",
+      "label": "上部の余白(SP)",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_sp",
+      "label": "下部の余白(SP )",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 64
+    }
+  ],
+  "presets": [
+    {
+      "name": "カスタム：カスタマーサポート"
+    }
+  ]
+}
+{% endschema %}

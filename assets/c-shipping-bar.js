@@ -59,8 +59,8 @@
             const remaining = this.threshold - totalJPY;
 
             if (remaining <= 0) {
-                this.textEl.innerHTML = '<strong>送料が無料になりました！</strong>';
-                this.innerEl.style.backgroundColor = '#3b823e';
+                this.textEl.innerHTML = '送料が無料になりました！';
+                this.innerEl.style.backgroundColor = '#FF8A00';
                 return;
             }
 
