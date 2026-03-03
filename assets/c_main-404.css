@@ -1,0 +1,75 @@
+/* 404セクション全体の設定（背景色など） */
+
+.c-custom-404__inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    gap: 40px;
+}
+
+/* 左側のテキストエリア */
+.c-custom-404__text-box {
+    flex: 1 1 400px;
+    padding: 20px 0;
+}
+
+/* 右側の画像エリア */
+.c-custom-404__image-box {
+    flex: 1 1 400px;
+    text-align: center;
+}
+
+.c-custom-404__image-box img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+}
+
+/* テキストのデザイン */
+.c-custom-404__heading {
+    font-size: clamp(3rem, 5vw, 5.5rem);
+    /* スマホとPCでサイズを自動調整 */
+    font-weight: bold;
+    line-height: 1.2;
+    color: #4a4a4a;
+    margin-bottom: 10px;
+    letter-spacing: 0.05em;
+}
+
+.c-custom-404__recommend {
+    font-size: clamp(1.6rem, 2.5vw, 2.4rem);
+    font-weight: normal;
+    color: #4a4a4a;
+    margin-bottom: 30px;
+}
+
+.c-custom-404__text {
+    font-size: 1.4rem;
+    color: #666;
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
+
+/* ボタンのデザイン（黒・角丸） */
+.c-custom-404__button {
+    display: inline-block;
+    padding: 15px 40px;
+    background-color: #111;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 50px;
+    /* 完全な角丸（ピルシェイプ） */
+    font-size: 1.4rem;
+    font-weight: bold;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.c-custom-404__button:hover {
+    opacity: 0.8;
+    transform: translateY(-2px);
+    /* ホバー時に少し浮き上がるギミック */
+}

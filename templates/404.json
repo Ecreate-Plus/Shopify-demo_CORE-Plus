@@ -11,7 +11,18 @@
   "sections": {
     "main": {
       "type": "main-404",
-      "settings": {}
+      "settings": {
+        "bg_color": "#f8f6f4",
+        "image": "shopify://shop_images/vdvasvs.png",
+        "heading": "ページが見つかりませんでした。",
+        "text": "<p>お探しのページは、現在ございません。</p>",
+        "button_label": "商品を見る",
+        "button_link": "shopify://collections",
+        "padding_top_pc": 100,
+        "padding_bottom_pc": 100,
+        "padding_top_sp": 60,
+        "padding_bottom_sp": 60
+      }
     }
   },
   "order": [

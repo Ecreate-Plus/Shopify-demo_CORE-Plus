@@ -1,23 +1,166 @@
-<style type="text/css">
-  .template-404 .title + * {
-    margin-top: 1rem;
-  }
+{{ 'c_main-404.css' | asset_url | stylesheet_tag }}
 
-  @media screen and (min-width: 750px) {
-    .template-404 .title + * {
-      margin-top: 2rem;
+{%- style -%}
+      .section-{{ section.id }}-padding {
+        padding-top: {{ section.settings.padding_top_pc }}px;
+        padding-bottom: {{ section.settings.padding_bottom_pc }}px;
+      }
+
+  .c-custom-404 {
+      background-color: {{ section.settings.bg_color }};
+      width: 100%;
+      overflow: hidden;
     }
-  }
-</style>
 
-<div class="template-404 page-width page-margin center">
-  <p>
-    {{ 'templates.404.subtext' | t }}
-  </p>
-  <h1 class="title">
-    {{ 'templates.404.title' | t }}
-  </h1>
-  <a href="{{ routes.all_products_collection_url }}" class="button">
-    {{ 'general.continue_shopping' | t }}
-  </a>
+      /* モバイル対応（縦並びにする） */
+      @media screen and (max-width: 750px) {
+        .section-{{ section.id }}-padding {
+          padding-top: {{ section.settings.padding_top_sp }}px;
+          padding-bottom: {{ section.settings.padding_bottom_sp }}px;
+        }
+        .c-custom-404__inner {
+          flex-direction: column-reverse; /* モバイルの時は画像を上にしたい場合は column に変更 */
+          text-align: center;
+        }
+        .c-custom-404__heading {
+          margin-top: 20px;
+        }
+      }
+{%- endstyle -%}
+
+<div class="c-custom-404 section-{{ section.id }}-padding">
+  <div class="c-custom-404__inner page-width">
+    <div class="c-custom-404__text-box">
+      {%- if section.settings.heading != blank -%}
+        <h1 class="c-custom-404__heading">{{ section.settings.heading | escape | newline_to_br }}</h1>
+      {%- endif -%}
+
+      {%- if section.settings.text != blank -%}
+        <div class="c-custom-404__text">
+          {{ section.settings.text }}
+        </div>
+      {%- endif -%}
+
+      {%- if section.settings.button_label != blank -%}
+        <a href="{{ section.settings.button_link }}" class="c-custom-404__button">
+          {{ section.settings.button_label | escape }}
+        </a>
+      {%- endif -%}
+    </div>
+
+    <div class="c-custom-404__image-box">
+      {%- if section.settings.image != blank -%}
+        {{ section.settings.image | image_url: width: 800 | image_tag: loading: 'lazy', alt: section.settings.heading }}
+      {%- else -%}
+        {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+      {%- endif -%}
+      {%- if section.settings.recommend != blank -%}
+        <div>
+          <p class="c-custom-404__recommend">{{ section.settings.recommend | escape }}</p>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
 </div>
+
+{% schema %}
+{
+  "name": "カスタム：404ページ",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "背景色",
+      "default": "#f8f6f4"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "画像"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "大見出し",
+      "default": "ページが見つ\nかりませんで\nした。",
+      "info": "改行したい場所でEnterを押してください"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "テキスト",
+      "default": "<p>お探しのページは、現在ございません。</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "ボタンテキスト",
+      "default": "商品を見る"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "ボタンのリンク先"
+    },
+    {
+      "type": "text",
+      "id": "recommend",
+      "label": "テキスト",
+      "default": "期間限定パッケージやってます。"
+    },
+    {
+      "type": "header",
+      "content": "デスクトップの余白"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_pc",
+      "label": "上部の余白(PC)",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_pc",
+      "label": "下部の余白(PC)",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "default": 100
+    },
+    {
+      "type": "header",
+      "content": "モバイルの余白"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_sp",
+      "label": "上部の余白(SP)",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_sp",
+      "label": "下部の余白(SP)",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 60
+    }
+  ],
+  "presets": [
+    {
+      "name": "カスタム：404ページ"
+    }
+  ]
+}
+{% endschema %}
