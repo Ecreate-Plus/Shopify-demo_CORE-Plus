@@ -54,12 +54,6 @@
           "type": "description",
           "settings": {}
         },
-        "spacer_gzx7Wi": {
-          "type": "spacer",
-          "settings": {
-            "height": 200
-          }
-        },
         "buy_buttons_rYKMDi": {
           "type": "buy_buttons",
           "settings": {
@@ -83,7 +77,6 @@
         "product_tags_RwdHCP",
         "c_image_popup_FB8tbn",
         "description_FFd9eM",
-        "spacer_gzx7Wi",
         "buy_buttons_rYKMDi",
         "shipping_bar_NQwQaa"
       ],
