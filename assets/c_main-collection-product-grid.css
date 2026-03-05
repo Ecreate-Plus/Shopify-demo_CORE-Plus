@@ -98,3 +98,12 @@
     top: auto;
     left: auto;
 }
+
+/* 定期購入アプリのUIをコレクションページでは非表示 */
+
+.c-main-collection-product-grid .sealsubs-container,
+.c-main-collection-product-grid .sls-select-container,
+.c-main-collection-product-grid .sls-option-container,
+.c-main-collection-product-grid .sls-discount-description {
+    display: none !important;
+}

@@ -11,7 +11,7 @@
   {{ 'quick-add.css' | asset_url | stylesheet_tag }}
 {%- endunless -%}
 
-{%- if section.settings.quick_add == 'standard' -%}
+{%- if section.settings.quick_add == 'standard' or section.settings.quick_add == 'bulk' -%}
   <script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
   <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
 {%- endif -%}

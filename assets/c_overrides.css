@@ -1,53 +1,117 @@
-/* =========================
-   Seal subscriptionsのUI
-============================ */
+/* ========================================
+   Seal subscriptionsのUI 決定版
+======================================== */
 
 /* ---------------------------------------
     全体のレイアウト
 ------------------------------------------ */
-
-body .sealsubs-container {
+body .sls-purchase-options-container {
     display: flex;
     flex-direction: column-reverse;
 }
 
+.seal-col.seal-col-radio {
+    padding-right: 30px;
+    margin-right: 30px;
+}
+
+body .sls-selling-plan-group-first-line {
+    justify-content: flex-start;
+    align-items: center;
+    gap: 70px;
+}
+
+body .selling-plan-group-options-name-select {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 30px;
+    padding-right: 20px;
+}
+
 body .sls-select-container {
-    margin-left: 15px;
+    margin-left: 0;
 }
 
-.sls-discount-description .seal-col {
-    padding-top: 20px !important;
+body .sls-widget-branding,
+body .sls-purchase-options-label {
+    display: none !important;
 }
 
+/* ---------------------------------------
+    【1回限りの購入（1番目の箱）】の専用デザイン
+------------------------------------------ */
+body .sls-purchase-options-container div.sls-option-container:nth-of-type(1) label.sls-selling-plan-group-name {
+    font-weight: normal !important;
+}
 
-/*--- 毎回15%OFFの帯 ---*/
-.sls-option-container:last-child {
-    /* boxの上に余白を作る */
+/* ---------------------------------------
+    【定期購入（2番目の箱）】の専用デザイン
+------------------------------------------ */
+body div.sls-option-container:nth-of-type(2) div.sls-price span.money {
+    font-weight: bold !important;
+    font-size: 1.75em !important;
+    color: #d32f2f !important;
+}
+
+body .sls-purchase-options-container div.sls-option-container:nth-of-type(2) .seal-col-radio {
     position: relative !important;
-    padding-top: 45px !important;
-    overflow: hidden !important;
+    top: 8px !important;
 }
 
-.sls-option-container:last-child::before {
-    /* 絶対配置で余白を埋める */
-    content: "毎回15%OFF!!" !important;
+/* ---------------------------------------
+    選択中（アクティブ）の箱全体のデザイン
+------------------------------------------ */
+body .sls-option-container.seal-table.sls-active {
+    position: relative !important;
+    overflow: hidden !important;
+    padding-top: 48px !important;
+    border: 4px solid #d7cbb9 !important;
+    border-radius: 16px !important;
+    background: #ffffff !important;
+}
+
+/* 帯の作成 */
+body .sls-option-container.seal-table.sls-active::before {
+    content: "毎回20%OFF!!" !important;
+    display: block !important;
     position: absolute !important;
     top: 0 !important;
     left: 0 !important;
     width: 100% !important;
-    box-sizing: border-box !important;
-    margin: 0 !important;
-    /* デザイン */
-    display: block !important;
     background-color: #d7cbb9 !important;
     color: #111 !important;
     text-align: center !important;
-    font-weight: bold !important;
+    font-weight: 700 !important;
+    font-family: var(--font-Montserrat) !important;
     font-size: 13px !important;
-    padding: 8px 0 !important;
+    padding: 10px 0 !important;
+    border-radius: 11px 11px 0 0 !important;
 }
 
-/*--- フォントの調整  ---*/
-.sls-option-container:first-child label {
-    font-weight: normal !important;
+/* 15%テキストの書き換え */
+body .sls-discount-description {
+    font-size: 0 !important;
+}
+
+body .sls-discount-description::before {
+    content: "*定期購入ご利用で初回注文から毎回20%OFF" !important;
+    font-size: 13px !important;
+    font-style: italic !important;
+    color: #4D4D4D !important;
+    display: block !important;
+}
+
+/* ========================================
+   「1回限りの購入」が選択された時の打ち消し処理
+======================================== */
+body .sls-purchase-options-container div.sls-option-container:nth-of-type(1).sls-active::before {
+    display: none !important;
+    content: none !important;
+}
+
+body .sls-purchase-options-container div.sls-option-container:nth-of-type(1).sls-active {
+    padding: 20px !important;
 }
