@@ -115,3 +115,8 @@ body .sls-purchase-options-container div.sls-option-container:nth-of-type(1).sls
 body .sls-purchase-options-container div.sls-option-container:nth-of-type(1).sls-active {
     padding: 20px !important;
 }
+
+.a {
+    margin-top: 0;
+    margin-bottom: 0;
+}

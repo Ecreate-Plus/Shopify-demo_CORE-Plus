@@ -100,7 +100,10 @@
                   "
                   {{ block.shopify_attributes }}
                 >
-                  {{- block.settings.text -}}
+                  {%- comment -%}
+                    メタフィールドがあれば表示し、空なら管理画面のテキストを表示する
+                  {%- endcomment -%}
+                  {{- product.metafields.custom.flavor.value | default: block.settings.text -}}
                 </p>
                 {% comment %}---------- レビューテキストの追加 --------------{% endcomment %}
               {%- when 'dummy_review' -%}
@@ -145,22 +148,6 @@
                 {% comment %}---------------- 商品タグ -----------------------{% endcomment %}
               {%- when 'product_tags' -%}
                 <div class="c-product__tags-container" {{ block.shopify_attributes }}>
-                  {%- if block.settings['product_tag-1'] != blank -%}
-                    <span class="c-product__tag-item">{{ block.settings['product_tag-1'] }}</span>
-                  {%- endif -%}
-                  {%- if block.settings['product_tag-2'] != blank -%}
-                    <span class="c-product__tag-item">{{ block.settings['product_tag-2'] }}</span>
-                  {%- endif -%}
-                  {%- if block.settings['product_tag-3'] != blank -%}
-                    <span class="c-product__tag-item">{{ block.settings['product_tag-3'] }}</span>
-                  {%- endif -%}
-                  {%- if block.settings['product_tag-4'] != blank -%}
-                    <span class="c-product__tag-item">{{ block.settings['product_tag-4'] }}</span>
-                  {%- endif -%}
-                  {%- if block.settings['product_tag-5'] != blank -%}
-                    <span class="c-product__tag-item">{{ block.settings['product_tag-5'] }}</span>
-                  {%- endif -%}
-
                   {% # --- パターン1：メタフィールドを指定。最悪直書きもOKだが、全て同じテキストになる。 --- %}
                   {%- if product.metafields.custom.tag_1 != blank -%}
                     <span class="c-product__tag-item">{{ product.metafields.custom.tag_1 }}</span>
@@ -194,14 +181,16 @@
                   data-modal="#PopupModal-{{ block.id }}"
                   {{ block.shopify_attributes }}
                 >
-                  <button
-                    id="ProductPopup-{{ block.id }}"
-                    class="product-popup-modal__button c-product-popup-modal__button link"
-                    type="button"
-                    aria-haspopup="dialog"
-                  >
-                    {{ block.settings.link_label }}
-                  </button>
+                  {% if product.metafields.custom.nutrition.value != blank %}
+                    <button
+                      id="ProductPopup-{{ block.id }}"
+                      class="product-popup-modal__button c-product-popup-modal__button link"
+                      type="button"
+                      aria-haspopup="dialog"
+                    >
+                      {{ block.settings.link_label }}
+                    </button>
+                  {% endif %}
                 </modal-opener>
                 {% comment %} ---------------------------------------------- {% endcomment %}
               {%- when 'price' -%}
