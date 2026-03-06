@@ -29,7 +29,7 @@
         "text_tTkdiw": {
           "type": "text",
           "settings": {
-            "text": "プレーンバナナ味",
+            "text": "ストロベリー味",
             "text_style": "body"
           }
         },
@@ -54,6 +54,24 @@
           "type": "description",
           "settings": {}
         },
+        "variant_picker_rpm9XV": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "price_nRYLbW": {
+          "type": "price",
+          "settings": {}
+        },
+        "custom_liquid_UNGXTA": {
+          "type": "custom_liquid",
+          "name": "1本あたりの金額",
+          "settings": {
+            "custom_liquid": "{%- comment -%} 1. 入り数と「単位」をメタフィールドから取得 {%- endcomment -%}\n{%- assign unit_count = product.metafields.custom.unit_count.value | plus: 0 -%}\n{%- assign count_name = product.metafields.custom.count_name.value | default: '個' -%}\n\n{%- comment -%} 2. 入り数が0より大きい場合のみ計算と表示を実行 {%- endcomment -%}\n{%- if unit_count > 0 -%}\n  {%- assign current_price = product.selected_or_first_available_variant.price -%}\n  {%- assign unit_price = current_price | divided_by: unit_count -%}\n\n  <div style=\"font-size: 14px; color: #555; text-align: left; margin-top: 0; margin-bottom: 0;\">\n    <span style=\"font-weight: bold; color: #333;\">1{{ count_name }}当たり {{ unit_price | money }}</span>\n    <span style=\"font-size: 12px; color: #888;\">（計 {{ unit_count }} {{ count_name }}セット）</span>\n  </div>\n{%- endif -%}"
+          }
+        },
         "buy_buttons_rYKMDi": {
           "type": "buy_buttons",
           "settings": {
@@ -77,6 +95,9 @@
         "product_tags_RwdHCP",
         "c_image_popup_FB8tbn",
         "description_FFd9eM",
+        "variant_picker_rpm9XV",
+        "price_nRYLbW",
+        "custom_liquid_UNGXTA",
         "buy_buttons_rYKMDi",
         "shipping_bar_NQwQaa"
       ],
@@ -87,11 +108,11 @@
         "media_size": "small",
         "constrain_to_viewport": true,
         "media_fit": "contain",
-        "gallery_layout": "stacked",
+        "gallery_layout": "thumbnail",
         "mobile_thumbnails": "hide",
         "media_position": "left",
         "image_zoom": "lightbox",
-        "hide_variants": false,
+        "hide_variants": true,
         "enable_video_looping": false,
         "padding_top_pc": 96,
         "padding_bottom_pc": 96,
