@@ -3,20 +3,21 @@
 ------------------------------------------ */
 
 /* 全体的な大枠のレイアウト */
-.c-card__inner {
+.c-featured-collection-list .c-card__inner {
     position: relative;
 }
 
 
+
 @media screen and (max-width: 990px) {
-    .c-collection-list {
+    .c-featured-collection-list .c-featured-collection-list__list {
         justify-content: center;
         gap: 30px;
     }
 }
 
 @media screen and (max-width: 990px) {
-    .c-collection-list .c-collection-list__item {
+    .c-featured-collection-list .c-featured-collection-list__item {
         max-width: 250px;
         width: 230px;
         height: auto;
@@ -24,35 +25,32 @@
 }
 
 @media screen and (max-width: 620px) {
-
-    .c-collection-list {
+    .c-featured-collection-list .c-featured-collection-list__list {
         display: grid;
-        place-content: center;
-        place-items: center;
         grid-template-columns: repeat(2, 1fr);
+        place-items: center;
         column-gap: 10px;
         row-gap: 20px;
-    }
-
-    .c-collection-list .c-collection-list__item {
-        /* max-width: 200px; */
-        width: 250px;
-        flex: 1 1 100px;
     }
 }
 
 @media screen and (max-width: 490px) {
-    .c-collection-list .c-collection-list__item {
+    .c-featured-collection-list .c-featured-collection-list__item {
         max-width: 180px;
         min-width: 100px;
         width: 100%;
     }
 }
 
-.c-card__content {
+.c-featured-collection-list .c-card__content {
     position: absolute;
     bottom: 0;
     right: 0;
+}
+
+.c-featured-collection-list .c-card__information {
+    padding-right: 20px !important;
+    padding-left: 20px !important;
 }
 
 .c-featured-collection-list .c-card__information {
@@ -71,7 +69,7 @@
     margin-right: 5px;
 }
 
-.c-all-collection-button__wrapper {
+.c-featured-collection-list .c-all-collection-button__wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -80,7 +78,7 @@
 }
 
 @media screen and (max-width: 750px) {
-    .c-all-collection-button__wrapper {
+    .c-featured-collection-list .c-all-collection-button__wrapper {
         flex-direction: column;
         gap: 10px;
     }
@@ -90,29 +88,29 @@
 
 /* デザイン調整 */
 
-.c-card__media .media {
+.c-featured-collection-list .c-card__media .media {
     border-radius: 10px;
     overflow: hidden;
 }
 
-.c-card__media .media img {
+.c-featured-collection-list .c-card__media .media img {
     border-radius: inherit;
     overflow: hidden;
 }
 
-.c-card__heading {
+.c-featured-collection-list .c-card__heading {
     color: #FFF;
     font-weight: bold;
     text-shadow: 0 4px 4px rgba(0, 0, 0, 1);
 }
 
 @media screen and (max-width: 490px) {
-    .c-card__heading {
-        font-size: 1.5rem;
+    .c-featured-collection-list .c-card__heading {
+        font-size: 1.25rem;
     }
 }
 
-.c-card__heading .c-icon-wrap {
+.c-featured-collection-list .c-card__heading .c-icon-wrap {
     width: 30px;
     height: 30px;
     display: grid;
@@ -122,26 +120,26 @@
 }
 
 @media screen and (max-width: 490px) {
-    .c-card__heading .c-icon-wrap {
-        width: 20px;
-        height: 20px;
+    .c-featured-collection-list .c-card__heading .c-icon-wrap {
+        width: 15px;
+        height: 15px;
     }
 }
 
 @media screen and (max-width: 490px) {
-    .c-card__heading .c-icon-wrap svg {
+    .c-featured-collection-list .c-card__heading .c-icon-wrap svg {
         width: 1rem;
         height: 1rem;
     }
 }
 
-.c-all-collection-button__text {
+.c-featured-collection-list .c-all-collection-button__text {
     font-size: 1rempx;
     font-weight: 500;
     color: #1A2421;
 }
 
-.c-all-collection-button__button {
+.c-featured-collection-list .c-all-collection-button__button {
     width: 190px;
     height: 54px;
     padding: 20px 74px;
@@ -153,13 +151,13 @@
     transition: background 0.3s ease;
 }
 
-.c-all-collection-button__button:hover {
+.c-featured-collection-list .c-all-collection-button__button:hover {
     background: #4D8412;
     border: 3px solid #FF8A00;
     opacity: 0.9;
 }
 
-.c-all-collection-button__link {
+.c-featured-collection-list .c-all-collection-button__link {
     text-decoration: none;
     color: #FFF;
     font-weight: bold;
@@ -173,11 +171,11 @@ c-card__innerを基準に、aタグの上に透明なマスクを配置。
 クリック可能な範囲を広げた。
 */
 
-.c-card__inner {
+.c-featured-collection-list .c-card__inner {
     position: relative;
 }
 
-.c-card__overlay-link {
+.c-featured-collection-list .c-card__overlay-link {
     position: absolute;
     top: 0;
     left: 0;

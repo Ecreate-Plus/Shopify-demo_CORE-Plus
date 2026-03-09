@@ -1,3 +1,7 @@
+/* ---------------------------------------
+    全体のレイアウトとデザイン調整
+------------------------------------------ */
+
 .c_header-menu-title--wrapper {
     display: flex;
     align-items: center;
@@ -42,4 +46,40 @@
 .c_header__icon .cart-count-bubble {
     top: 0.3rem;
     right: 0.3rem;
+}
+
+/* ==========================================
+   ブレイクポイントの変更
+========================================== */
+
+@media screen and (max-width: 1079px) {
+    .header__inline-menu {
+        display: none !important;
+    }
+
+    header-drawer {
+        display: block !important;
+    }
+}
+
+@media screen and (min-width: 1080px) {
+    .header__inline-menu {
+        display: block !important;
+    }
+
+    header-drawer {
+        display: none !important;
+    }
+}
+
+/*-- ロゴの中央に寄るブレイクポイントも同時に修正  ---*/
+@media screen and (min-width: 990px) and (max-width: 1079px) {
+    .header {
+        grid-template-areas: 'left-icon heading icons' !important;
+        grid-template-columns: 1fr 2fr 1fr !important;
+    }
+
+    .header__heading {
+        justify-self: center !important;
+    }
 }

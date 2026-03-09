@@ -144,7 +144,6 @@
           initCustomSplide_{{ section.id | replace: '-', '_' }}();
         });
 
-        // セクションごとに固有の関数名を作成（同じセクションを複数配置した時のバグ防止）
         function initCustomSplide_{{ section.id | replace: '-', '_' }}() {
           const sectionId = '{{ section.id }}';
           const splideElement = document.querySelector(`.splide-${sectionId}`);
@@ -159,19 +158,40 @@
             type: 'loop',
             drag: 'free',
             snap: true,
-            rewind: true,
             perMove: 1,
-             fixedWidth: 400,
-             fixedHight: 560,
+            fixedWidth: 400,
+            fixedHeight: 560,
             gap: {{ section.settings.gap_pc | default: 16 }},
+            focus: 'center',
+            padding: { left: 40, right: 200 },
             arrows: false,
             pagination: true,
             autoplay: false,
+
             breakpoints: {
-              750: {
+              1100: {
+                fixedWidth: 300,
+                fixedHeight: 500,
+                padding: { left: 40, right: 0 },
+              },
+              900: {
                 fixedWidth: 250,
-                gap: {{ section.settings.gap_sp | default: 25 }},
                 padding: { right: 40 },
+              },
+              790: {
+                fixedWidth: 220,
+                fixedHeight: 400,
+                padding: { right: 250 },
+              },
+              500: {
+                fixedWidth: 200,
+                gap: {{ section.settings.gap_sp | default: 25 }},
+                padding: { right: 250 },
+              },
+              450: {
+                fixedWidth: 300,
+                fixedHeight: 370,
+                padding: { right: 20 },
               }
             }
           };
