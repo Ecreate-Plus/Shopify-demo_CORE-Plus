@@ -1,0 +1,139 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "c_referral_image_banner_k6jpnD": {
+      "type": "c_referral-image-banner",
+      "blocks": {
+        "heading_hCfntJ": {
+          "type": "heading",
+          "settings": {
+            "heading": "お友達紹介キャンペーン実施中!!",
+            "heading_size": "h1"
+          }
+        },
+        "text_xJNnbg": {
+          "type": "text",
+          "settings": {
+            "text": "お友達にCORE Plusを紹介して、お得に買い物を楽しもう!!",
+            "text_style": "body"
+          }
+        },
+        "buttons_FGzTbm": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_hCfntJ",
+        "text_xJNnbg",
+        "buttons_FGzTbm"
+      ],
+      "name": "カスタム：紹介キャンペーンバナー",
+      "settings": {
+        "image": "shopify://shop_images/Rectangle_91.png",
+        "image_overlay_opacity": 0,
+        "image_height": "medium",
+        "image_behavior": "none",
+        "desktop_content_position": "middle-center",
+        "desktop_content_alignment": "center",
+        "show_text_box": true,
+        "color_scheme": "",
+        "stack_images_on_mobile": true,
+        "mobile_content_alignment": "center",
+        "show_text_below": true
+      }
+    },
+    "c_referral_how_to_Dj847Y": {
+      "type": "c_referral-how-to",
+      "blocks": {
+        "step_fBM4Bp": {
+          "type": "step",
+          "settings": {
+            "step_label": "ステップ1",
+            "icon": "↪",
+            "title": "割引を受け取る",
+            "description": "CORE Plusを使っているお友達に「紹介リンク」を送ってもらい、あなた専用の割引コードを発行しましょう。"
+          }
+        },
+        "step_GQeVL3": {
+          "type": "step",
+          "settings": {
+            "step_label": "ステップ2",
+            "icon": "☺",
+            "title": "好きな商品を購入",
+            "description": "お支払いページでコードを入力。お得にバランスドミールライフをスタートしましょう！"
+          }
+        },
+        "step_WDFf9w": {
+          "type": "step",
+          "settings": {
+            "step_label": "ステップ3",
+            "icon": "✦",
+            "title": "紹介の輪を広げる",
+            "description": "友達がCORE Plusを始めるたびに、あなたにも素敵な特典が届きます。"
+          }
+        }
+      },
+      "block_order": [
+        "step_fBM4Bp",
+        "step_GQeVL3",
+        "step_WDFf9w"
+      ],
+      "name": "カスタム：紹介の流れ",
+      "settings": {
+        "heading": "CORE Plusを初めてご利用になる方へ",
+        "heading_size": "small",
+        "title_size": "small",
+        "padding-top_pc": 96,
+        "padding-bottom_pc": 96,
+        "padding-top_sp": 64,
+        "padding-bottom_sp": 64,
+        "color_scheme": "scheme-2"
+      }
+    },
+    "c_news_letter_YMEHRD": {
+      "type": "c_news-letter",
+      "name": "カスタム：メルマガ",
+      "settings": {
+        "heading": "お問い合わせフォーム",
+        "heading_size": "h1",
+        "catch": "割引情報や限定商品のお知らせをお届けいたします。",
+        "policy": "新商品や割引情報など役立つコンテンツが盛りだくさんのCORE Plusのメルマガ配信を是非ご利用ください。※登録が完了した時点で、プライバシーポリシーに同意したものとみなします。",
+        "padding-top_pc": 96,
+        "padding-bottom_pc": 96,
+        "padding-top_sp": 64,
+        "padding-bottom_sp": 64,
+        "color_scheme": "scheme-2"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "c_referral_image_banner_k6jpnD",
+    "c_referral_how_to_Dj847Y",
+    "c_news_letter_YMEHRD"
+  ]
+}

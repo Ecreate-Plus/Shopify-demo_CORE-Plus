@@ -1,0 +1,232 @@
+{{ 'c_referral-how-to.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: calc({{ section.settings['padding-top_sp'] }}px);
+    padding-bottom: calc({{ section.settings['padding-bottom_sp'] }}px);
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings['padding-top_pc'] }}px;
+      padding-bottom: {{ section.settings['padding-bottom_pc'] }}px;
+    }
+  }
+{%- endstyle -%}
+
+<section class="c-referral-how-to section-{{ section.id }}-padding color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width">
+    {%- if section.settings.heading != blank -%}
+      <h2 class="c-referral-how-to__heading c-referral-how-to__heading--{{ section.settings.heading_size }}">
+        {{ section.settings.heading }}
+      </h2>
+    {%- endif -%}
+
+    <div class="c-referral-how-to__grid">
+      {%- for block in section.blocks -%}
+        <article class="c-referral-how-to__card" {{ block.shopify_attributes }}>
+          <div class="c-referral-how-to__card-head">
+            {%- if block.settings.step_label != blank -%}
+              <p class="c-referral-how-to__step">{{ block.settings.step_label | escape }}</p>
+            {%- endif -%}
+            {%- if block.settings.icon != blank -%}
+              <span class="c-referral-how-to__icon" aria-hidden="true">{{ block.settings.icon | escape }}</span>
+            {%- endif -%}
+          </div>
+
+          {%- if block.settings.title != blank -%}
+            <h3 class="c-referral-how-to__title c-referral-how-to__title--{{ section.settings.title_size }}">
+              {{ block.settings.title | escape }}
+            </h3>
+          {%- endif -%}
+
+          {%- if block.settings.description != blank -%}
+            <p class="c-referral-how-to__description">
+              {{ block.settings.description | escape | newline_to_br }}
+            </p>
+          {%- endif -%}
+        </article>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "カスタム：紹介の流れ",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "max_blocks": 3,
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "見出し",
+      "default": "<strong>Huel</strong>を初めてご利用になる方へ"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "タイトルのサイズ",
+      "options": [
+        {
+          "value": "large",
+          "label": "大"
+        },
+        {
+          "value": "medium",
+          "label": "中"
+        },
+        {
+          "value": "small",
+          "label": "小"
+        }
+      ],
+      "default": "large"
+    },
+    {
+      "type": "select",
+      "id": "title_size",
+      "label": "カードタイトルのサイズ",
+      "options": [
+        {
+          "value": "large",
+          "label": "大"
+        },
+        {
+          "value": "medium",
+          "label": "中"
+        },
+        {
+          "value": "small",
+          "label": "小"
+        }
+      ],
+      "default": "medium"
+    },
+    {
+      "type": "header",
+      "content": "デスクトップ"
+    },
+    {
+      "type": "range",
+      "id": "padding-top_pc",
+      "label": "セクションの上部の余白",
+      "unit": "px",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-bottom_pc",
+      "label": "セクションの下部の余白",
+      "unit": "px",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "モバイル"
+    },
+    {
+      "type": "range",
+      "id": "padding-top_sp",
+      "label": "セクションの上部の余白",
+      "unit": "px",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-bottom_sp",
+      "label": "セクションの下部の余白",
+      "unit": "px",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 0
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "ボックス",
+      "settings": [
+        {
+          "type": "text",
+          "id": "step_label",
+          "label": "ステップ表示",
+          "default": "ステップ1"
+        },
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "アイコン文字",
+          "default": "✦"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "タイトル",
+          "default": "割引を受け取る"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "説明文",
+          "default": "Huelを使っているお友達に「紹介リンク」を送ってもらい、あなた専用の割引コードを発行しましょう。"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "カスタム：紹介の流れ",
+      "blocks": [
+        {
+          "type": "step",
+          "settings": {
+            "step_label": "ステップ1",
+            "icon": "↪",
+            "title": "割引を受け取る",
+            "description": "Huelを使っているお友達に「紹介リンク」を送ってもらい、あなた専用の割引コードを発行しましょう。"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "step_label": "ステップ2",
+            "icon": "☺",
+            "title": "お好きな商品を選びましょう。",
+            "description": "お支払いページでコードを入力。お得にHuelライフをスタートしましょう！"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "step_label": "ステップ3",
+            "icon": "✦",
+            "title": "おトクの輪を広げよう",
+            "description": "友達がHuelを始めるたびに、あなたにも素敵な特典が届きます。"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

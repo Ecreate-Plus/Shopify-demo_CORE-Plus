@@ -1,0 +1,139 @@
+.c-referral-how-to .page-width {
+  max-width: 152rem;
+}
+
+.c-referral-how-to__heading {
+  margin: 0 0 3.2rem;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  color: rgb(var(--color-foreground));
+}
+
+.c-referral-how-to__heading--small {
+  font-size: clamp(2.8rem, 3.2vw, 4.2rem);
+}
+
+.c-referral-how-to__heading--medium {
+  font-size: clamp(3.2rem, 4.4vw, 5.6rem);
+}
+
+.c-referral-how-to__heading--large {
+  font-size: clamp(3.8rem, 5.2vw, 7.2rem);
+}
+
+.c-referral-how-to__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.8rem;
+}
+
+.c-referral-how-to__card {
+  min-height: 30rem;
+  padding: 2.6rem 2.8rem 2.2rem;
+  border-radius: 1.6rem;
+  color: #f7fff9;
+  background: linear-gradient(150deg, #1b3a2e 0%, #11271f 100%);
+  box-shadow: 0 1.2rem 3rem rgba(8, 20, 15, 0.26);
+}
+
+.c-referral-how-to__card-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.2rem;
+  margin-bottom: 1.6rem;
+}
+
+.c-referral-how-to__step {
+  margin: 0;
+  color: #b4dfc2;
+  font-size: 1.9rem;
+  line-height: 1.25;
+}
+
+.c-referral-how-to__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 3.4rem;
+  height: 3.4rem;
+  color: #c6f2d5;
+  font-size: 2.8rem;
+  line-height: 1;
+}
+
+.c-referral-how-to__title {
+  margin: 0 0 1.2rem;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  color: #f7fff9;
+}
+
+.c-referral-how-to__title--small {
+  font-size: clamp(2.6rem, 2vw, 4.4rem);
+}
+
+.c-referral-how-to__title--medium {
+  font-size: clamp(3rem, 2.4vw, 5rem);
+}
+
+.c-referral-how-to__title--large {
+  font-size: clamp(3.4rem, 2.8vw, 5.8rem);
+}
+
+.c-referral-how-to__description {
+  margin: 0;
+  color: #e9f5ee;
+  font-size: 1.7rem;
+  line-height: 1.45;
+}
+
+@media screen and (max-width: 1199px) {
+  .c-referral-how-to__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .c-referral-how-to__heading {
+    margin-bottom: 2.4rem;
+  }
+
+  .c-referral-how-to__heading--small {
+    font-size: clamp(2.4rem, 7vw, 3.2rem);
+  }
+
+  .c-referral-how-to__heading--medium {
+    font-size: clamp(2.8rem, 8vw, 3.8rem);
+  }
+
+  .c-referral-how-to__heading--large {
+    font-size: clamp(3.2rem, 9vw, 4.4rem);
+  }
+
+  .c-referral-how-to__grid {
+    grid-template-columns: 1fr;
+    gap: 1.4rem;
+  }
+
+  .c-referral-how-to__card {
+    min-height: 24rem;
+    padding: 2.2rem 2rem 2.4rem;
+  }
+
+  .c-referral-how-to__step {
+    font-size: 1.7rem;
+  }
+
+  .c-referral-how-to__title--small {
+    font-size: clamp(2.4rem, 7vw, 3.2rem);
+  }
+
+  .c-referral-how-to__title--medium {
+    font-size: clamp(2.7rem, 8vw, 3.8rem);
+  }
+
+  .c-referral-how-to__title--large {
+    font-size: clamp(3rem, 9vw, 4.2rem);
+  }
+}

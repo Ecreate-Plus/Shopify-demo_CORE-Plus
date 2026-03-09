@@ -1,0 +1,127 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "c_faq_teE8z7": {
+      "type": "c_faq",
+      "blocks": {
+        "collapsible_row_8gdUBF": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "商品はどのくらい日持ちしますか？また、冷蔵庫に入れる必要はありますか？",
+            "icon": "clipboard",
+            "row_content": "<p>未開封の場合、お届けから約〇ヶ月〜〇ヶ月間保存可能です（パッケージ裏面の賞味期限をご確認ください）。常温保存が可能ですが、直射日光や高温多湿を避けた涼しい場所での保管をお願いいたします。</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_GHYgBK": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "定期便の配送間隔を変えたり、一時的に休止したりすることはできますか？",
+            "icon": "clipboard",
+            "row_content": "<p>はい、お客様のペースに合わせてマイページからいつでも変更可能です。「まだ余っているから来月は休みたい」「配送間隔を30日から45日に延ばしたい」といったご要望にも柔軟に対応しております。</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_DYAKWt": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "1日のうち、いつ摂取するのが一番効果的ですか？",
+            "icon": "clipboard",
+            "row_content": "<p>健康補助食品ですので決まった時間はございませんが、忙しい朝の「時短朝食」や、夜遅くなってしまった時の「罪悪感のない夜食」として取り入れていただくのがおすすめです。また、トレーニング後の栄養補給としてもご活用いただけます。</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_K4ik9K": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "保存料や人工甘味料などの添加物は使用されていますか？",
+            "icon": "clipboard",
+            "row_content": "<p>CORE Plusはお客様の健康を第一に考え、保存料や不要な着色料は一切使用しておりません。毎日安心してお召し上がりいただけるよう、原材料の選定には徹底的にこだわっています。</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_DbqqyF": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "注文のキャンセルはできますか？",
+            "icon": "clipboard",
+            "row_content": "<p>注文は通常、迅速に処理されます。ですが、処理される前であればキャンセルすることが可能です。変更を申請するには、カスタマーサポートに記載のメールアドレス（〇〇〇@core-plus.com）までお問い合わせください。（午前9時〜午後5時）</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_DAzNri": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "注文してからどのくらいで商品は届きますか？",
+            "icon": "clipboard",
+            "row_content": "<p>通常、ご注文完了後〇〜〇営業日以内に発送いたします。発送完了後、追跡番号を記載したメールをお送りしますので、そちらから配送状況をご確認いただけます。（※予約商品や一部地域を除きます）</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_gWeG8C": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "どのような支払い方法が利用できますか？",
+            "icon": "clipboard",
+            "row_content": "<p>クレジットカード（VISA, MasterCard, JCB, AMEX）、Shop Pay、Apple Pay、Google Payなどがご利用いただけます。また、あと払い（Paidy）にも対応しております。</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_GziJjf": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "完売したアイテムの再入荷はありますか？",
+            "icon": "clipboard",
+            "row_content": "<p>アイテムにより再入荷の予定が異なります。再入荷の最新情報は、公式ニュースやメールマガジンにて随時お知らせしておりますので、ぜひご登録ください。</p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_row_8gdUBF",
+        "collapsible_row_GHYgBK",
+        "collapsible_row_DYAKWt",
+        "collapsible_row_K4ik9K",
+        "collapsible_row_DbqqyF",
+        "collapsible_row_DAzNri",
+        "collapsible_row_gWeG8C",
+        "collapsible_row_GziJjf"
+      ],
+      "name": "カスタム：FAQ",
+      "settings": {
+        "caption": "",
+        "heading": "よくあるご質問",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "layout": "none",
+        "color_scheme": "scheme-2",
+        "container_color_scheme": "",
+        "open_first_collapsible_row": false,
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "main",
+    "c_faq_teE8z7"
+  ]
+}

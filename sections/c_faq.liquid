@@ -1,0 +1,570 @@
+{{ 'component-accordion.css' | asset_url | stylesheet_tag }}
+{{ 'collapsible-content.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="collapsible-content collapsible-{{ section.settings.layout }}-layout isolate{% if section.settings.layout == 'section' %} page-width{% elsif section.settings.layout == 'none' %} content-container content-container--full-width{% endif %}">
+    <div class="collapsible-content__wrapper section-{{ section.id }}-padding{% if section.settings.layout == 'section' %} content-container color-{{ section.settings.container_color_scheme }} gradient{% endif %}">
+      <div class="{% if section.settings.image == blank %}collapsible-content-wrapper-narrow{% else %}page-width{% endif %}">
+        <div
+          class="collapsible-content__header{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+          style="text-align: {{ section.settings.heading_alignment }};"
+        >
+          {%- if section.settings.caption != blank -%}
+            <p class="caption-with-letter-spacing">
+              {{ section.settings.caption | escape }}
+            </p>
+          {% endif %}
+          {%- if section.settings.heading != blank -%}
+            <h2 class="collapsible-content__heading inline-richtext {{ section.settings.heading_size }}">
+              {{ section.settings.heading }}
+            </h2>
+          {%- else -%}
+            <h2 class="visually-hidden">{{ 'accessibility.collapsible_content_title' | t }}</h2>
+          {% endif %}
+        </div>
+        <div class="grid grid--1-col grid--2-col-tablet collapsible-content__grid{% if section.settings.desktop_layout == 'image_second' %} collapsible-content__grid--reverse{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+          {%- if section.settings.image != blank -%}
+            <div class="grid__item collapsible-content__grid-item">
+              <div
+                class="collapsible-content__media collapsible-content__media--{{ section.settings.image_ratio }} media global-media-settings gradient"
+                {% if section.settings.image_ratio == 'adapt' %}
+                  style="padding-bottom: {{ 1 | divided_by: section.settings.image.aspect_ratio | times: 100 }}%;"
+                {% endif %}
+              >
+                {%- liquid
+                  assign padding_multiplier = 1
+                  if section.settings.layout == 'section'
+                    assign padding_multiplier = 2
+                  endif
+                  assign desktop_tablet_padding = 100 | times: padding_multiplier | append: 'px'
+                  assign mobile_padding = 30 | times: padding_multiplier | append: 'px'
+                -%}
+                {%- capture sizes -%}
+                  (min-width: {{ settings.page_width }}px) calc(({{ settings.page_width }}px - {{ desktop_tablet_padding }}) / 2),
+                  (min-width: 750px) calc((100vw - {{ desktop_tablet_padding }}) / 2),
+                  calc(100vw - {{ mobile_padding }})
+                {%- endcapture -%}
+                {{
+                  section.settings.image
+                  | image_url: width: 3200
+                  | image_tag:
+                    sizes: sizes,
+                    widths: '50, 75, 100, 150, 200, 300, 400, 500, 750, 1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3200'
+                }}
+              </div>
+            </div>
+          {% endif %}
+          <div class="grid__item">
+            {%- for block in section.blocks -%}
+              <div
+                class="accordion{% if section.settings.layout == 'row' %} content-container color-{{ section.settings.container_color_scheme }} gradient{% endif %}"
+                {{ block.shopify_attributes }}
+              >
+                <details
+                  id="Details-{{ block.id }}-{{ section.id }}"
+                  {% if section.settings.open_first_collapsible_row and forloop.first %}
+                    open
+                  {% endif %}
+                >
+                  <summary id="Summary-{{ block.id }}-{{ section.id }}">
+                    {% render 'icon-accordion', icon: block.settings.icon %}
+                    <h3 class="accordion__title inline-richtext h4">
+                      {{ block.settings.heading | default: block.settings.page.title | escape }}
+                    </h3>
+                    {{- 'icon-caret.svg' | inline_asset_content -}}
+                  </summary>
+                  <div
+                    class="accordion__content rte"
+                    id="CollapsibleAccordion-{{ block.id }}-{{ section.id }}"
+                    role="region"
+                    aria-labelledby="Summary-{{ block.id }}-{{ section.id }}"
+                  >
+                    {{ block.settings.row_content }}
+                    {{ block.settings.page.content }}
+                  </div>
+                </details>
+              </div>
+            {%- endfor -%}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "カスタム：FAQ",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "caption",
+      "label": "Caption"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "default": "よくあるご質問",
+      "label": "Heading"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        {
+          "value": "h2",
+          "label": "Small"
+        },
+        {
+          "value": "h1",
+          "label": "Medium"
+        },
+        {
+          "value": "h0",
+          "label": "Large"
+        },
+        {
+          "value": "hxl",
+          "label": "Extra large"
+        },
+        {
+          "value": "hxxl",
+          "label": "Extra extra large"
+        }
+      ],
+      "default": "h1",
+      "label": "Heading size"
+    },
+    {
+      "type": "text_alignment",
+      "id": "heading_alignment",
+      "label": "Heading alignment",
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "row",
+          "label": "Row"
+        },
+        {
+          "value": "section",
+          "label": "Section"
+        }
+      ],
+      "default": "none",
+      "label": "Layout"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-2"
+    },
+    {
+      "type": "color_scheme",
+      "id": "container_color_scheme",
+      "label": "Container color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "checkbox",
+      "id": "open_first_collapsible_row",
+      "default": false,
+      "label": "Open first row by default"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "Adapt to image"
+        },
+        {
+          "value": "portrait",
+          "label": "Portrait"
+        },
+        {
+          "value": "square",
+          "label": "Square"
+        },
+        {
+          "value": "circle",
+          "label": "Circle"
+        }
+      ],
+      "default": "adapt",
+      "label": "Image ratio"
+    },
+    {
+      "type": "select",
+      "id": "desktop_layout",
+      "options": [
+        {
+          "value": "image_first",
+          "label": "Image first"
+        },
+        {
+          "value": "image_second",
+          "label": "Image second"
+        }
+      ],
+      "default": "image_second",
+      "label": "Desktop layout"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collapsible_row",
+      "name": "Row",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "default": "Collapsible row",
+          "label": "Heading",
+          "info": "Include a heading that explains the collapsible content."
+        },
+    {
+      "type": "select",
+      "id": "icon",
+          "options": [
+            {
+              "value": "none",
+              "label": "None"
+            },
+            {
+              "value": "apple",
+              "label": "Apple"
+            },
+            {
+              "value": "banana",
+              "label": "Banana"
+            },
+            {
+              "value": "bottle",
+              "label": "Bottle"
+            },
+            {
+              "value": "box",
+              "label": "Box"
+            },
+            {
+              "value": "carrot",
+              "label": "Carrot"
+            },
+            {
+              "value": "chat_bubble",
+              "label": "Chat bubble"
+            },
+            {
+              "value": "check_mark",
+              "label": "Check mark"
+            },
+            {
+              "value": "clipboard",
+              "label": "Clipboard"
+            },
+            {
+              "value": "dairy",
+              "label": "Dairy"
+            },
+            {
+              "value": "dairy_free",
+              "label": "Dairy free"
+            },
+            {
+              "value": "dryer",
+              "label": "Dryer"
+            },
+            {
+              "value": "eye",
+              "label": "Eye"
+            },
+            {
+              "value": "fire",
+              "label": "Fire"
+            },
+            {
+              "value": "gluten_free",
+              "label": "Gluten free"
+            },
+            {
+              "value": "heart",
+              "label": "Heart"
+            },
+            {
+              "value": "iron",
+              "label": "Iron"
+            },
+            {
+              "value": "leaf",
+              "label": "Leaf"
+            },
+            {
+              "value": "leather",
+              "label": "Leather"
+            },
+            {
+              "value": "lightning_bolt",
+              "label": "Lightning bolt"
+            },
+            {
+              "value": "lipstick",
+              "label": "Lipstick"
+            },
+            {
+              "value": "lock",
+              "label": "Lock"
+            },
+            {
+              "value": "map_pin",
+              "label": "Map pin"
+            },
+            {
+              "value": "nut_free",
+              "label": "Nut free"
+            },
+            {
+              "value": "pants",
+              "label": "Pants"
+            },
+            {
+              "value": "paw_print",
+              "label": "Paw print"
+            },
+            {
+              "value": "pepper",
+              "label": "Pepper"
+            },
+            {
+              "value": "perfume",
+              "label": "Perfume"
+            },
+            {
+              "value": "plane",
+              "label": "Plane"
+            },
+            {
+              "value": "plant",
+              "label": "Plant"
+            },
+            {
+              "value": "price_tag",
+              "label": "Price tag"
+            },
+            {
+              "value": "question_mark",
+              "label": "Question mark"
+            },
+            {
+              "value": "recycle",
+              "label": "Recycle"
+            },
+            {
+              "value": "return",
+              "label": "Return"
+            },
+            {
+              "value": "ruler",
+              "label": "Ruler"
+            },
+            {
+              "value": "serving_dish",
+              "label": "Serving dish"
+            },
+            {
+              "value": "shirt",
+              "label": "Shirt"
+            },
+            {
+              "value": "shoe",
+              "label": "Shoe"
+            },
+            {
+              "value": "silhouette",
+              "label": "Silhouette"
+            },
+            {
+              "value": "snowflake",
+              "label": "Snowflake"
+            },
+            {
+              "value": "star",
+              "label": "Star"
+            },
+            {
+              "value": "stopwatch",
+              "label": "Stopwatch"
+            },
+            {
+              "value": "truck",
+              "label": "Truck"
+            },
+            {
+              "value": "washing",
+              "label": "Washing"
+            }
+          ],
+          "default": "clipboard",
+          "label": "Icon"
+        },
+        {
+          "type": "richtext",
+          "id": "row_content",
+          "label": "Row content"
+        },
+        {
+          "type": "page",
+          "id": "page",
+          "label": "Page"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "カスタム：FAQ",
+      "settings": {
+        "caption": "",
+        "heading": "よくあるご質問",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "layout": "none",
+        "container_color_scheme": "",
+        "color_scheme": "scheme-2",
+        "open_first_collapsible_row": false,
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
+        "padding_top": 36,
+        "padding_bottom": 36
+      },
+      "blocks": [
+        {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "商品はどのくらい日持ちしますか？また、冷蔵庫に入れる必要はありますか？",
+            "icon": "clipboard",
+            "row_content": "<p>未開封の場合、お届けから約〇ヶ月〜〇ヶ月間保存可能です（パッケージ裏面の賞味期限をご確認ください）。常温保存が可能ですが、直射日光や高温多湿を避けた涼しい場所での保管をお願いいたします。</p>",
+            "page": ""
+          }
+        },
+        {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "定期便の配送間隔を変えたり、一時的に休止したりすることはできますか？",
+            "icon": "clipboard",
+            "row_content": "<p>はい、お客様のペースに合わせてマイページからいつでも変更可能です。「まだ余っているから来月は休みたい」「配送間隔を30日から45日に延ばしたい」といったご要望にも柔軟に対応しております。</p>",
+            "page": ""
+          }
+        },
+        {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "1日のうち、いつ摂取するのが一番効果的ですか？",
+            "icon": "clipboard",
+            "row_content": "<p>健康補助食品ですので決まった時間はございませんが、忙しい朝の「時短朝食」や、夜遅くなってしまった時の「罪悪感のない夜食」として取り入れていただくのがおすすめです。また、トレーニング後の栄養補給としてもご活用いただけます。</p>",
+            "page": ""
+          }
+        },
+        {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "保存料や人工甘味料などの添加物は使用されていますか？",
+            "icon": "clipboard",
+            "row_content": "<p>CORE Plusはお客様の健康を第一に考え、保存料や不要な着色料は一切使用しておりません。毎日安心してお召し上がりいただけるよう、原材料の選定には徹底的にこだわっています。</p>",
+            "page": ""
+          }
+        },
+        {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "注文のキャンセルはできますか？",
+            "icon": "clipboard",
+            "row_content": "<p>注文は通常、迅速に処理されます。ですが、処理される前であればキャンセルすることが可能です。変更を申請するには、カスタマーサポートに記載のメールアドレス（〇〇〇@core-plus.com）までお問い合わせください。（午前9時〜午後5時）</p>",
+            "page": ""
+          }
+        },
+        {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "注文してからどのくらいで商品は届きますか？",
+            "icon": "clipboard",
+            "row_content": "<p>通常、ご注文完了後〇〜〇営業日以内に発送いたします。発送完了後、追跡番号を記載したメールをお送りしますので、そちらから配送状況をご確認いただけます。（※予約商品や一部地域を除きます）</p>",
+            "page": ""
+          }
+        },
+        {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "どのような支払い方法が利用できますか？",
+            "icon": "clipboard",
+            "row_content": "<p>クレジットカード（VISA, MasterCard, JCB, AMEX）、Shop Pay、Apple Pay、Google Payなどがご利用いただけます。また、あと払い（Paidy）にも対応しております。</p>",
+            "page": ""
+          }
+        },
+        {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "完売したアイテムの再入荷はありますか？",
+            "icon": "clipboard",
+            "row_content": "<p>アイテムにより再入荷の予定が異なります。再入荷の最新情報は、公式ニュースやメールマガジンにて随時お知らせしておりますので、ぜひご登録ください。</p>",
+            "page": ""
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
