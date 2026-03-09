@@ -17,111 +17,57 @@
         "padding_bottom": 28
       }
     },
-    "collapsible_content_V66JJB": {
-      "type": "collapsible-content",
+    "image_banner_gC46Lp": {
+      "type": "image-banner",
       "blocks": {
-        "collapsible_row_Ufn8RQ": {
-          "type": "collapsible_row",
+        "heading_DNdUk8": {
+          "type": "heading",
           "settings": {
-            "heading": "商品はどのくらい日持ちしますか？また、冷蔵庫に入れる必要はありますか？",
-            "icon": "clipboard",
-            "row_content": "<p>未開封の場合、お届けから約〇ヶ月〜〇ヶ月間保存可能です（パッケージ裏面の賞味期限をご確認ください）。常温保存が可能ですが、直射日光や高温多湿を避けた涼しい場所での保管をお願いいたします。</p>",
-            "page": ""
+            "heading": "画像バナー",
+            "heading_size": "h1"
           }
         },
-        "collapsible_row_DCV3VW": {
-          "type": "collapsible_row",
+        "text_JLJ37t": {
+          "type": "text",
           "settings": {
-            "heading": "定期便の配送間隔を変えたり、一時的に休止したりすることはできますか？",
-            "icon": "clipboard",
-            "row_content": "<p>はい、お客様のペースに合わせてマイページからいつでも変更可能です。「まだ余っているから来月は休みたい」「配送間隔を30日から45日に延ばしたい」といったご要望にも柔軟に対応しております。</p>",
-            "page": ""
+            "text": "テンプレートのバナー画像またはコンテンツに関する詳細をお客様に提供します。",
+            "text_style": "body"
           }
         },
-        "collapsible_row_PwBPDX": {
-          "type": "collapsible_row",
+        "buttons_9pKUf7": {
+          "type": "buttons",
           "settings": {
-            "heading": "1日のうち、いつ摂取するのが一番効果的ですか？",
-            "icon": "clipboard",
-            "row_content": "<p>健康補助食品ですので決まった時間はございませんが、忙しい朝の「時短朝食」や、夜遅くなってしまった時の「罪悪感のない夜食」として取り入れていただくのがおすすめです。また、トレーニング後の栄養補給としてもご活用いただけます。</p>",
-            "page": ""
-          }
-        },
-        "collapsible_row_rbP4PP": {
-          "type": "collapsible_row",
-          "settings": {
-            "heading": "保存料や人工甘味料などの添加物は使用されていますか？",
-            "icon": "clipboard",
-            "row_content": "<p>CORE Plusはお客様の健康を第一に考え、保存料や不要な着色料は一切使用しておりません。毎日安心してお召し上がりいただけるよう、原材料の選定には徹底的にこだわっています。</p>",
-            "page": ""
-          }
-        },
-        "collapsible_row_Er4CV7": {
-          "type": "collapsible_row",
-          "settings": {
-            "heading": "注文のキャンセルはできますか？",
-            "icon": "clipboard",
-            "row_content": "<p>注文は通常、迅速に処理されます。ですが、処理される前であればキャンセルすることが可能です。変更を申請するには、カスタマーサポートに記載のメールアドレス（〇〇〇@core-plus.com）までお問い合わせください。（午前9時〜午後5時）</p>",
-            "page": ""
-          }
-        },
-        "collapsible_row_exABEU": {
-          "type": "collapsible_row",
-          "settings": {
-            "heading": "注文してからどのくらいで商品は届きますか？",
-            "icon": "clipboard",
-            "row_content": "<p>通常、ご注文完了後〇〜〇営業日以内に発送いたします。発送完了後、追跡番号を記載したメールをお送りしますので、そちらから配送状況をご確認いただけます。（※予約商品や一部地域を除きます）</p>",
-            "page": ""
-          }
-        },
-        "collapsible_row_HHdr6i": {
-          "type": "collapsible_row",
-          "settings": {
-            "heading": "どのような支払い方法が利用できますか？",
-            "icon": "clipboard",
-            "row_content": "<p>クレジットカード（VISA, MasterCard, JCB, AMEX）、Shop Pay、Apple Pay、Google Payなどがご利用いただけます。また、あと払い（Paidy）にも対応しております。</p>",
-            "page": ""
-          }
-        },
-        "collapsible_row_qCAf9z": {
-          "type": "collapsible_row",
-          "settings": {
-            "heading": "完売したアイテムの再入荷はありますか？",
-            "icon": "clipboard",
-            "row_content": "<p>アイテムにより再入荷の予定が異なります。再入荷の最新情報は、公式ニュースやメールマガジンにて随時お知らせしておりますので、ぜひご登録ください。</p>",
-            "page": ""
+            "button_label_1": "ボタンのラベル",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "ボタンのラベル",
+            "button_link_2": "",
+            "button_style_secondary_2": false
           }
         }
       },
       "block_order": [
-        "collapsible_row_Ufn8RQ",
-        "collapsible_row_DCV3VW",
-        "collapsible_row_PwBPDX",
-        "collapsible_row_rbP4PP",
-        "collapsible_row_Er4CV7",
-        "collapsible_row_exABEU",
-        "collapsible_row_HHdr6i",
-        "collapsible_row_qCAf9z"
+        "heading_DNdUk8",
+        "text_JLJ37t",
+        "buttons_9pKUf7"
       ],
-      "name": "t:sections.collapsible_content.presets.name",
+      "name": "t:sections.image-banner.presets.name",
       "settings": {
-        "caption": "",
-        "heading": "よくあるご質問",
-        "heading_size": "h1",
-        "heading_alignment": "center",
-        "layout": "none",
-        "container_color_scheme": "",
-        "color_scheme": "scheme-2",
-        "open_first_collapsible_row": false,
-        "image_ratio": "adapt",
-        "desktop_layout": "image_second",
-        "padding_top": 36,
-        "padding_bottom": 36
+        "image_overlay_opacity": 0,
+        "image_height": "medium",
+        "image_behavior": "none",
+        "desktop_content_position": "middle-center",
+        "desktop_content_alignment": "center",
+        "show_text_box": true,
+        "color_scheme": "",
+        "stack_images_on_mobile": true,
+        "mobile_content_alignment": "center",
+        "show_text_below": true
       }
     }
   },
   "order": [
     "main",
-    "collapsible_content_V66JJB"
+    "image_banner_gC46Lp"
   ]
 }
