@@ -128,12 +128,54 @@
         "padding-bottom_sp": 64,
         "color_scheme": "scheme-2"
       }
+    },
+    "c_collection_list_yQgAzp": {
+      "type": "c_collection-list",
+      "blocks": {
+        "featured_collection_jxheeq": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "all"
+          }
+        },
+        "featured_collection_c4m9R8": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "セール商品"
+          }
+        },
+        "featured_collection_eHG4Xc": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "セット割引"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_jxheeq",
+        "featured_collection_c4m9R8",
+        "featured_collection_eHG4Xc"
+      ],
+      "name": "カスタム:コレクションリスト",
+      "settings": {
+        "image_ratio": "square",
+        "columns_desktop": 3,
+        "color_scheme": "scheme-2",
+        "show_view_all": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top_pc": 96,
+        "padding_bottom_pc": 96,
+        "padding_top_sp": 64,
+        "padding_bottom_sp": 64
+      }
     }
   },
   "order": [
     "main",
     "c_referral_image_banner_k6jpnD",
     "c_referral_how_to_Dj847Y",
-    "c_news_letter_YMEHRD"
+    "c_news_letter_YMEHRD",
+    "c_collection_list_yQgAzp"
   ]
 }

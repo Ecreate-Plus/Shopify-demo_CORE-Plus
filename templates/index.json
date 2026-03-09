@@ -435,6 +435,55 @@
         "color_scheme": "scheme-2"
       }
     },
+    "c_referral_image_banner_EpcMmP": {
+      "type": "c_referral-image-banner",
+      "blocks": {
+        "heading_iamkje": {
+          "type": "heading",
+          "settings": {
+            "heading": "お友達紹介キャンペーン実施中!!",
+            "heading_size": "h1"
+          }
+        },
+        "text_U4Cpiz": {
+          "type": "text",
+          "settings": {
+            "text": "お友達にCORE Plusを紹介して、お得に買い物を楽しもう!!",
+            "text_style": "body"
+          }
+        },
+        "buttons_kQrNrU": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "お得なキャンペーンページはこちら",
+            "button_link_1": "shopify://pages/リファラル",
+            "button_style_secondary_1": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_iamkje",
+        "text_U4Cpiz",
+        "buttons_kQrNrU"
+      ],
+      "name": "カスタム：紹介キャンペーンバナー",
+      "settings": {
+        "image": "shopify://shop_images/Rectangle_91.png",
+        "image_overlay_opacity": 0,
+        "image_height": "large",
+        "image_behavior": "none",
+        "desktop_content_position": "middle-center",
+        "desktop_content_alignment": "center",
+        "show_text_box": true,
+        "color_scheme": "scheme-2",
+        "stack_images_on_mobile": true,
+        "mobile_content_alignment": "center",
+        "show_text_below": true
+      }
+    },
     "c_contact_Bp8wCq": {
       "type": "c_news-letter",
       "name": "カスタム：フォーム",
@@ -459,6 +508,7 @@
     "c_collapsible_content_EAhMnN",
     "c_testimonials_F4RyjV",
     "c_video_text_Nf8UVF",
+    "c_referral_image_banner_EpcMmP",
     "c_contact_Bp8wCq"
   ]
 }
