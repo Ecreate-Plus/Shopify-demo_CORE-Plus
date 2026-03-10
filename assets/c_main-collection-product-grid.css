@@ -16,32 +16,54 @@
     margin-top: auto;
 }
 
+.c-main-collection-product-grid .c-nutrition-wrapper {
+    margin-top: .3em;
+}
+
+.c-main-collection-product-grid .c-nutrition-item:last-of-type {
+    /* 下のmarginは、dividerより上のタグに持たせる。 */
+    margin-bottom: .3em;
+}
+
+@media screen and (max-width: 480px) {
+
+    .c-main-collection-product-grid .c-nutrition-item:first-of-type {
+        margin-bottom: .3em;
+    }
+}
+
 .c-main-collection-product-grid .c-nutrition-item {
     display: flex;
     align-items: center;
-    margin-top: 10px;
-    margin-bottom: 10px;
 }
 
 .c-main-collection-product-grid .c-nutrition-item svg {
     width: 25px;
-    margin-right: 10px;
+    margin-right: .5em;
 }
 
 .c-main-collection-product-grid .c-nutrition-text {
-    font-size: 1.25rem;
+    font-size: .875em;
 }
 
 .c-main-collection-product-grid .c-custom-card__price-area {
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 1em;
+    margin-bottom: 1em;
 }
 
 .c-main-collection-product-grid .c-price_text,
 .c-main-collection-product-grid .c-subscription-notice {
     margin: 0;
     line-height: 1.5;
-    font-size: 1.5rem;
+    font-size: .875em;
+}
+
+@media screen and (max-width: 480px) {
+
+    .c-main-collection-product-grid .c-price_text,
+    .c-main-collection-product-grid .c-subscription-notice {
+        font-size: .75em;
+    }
 }
 
 .c-main-collection-product-grid .c-custom-card__divider {
@@ -51,48 +73,50 @@
 /* ---------------------------------------
     フォントの指定
 ------------------------------------------ */
-.c-main-collection-product-grid .c-card__heading>a {
-    line-height: 0.5;
-}
 
-.c-main-collection-product-grid .c-card-info__additional-title {
-    margin-top: -10px;
-    font-size: 1.125rem;
-}
-
-.c-main-collection-product-grid .c-custom-card__desc-area {
-    line-height: 1.2;
+.c-card__information .c-card-info__additional-title {
     font-size: 1.25rem;
 }
 
+.c-card__information .c-custom-card__desc-area {
+    line-height: 1.2;
+    font-size: .825em;
+}
+
+@media screen and (max-width: 900px) {
+    .c-card__information .c-custom-card__desc-area {
+        font-size: .75em;
+    }
+}
+
 /* バッジの配置 */
-.c-main-collection-product-grid .c-card__badge {
+.c-card__information .c-card__badge {
     position: absolute;
     z-index: 2;
 }
 
-.c-main-collection-product-grid .c-card__badge--top-left {
+.c-card__information .c-card__badge--top-left {
     top: 10px;
     left: 10px;
     bottom: auto;
     right: auto;
 }
 
-.c-main-collection-product-grid .c-card__badge--top-right {
+.c-card__information .c-card__badge--top-right {
     top: 10px;
     right: 10px;
     bottom: auto;
     left: auto;
 }
 
-.c-main-collection-product-grid .c-card__badge--bottom-left {
+.c-card__information .c-card__badge--bottom-left {
     bottom: 10px;
     left: 10px;
     top: auto;
     right: auto;
 }
 
-.c-main-collection-product-grid .c-card__badge--bottom-right {
+.c-card__information .c-card__badge--bottom-right {
     bottom: 10px;
     right: 10px;
     top: auto;
