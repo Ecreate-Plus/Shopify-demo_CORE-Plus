@@ -17,13 +17,9 @@
 
 }
 
-
-
 /* ---------------------------------------
     左のタイトル部分のレイアウト
 ------------------------------------------ */
-
-
 
 .c-video-section .c-video-section__svg-wrapper {
     display: flex;
@@ -35,7 +31,6 @@
         display: inline-block;
     }
 }
-
 
 .c-video-section .c-video-section__icon-wrapper {
     display: flex;
@@ -76,7 +71,13 @@
     box-shadow: 5px 5px 10px rgb(161, 161, 161);
 }
 
-@media screen and (max-width: 815px) {
+@media screen and (max-width: 1100px) {
+    .c-video-section .c-video-section__card-wrapper {
+        width: 400px;
+    }
+}
+
+@media screen and (max-width: 910px) {
     .c-video-section .c-video-section__card-wrapper {
         min-width: 150px;
         width: auto;
@@ -89,7 +90,13 @@
 
 @media screen and (max-width: 815px) {
     .c-video-section .c-video-section__card-inner {
-        padding: 5px 15px 15px;
+        padding: 5px 15px 20px 15px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .c-video-section .c-video-section__card-inner {
+        padding: 10px;
     }
 }
 

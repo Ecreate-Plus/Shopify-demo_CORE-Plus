@@ -153,9 +153,10 @@
 }
 
 .c-testimonials .c-splide__all-view-button:hover {
-    background: #4D8412;
+    background: #FFFFFF;
     border: 3px solid #FF8A00;
     opacity: 0.9;
+    color: #121212;
 }
 
 /* ページネーション */

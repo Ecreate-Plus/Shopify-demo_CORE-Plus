@@ -17,31 +17,32 @@
 }
 
 .c-news-letter .c-news-letter__fields-wrapper {
-    height: 200px;
     padding: 25px 80px;
     background: #F0F2F5;
 }
 
 .c-news-letter .c-news-letter__fields-catch {
+    margin: 0 0 20px;
     font-weight: 600;
 }
 
 .c-news-letter .c-news-letter__fields-inner {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 50px;
+    align-items: stretch;
+    gap: 16px;
 }
 
 .c-news-letter .c-news-letter__fields {
-    display: flex;
-    width: 100%;
+    flex: 1 1 auto;
+    min-width: 0;
+    grid-template-columns: auto;
 }
 
 .c-news-letter .c-field {
     margin-bottom: 0;
     border-radius: 5px;
     border: 1px solid #DBDEE0;
+    min-height: 56px;
 }
 
 .c-news-letter .c-field:after,
@@ -50,18 +51,21 @@
     box-shadow: none !important;
 }
 
-.c-news-letter .field__input {
+.c-news-letter .c-field__input {
+    min-height: 56px;
     border-radius: 5px;
     background: #F5F5F5;
 }
 
 .c-news-letter .c-news-letter__button {
+    flex: 0 0 auto;
     margin-top: 0;
     padding: 0;
 }
 
 .c-news-letter .c-news-letter__button .c-button {
-    padding: 0;
+    min-height: 56px;
+    padding: 0 24px;
     border-radius: 5px;
     background: #FF8A00;
     color: #FFF;
@@ -77,41 +81,57 @@
     width: 100%;
     height: 100%;
     margin: 0;
-    line-height: 1.2;
-    font-size: .75em;
+    line-height: 1.5;
+    font-size: 0.75em;
 }
 
+/* タブレット以下 */
+@media screen and (max-width: 990px) {
+    .c-news-letter .c-news-letter__fields-wrapper {
+        padding: 24px;
+    }
 
+    .c-news-letter .c-news-letter__fields-catch {
+        font-size: 1.5rem;
+    }
 
+    .c-news-letter .c-news-letter__policy {
+        padding: 15px 24px;
+    }
+}
 
+/* スマホ */
+@media screen and (max-width: 749px) {
+    .c-news-letter .c-news-letter__fields-inner {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+    }
 
-/* ---------------------------------------
-    左のタイトル部分のレイアウト
------------------------------------------- */
+    .c-news-letter .c-news-letter__fields,
+    .c-news-letter .c-news-letter__button {
+        width: 100%;
+    }
 
+    .c-news-letter .c-news-letter__button .c-button {
+        width: 100%;
+    }
 
+    .c-news-letter .c-news-letter__fields-wrapper {
+        padding: 20px 16px;
+    }
 
-/* ---------------------------------------
-    コメントカードのレイアウトとスタイルの調整
------------------------------------------- */
+    .c-news-letter .c-news-letter__heading,
+    .c-news-letter .c-visually-hidden {
+        margin-bottom: 24px;
+    }
 
+    .c-news-letter .c-news-letter__fields-catch {
+        margin-bottom: 16px;
+        font-size: 1.25rem;
+    }
 
-
-
-
-
-
-
-/* 奇数は左寄せ */
-
-
-/* 偶数は右寄せ */
-
-
-@media screen and (max-width: 900px) {}
-
-/* ---------------------------------------
-    動画のレイアウト
------------------------------------------- */
-
-/* ※基本は、liquidファイルで指定 */
+    .c-news-letter .c-news-letter__policy {
+        padding: 12px 16px;
+    }
+}

@@ -22,6 +22,16 @@
 
 }
 
+.c-main-product .product-variant-picker {
+    display: grid;
+    gap: 30px;
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+.c-main-product .product-variant-picker>.product-form__input--pill {
+    margin: 0;
+}
 
 /* ---------------------------------------
     レビューテキストのスタイル
@@ -142,9 +152,6 @@
 }
 
 
-
-
-
 /* ---------------------------------------
     スペーサー
 ------------------------------------------ */
@@ -204,7 +211,7 @@
     flex-wrap: wrap;
     gap: 6px;
     list-style: none;
-    padding: 0;
+    padding: 0px;
     margin: 0;
 }
 
@@ -213,6 +220,7 @@
     width: auto;
     height: auto;
 }
+
 
 .c-product-form .c-loading__spinner::after {
     border: none;

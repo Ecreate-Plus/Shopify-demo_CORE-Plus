@@ -94,13 +94,24 @@
             {%- render 'loading-spinner' -%}
           </button>
           {% comment %} 決済可能ブランドの表示 {% endcomment %}
+          {% comment %} デフォルトでAMEXのみスタイル崩れがあったので差し替え。 {% endcomment %}
           <div class="payment-methods-wrapper c-payment-methods-wrapper">
             <ul
               class="list-inline payment-icons c-payment-icons"
             >
               {%- for type in shop.enabled_payment_types -%}
                 <li>
-                  {{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}
+                  {%- if type == 'american_express' -%}
+                    <img
+                      src="{{ 'c_icon-amex.svg' | asset_url }}"
+                      alt="American Express"
+                      class="icon"
+                      width="38"
+                      height="24"
+                    >
+                  {%- else -%}
+                    {{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}
+                  {%- endif -%}
                 </li>
               {%- endfor -%}
             </ul>

@@ -289,7 +289,18 @@
             <ul class="list list-payment" role="list">
               {%- for type in shop.enabled_payment_types -%}
                 <li class="list-payment__item">
-                  {{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}
+                  {%- if type == 'american_express' -%}
+                    <img
+                      src="{{ 'c_icon-amex.svg' | asset_url }}"
+                      alt="American Express"
+                      class="icon icon--full-color"
+                      loading="lazy"
+                      width="38"
+                      height="24"
+                    >
+                  {%- else -%}
+                    {{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}
+                  {%- endif -%}
                 </li>
               {%- endfor -%}
             </ul>

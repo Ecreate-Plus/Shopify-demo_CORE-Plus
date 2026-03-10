@@ -75,7 +75,7 @@
         "buy_buttons_rYKMDi": {
           "type": "buy_buttons",
           "settings": {
-            "show_dynamic_checkout": false,
+            "show_dynamic_checkout": true,
             "show_gift_card_recipient": false
           }
         },
@@ -218,8 +218,8 @@
       "settings": {
         "image_pc": "{{ product.metafields.custom[\"benefits-image_pc\"].value }}",
         "image_sp": "{{ product.metafields.custom[\"benefits-image_sp\"].value }}",
-        "text_pc-1": "コアプラスのボトルドリンクは、\n完全栄養食です。\n私たちの体の基礎となる\n5大栄養素が全て含まれています。",
-        "text_sp-1": "コアプラスのボトルドリンクは、\n完全栄養食です。\n私たちの体の基礎となる\n5大栄養素が全て含まれています。",
+        "text_pc-1": "CORE Plusスのボトルドリンクは、\n完全栄養食です。\n私たちの体の基礎となる\n5大栄養素が全て含まれています。",
+        "text_sp-1": "CORE Plusのボトルドリンクは、\n完全栄養食です。\n私たちの体の基礎となる\n5大栄養素が全て含まれています。",
         "font_size_pc-1": 22,
         "font_size_sp-1": 16,
         "text_pc-2": "1食あたりの価格 685円",
