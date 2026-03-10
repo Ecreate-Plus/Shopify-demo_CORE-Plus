@@ -1,23 +1,30 @@
 <div class="card__information c-card__information">
   {% comment %} 商品名・補足・サブキャッチ {% endcomment %}
   {% if card_product.title != blank %}
-    <div class="c-custom-card__title-area">
-      <h3
-        class="card__heading h5 c-card__heading"
-        id="title-{{ section_id }}-{{ card_product.id }}"
+    {% comment %} <div class="c-custom-card__title-area"> {% endcomment %}
+    <h3
+      class="card__heading h5 c-card__heading"
+      id="title-{{ section_id }}-{{ card_product.id }}"
+    >
+      <a
+        href="{{ card_product.url }}"
+        id="CardLink-{{ section_id }}-{{ card_product.id }}"
+        class="full-unstyled-link"
+        aria-labelledby="CardLink-{{ section_id }}-{{ card_product.id }} Badge-{{ section_id }}-{{ card_product.id }}"
       >
         {{ card_product.title | escape }}
-      </h3>
-    </div>
+      </a>
+    </h3>
+    {% comment %} </div> {% endcomment %}
   {% endif %}
 
   {% if card_product.metafields.custom.flavor != blank %}
     {% if card_product.metafields.custom.flavor != blank %}
       <span class="c-card-info__additional-title">{{ card_product.metafields.custom.flavor }}</span>
     {% endif %}
-  {% endif %}
 
-  <hr class="c-custom-card__divider">
+    <hr class="c-custom-card__divider">
+  {% endif %}
 
   {% comment %} 商品説明 {% endcomment %}
   {% if card_product.metafields.custom.description != blank %}

@@ -147,11 +147,11 @@
     "color_schemes": {
       "scheme-1": {
         "settings": {
-          "background": "#4d8412",
+          "background": "#f8fafc",
           "background_gradient": "",
-          "text": "#ffffff",
+          "text": "#121212",
           "button": "#121212",
-          "button_label": "#ffffff",
+          "button_label": "#f3f3f3",
           "secondary_button_label": "#121212",
           "shadow": "#121212"
         }
@@ -197,6 +197,17 @@
           "button": "#ffffff",
           "button_label": "#334fb4",
           "secondary_button_label": "#ffffff",
+          "shadow": "#121212"
+        }
+      },
+      "scheme-6f566a5d-c3c3-483a-86ff-4517f2bdac73": {
+        "settings": {
+          "background": "#4d8412",
+          "background_gradient": "",
+          "text": "#ffffff",
+          "button": "#121212",
+          "button_label": "#ffffff",
+          "secondary_button_label": "#121212",
           "shadow": "#121212"
         }
       }

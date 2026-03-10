@@ -93,6 +93,8 @@
             </span>
             {%- render 'loading-spinner' -%}
           </button>
+          {% comment %} 商品ページでのクレジットカードアイコンの非表示 {% endcomment %}
+
           {%- if show_dynamic_checkout -%}
             {{ form | payment_button }}
           {%- endif -%}

@@ -41,7 +41,7 @@
     endif
   -%}
 
-  <div class="card-wrapper product-card-wrapper underline-links-hover">
+  <div class="card-wrapper c-card-wrapper product-card-wrapper underline-links-hover">
     <div
       class="
         card card--{{ settings.card_style }}
@@ -108,7 +108,7 @@
           </div>
         {%- endif -%}
         {%- if card_product.featured_media == null or settings.card_style == 'card' -%}
-          <div class="card__content">
+          <div class="card__content c-card__content">
             {% render 'c_collection-card-info', card_product: card_product, section_id: section_id %}
           </div>
         {%- endif -%}
@@ -133,7 +133,7 @@
         </div>
       </div>
       {%- if card_product.featured_media and settings.card_style == 'standard' -%}
-        <div class="card__content">
+        <div class="card__content c-card__content">
           {% comment %} 商品情報：rennderで読み込み。 {% endcomment %}
           {% render 'c_collection-card-info', card_product: card_product, section_id: section_id %}
 
@@ -239,7 +239,7 @@
       assign ratio = 0.8
     endif
   -%}
-  <div class="card-wrapper product-card-wrapper underline-links-hover">
+  <div class="card-wrapper c-card-wrapper product-card-wrapper underline-links-hover">
     <div
       class="
         card card--{{ settings.card_style }}
@@ -268,7 +268,7 @@
       </div>
 
       {% comment %} 3 {% endcomment %}
-      <div class="card__content">
+      <div class="card__content c-card__content">
         <div class="card__information">
           <h3 class="card__heading card__heading--placeholder{% if settings.card_style == 'standard' %} h5{% endif %}">
             <a role="link" aria-disabled="true" class="full-unstyled-link">
