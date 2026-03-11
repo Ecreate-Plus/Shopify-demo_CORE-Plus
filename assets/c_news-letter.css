@@ -72,6 +72,10 @@
     white-space: nowrap;
 }
 
+.c-news-letter .c-news-letter__button .c-button::before {
+    box-shadow: none;
+}
+
 .c-news-letter .c-news-letter__policy {
     padding: 15px 50px;
     background: #F8F8F8;

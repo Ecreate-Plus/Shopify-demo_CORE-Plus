@@ -39,7 +39,7 @@
       <input type="hidden" name="contact[tags]" value="newsletter">
 
       {%- if form.posted_successfully? -%}
-        <h2 class="form-status form-status-list form__message" tabindex="-1" autofocus>
+        <h2 class="form-status form-status-list form__message" tabindex="-1">
           {{- 'icon-success.svg' | inline_asset_content -}}
           {{ 'sections.custom_newsletter.success_message' | t }}
         </h2>
@@ -60,12 +60,12 @@
               <input
                 id="ContactForm-email-{{ section.id }}"
                 class="field__input c-field__input"
-                autocomplete="email"
+                autocomplete="off"
                 type="email"
                 name="contact[email]"
                 spellcheck="false"
                 autocapitalize="off"
-                value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+                value="{% if form.posted_successfully? %}{% elsif form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
                 aria-required="true"
                 {% if form.errors contains 'email' %}
                   aria-invalid="true"
@@ -94,6 +94,19 @@
     </div>
   </div>
 </div>
+
+<script>
+  if (window.location.search.includes('customer_posted')) {
+    history.replaceState(null, '', window.location.pathname);
+    window.addEventListener('load', function () {
+      document.querySelector('.c-news-letter').scrollIntoView({ behavior: 'smooth' });
+    });
+  }
+  window.addEventListener('load', function () {
+    var emailInput = document.querySelector('.c-news-letter .c-field__input[type="email"]');
+    if (emailInput) emailInput.value = '';
+  });
+</script>
 
 {% schema %}
 {

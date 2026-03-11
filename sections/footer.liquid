@@ -183,9 +183,8 @@
                       aria-required="true"
                       autocorrect="off"
                       autocapitalize="off"
-                      autocomplete="email"
+                      autocomplete="off"
                       {% if form.errors %}
-                        autofocus
                         aria-invalid="true"
                         aria-describedby="ContactFooter-error"
                       {% elsif form.posted_successfully? %}
@@ -224,7 +223,6 @@
                     class="newsletter-form__message newsletter-form__message--success form__message"
                     id="ContactFooter-success"
                     tabindex="-1"
-                    autofocus
                   >
                     <span class="svg-wrapper">
                       {{- 'icon-success.svg' | inline_asset_content -}}
