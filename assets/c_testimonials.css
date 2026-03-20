@@ -145,18 +145,23 @@
     place-content: center;
     text-decoration: none;
     border-radius: 40px;
-    border: none;
+    border: 3px solid #FF8A00;
     background: #FF8A00;
     color: #FFF;
-    transition: background 0.3s ease;
+    transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
     white-space: nowrap;
+}
+
+.c-testimonials .c-splide__all-view-button-text {
+    font-size: 1.75rem;
+    font-weight: bold;
+    line-height: 1;
 }
 
 .c-testimonials .c-splide__all-view-button:hover {
     background: #FFFFFF;
     border: 3px solid #FF8A00;
-    opacity: 0.9;
-    color: #121212;
+    color: #333;
 }
 
 /* ページネーション */
