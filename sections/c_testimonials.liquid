@@ -116,7 +116,7 @@
         <div class="c-splide__buttons--url {% if section.settings.button_url == blank %} c-splide__buttons--blank {% endif %}">
           {% if section.settings.button_url != blank %}
             <a class="c-splide__all-view-button" href="{{ section.settings.button_url }}">
-              {{- section.settings.button_text -}}
+              <span class="c-splide__all-view-button-text">{{- section.settings.button_text -}}</span>
             </a>
           {% endif %}
           <div class=" c-splide__arrows">
